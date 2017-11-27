@@ -1,0 +1,11 @@
+Sprint 0
+Personas + Scenarios (Mimi)
+Idea generation (Tamas)
+Vision statement (Sangey)
+Compare Plan driven vs agile methodologies and which one we decided to use and why. (Boehms 5 forces) (Andreas & Maddie)
+Main principles in planning and quality assurance (XP principles, Scrum, pair programming, code reviews, code standard etc etc) (Sangey)
+Test Driven Development
+Non Functional requirements of our system and how they influenced our design
+Domain model
+
+Reflections on sprint 0 (how did it go, what went well, what didn't go well, how we can improve next time)  (All)
