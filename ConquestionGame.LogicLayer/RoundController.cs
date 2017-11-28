@@ -69,7 +69,7 @@ namespace ConquestionGame.LogicLayer
             playerAnswer.PlayerAnswerTime = DateTime.Now;
             db.Players.Attach(playerAnswer.Player);
             db.Answers.Attach(playerAnswer.AnswerGiven);
-            Round raEntity = db.Rounds.Where(ra => ra.Id == round.Id).FirstOrDefault();
+            Round raEntity = db.Rounds.Include("PlayerAnswers").Include("RoundWinner").Where(ra => ra.Id == round.Id).FirstOrDefault();
 
             // Check is the list has been initialised, if not intialise it
             if (raEntity.PlayerAnswers == null)
@@ -89,6 +89,10 @@ namespace ConquestionGame.LogicLayer
             if (elapsedSeconds <= 35 && playerHasntAnswered)
             {
                 raEntity.PlayerAnswers.Add(playerAnswer);
+                if (ValidateAnswer(playerAnswer.AnswerGiven) && raEntity.RoundWinner == null)
+                {
+                    raEntity.RoundWinner = playerAnswer.Player;
+                }
                 db.Entry(raEntity).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
@@ -96,15 +100,8 @@ namespace ConquestionGame.LogicLayer
 
         public bool ValidateAnswer(Answer answer)
         {
-            var answerEntity = db.Answers.Where(a => a.Id == answer.Id).FirstOrDefault();
-            if (answerEntity.IsValid)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            bool success = db.Answers.AsNoTracking().Where(a => a.Id == answer.Id).FirstOrDefault().IsValid;
+            return success;
         }
 
         //To see if everyone has answered in this round

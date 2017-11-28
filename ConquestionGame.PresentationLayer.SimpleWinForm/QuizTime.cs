@@ -25,7 +25,9 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
 
         DateTime startTime;
         private int TimerCountdown = 30;
+        bool TimerCountdownCanRun = true;
         private int AnswerViewingTime = 5;
+        bool AnswerViewingTimeCanRun = false;
 
         public QuizTime()
         {
@@ -38,7 +40,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
             ShowQuestionInformation();
 
             PlayerNoLabel.Text = PlayerCredentials.Instance.Player.Name;
-      
+
             startTime = DateTime.Now;
         }
 
@@ -65,7 +67,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
 
             EnableDisableButtons(true);
 
-            foreach(Button aButton in AnswerButtons)
+            foreach (Button aButton in AnswerButtons)
             {
                 aButton.BackColor = Color.Transparent;
             }
@@ -109,7 +111,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
 
         public void EnableDisableButtons(bool setting)
         {
-            foreach(Button aButton in AnswerButtons)
+            foreach (Button aButton in AnswerButtons)
             {
                 aButton.Enabled = setting;
             }
@@ -117,7 +119,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
 
         public void CheckButton()
         {
-            for(int i =0; i<AnswerButtons.Count;i++)
+            for (int i = 0; i < AnswerButtons.Count; i++)
             {
                 bool correct = Client.ValidateAnswer(CurrentQuestion.Answers[i]);
 
@@ -129,7 +131,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
                 {
                     AnswerButtons[i].BackColor = Color.Red;
                 }
-            } 
+            }
         }
 
         //public void CheckAllButtons()
@@ -143,50 +145,56 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int elaspedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
-            int remainingSeconds = TimerCountdown - elaspedSeconds;
-            StatusLabel.Text = String.Format("Time left to answer question: {0}", remainingSeconds);
-
-            if (remainingSeconds <= 0 || Client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound))
+            if (TimerCountdownCanRun)
             {
-                EnableDisableButtons(false);
-                CheckButton();
-                timer1.Stop();
-                startTime = DateTime.Now;
-                timer1.Tick -= timer1_Tick;
-
-                timer1.Tick += new EventHandler(NextRoundCountdown);
-                timer1.Start();
+                int elaspedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
+                int remainingSeconds = TimerCountdown - elaspedSeconds;
+                StatusLabel.Text = String.Format("Time left to answer question: {0}", remainingSeconds);
+                bool playersAnswered = Client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound);
+                if (remainingSeconds <= 0 || playersAnswered)
+                {
+                    EnableDisableButtons(false);
+                    CheckButton();
+                    timer1.Stop();
+                    startTime = DateTime.Now;
+                    TimerCountdownCanRun = false;
+                    AnswerViewingTimeCanRun = true;
+                    timer1.Start();
+                }
             }
+
         }
 
         private void NextRoundCountdown(object sender, EventArgs e)
         {
-
-            int elaspedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
-            int remainingSeconds = AnswerViewingTime - elaspedSeconds;
-            StatusLabel.Text = String.Format("Seconds left until next round: {0}", remainingSeconds);
-
-            if(remainingSeconds == 0 )
+            if (AnswerViewingTimeCanRun)
             {
-                timer1.Stop();
-                Client.CreateRound(CurrentGame);
+                int elaspedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
+                int remainingSeconds = AnswerViewingTime - elaspedSeconds;
+                StatusLabel.Text = String.Format("Seconds left until next round: {0}", remainingSeconds);
 
-                UpdateGameInformation();
-                ShowQuestionInformation();
+                if (remainingSeconds <= 0)
+                {
+                    timer1.Stop();
+                    Client.CreateRound(CurrentGame);
 
-                startTime = DateTime.Now;
-                timer1.Tick -= NextRoundCountdown;
+                    UpdateGameInformation();
+                    ShowQuestionInformation();
 
-                timer1.Tick += new EventHandler(timer1_Tick);
-                timer1.Start();
+                    startTime = DateTime.Now;
+                    TimerCountdownCanRun = true;
+                    AnswerViewingTimeCanRun = false;
+                    timer1.Start();
+                }
             }
+
         }
 
         private void QuizTime_Load(object sender, EventArgs e)
         {
-            timer1.Interval = (1 * 1000);
+            timer1.Interval = (1 * 500);
             timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Tick += new EventHandler(NextRoundCountdown);
             timer1.Start();
         }
     }
