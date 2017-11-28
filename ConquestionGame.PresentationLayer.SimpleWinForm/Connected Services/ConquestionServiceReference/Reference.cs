@@ -90,13 +90,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map MapField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerOrder[] PlayerOrderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[] PlayersField;
@@ -144,19 +138,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map Map {
-            get {
-                return this.MapField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MapField, value) != true)) {
-                    this.MapField = value;
-                    this.RaisePropertyChanged("Map");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Name {
             get {
                 return this.NameField;
@@ -165,19 +146,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerOrder[] PlayerOrder {
-            get {
-                return this.PlayerOrderField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PlayerOrderField, value) != true)) {
-                    this.PlayerOrderField = value;
-                    this.RaisePropertyChanged("PlayerOrder");
                 }
             }
         }
@@ -242,67 +210,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
             finished = 2,
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Map", Namespace="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain")]
-    [System.SerializableAttribute()]
-    public partial class Map : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
         }
     }
     
@@ -401,83 +308,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerOrder", Namespace="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain")]
-    [System.SerializableAttribute()]
-    public partial class PlayerOrder : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game GameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player PlayerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PositionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game Game {
-            get {
-                return this.GameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GameField, value) != true)) {
-                    this.GameField = value;
-                    this.RaisePropertyChanged("Game");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player Player {
-            get {
-                return this.PlayerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PlayerField, value) != true)) {
-                    this.PlayerField = value;
-                    this.RaisePropertyChanged("Player");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Position {
-            get {
-                return this.PositionField;
-            }
-            set {
-                if ((this.PositionField.Equals(value) != true)) {
-                    this.PositionField = value;
-                    this.RaisePropertyChanged("Position");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Round", Namespace="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain")]
     [System.SerializableAttribute()]
     public partial class Round : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -489,10 +319,19 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction[] RoundActionsField;
+        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer[] PlayerAnswersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round.RoundTypeEnum RoundTypeField;
+        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question QuestionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime QuestionStartTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RoundNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player RoundWinnerField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -518,27 +357,66 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction[] RoundActions {
+        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer[] PlayerAnswers {
             get {
-                return this.RoundActionsField;
+                return this.PlayerAnswersField;
             }
             set {
-                if ((object.ReferenceEquals(this.RoundActionsField, value) != true)) {
-                    this.RoundActionsField = value;
-                    this.RaisePropertyChanged("RoundActions");
+                if ((object.ReferenceEquals(this.PlayerAnswersField, value) != true)) {
+                    this.PlayerAnswersField = value;
+                    this.RaisePropertyChanged("PlayerAnswers");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round.RoundTypeEnum RoundType {
+        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question Question {
             get {
-                return this.RoundTypeField;
+                return this.QuestionField;
             }
             set {
-                if ((this.RoundTypeField.Equals(value) != true)) {
-                    this.RoundTypeField = value;
-                    this.RaisePropertyChanged("RoundType");
+                if ((object.ReferenceEquals(this.QuestionField, value) != true)) {
+                    this.QuestionField = value;
+                    this.RaisePropertyChanged("Question");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime QuestionStartTime {
+            get {
+                return this.QuestionStartTimeField;
+            }
+            set {
+                if ((this.QuestionStartTimeField.Equals(value) != true)) {
+                    this.QuestionStartTimeField = value;
+                    this.RaisePropertyChanged("QuestionStartTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RoundNo {
+            get {
+                return this.RoundNoField;
+            }
+            set {
+                if ((this.RoundNoField.Equals(value) != true)) {
+                    this.RoundNoField = value;
+                    this.RaisePropertyChanged("RoundNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player RoundWinner {
+            get {
+                return this.RoundWinnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoundWinnerField, value) != true)) {
+                    this.RoundWinnerField = value;
+                    this.RaisePropertyChanged("RoundWinner");
                 }
             }
         }
@@ -550,20 +428,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Round.RoundTypeEnum", Namespace="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain")]
-        public enum RoundTypeEnum : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            starting = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            expansion = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            conquest = 2,
         }
     }
     
@@ -707,224 +571,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RoundAction", Namespace="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain")]
-    [System.SerializableAttribute()]
-    public partial class RoundAction : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.AcquiredMapNode[] AcquiredMapNodesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime MapStartTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer[] PlayerAnswersField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question QuestionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime QuestionStartTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player RoundActionWinnerField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.AcquiredMapNode[] AcquiredMapNodes {
-            get {
-                return this.AcquiredMapNodesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AcquiredMapNodesField, value) != true)) {
-                    this.AcquiredMapNodesField = value;
-                    this.RaisePropertyChanged("AcquiredMapNodes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime MapStartTime {
-            get {
-                return this.MapStartTimeField;
-            }
-            set {
-                if ((this.MapStartTimeField.Equals(value) != true)) {
-                    this.MapStartTimeField = value;
-                    this.RaisePropertyChanged("MapStartTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer[] PlayerAnswers {
-            get {
-                return this.PlayerAnswersField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PlayerAnswersField, value) != true)) {
-                    this.PlayerAnswersField = value;
-                    this.RaisePropertyChanged("PlayerAnswers");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question Question {
-            get {
-                return this.QuestionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QuestionField, value) != true)) {
-                    this.QuestionField = value;
-                    this.RaisePropertyChanged("Question");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime QuestionStartTime {
-            get {
-                return this.QuestionStartTimeField;
-            }
-            set {
-                if ((this.QuestionStartTimeField.Equals(value) != true)) {
-                    this.QuestionStartTimeField = value;
-                    this.RaisePropertyChanged("QuestionStartTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player RoundActionWinner {
-            get {
-                return this.RoundActionWinnerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoundActionWinnerField, value) != true)) {
-                    this.RoundActionWinnerField = value;
-                    this.RaisePropertyChanged("RoundActionWinner");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AcquiredMapNode", Namespace="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain")]
-    [System.SerializableAttribute()]
-    public partial class AcquiredMapNode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.MapNode MapNodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player PlayerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction RoundActionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.MapNode MapNode {
-            get {
-                return this.MapNodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MapNodeField, value) != true)) {
-                    this.MapNodeField = value;
-                    this.RaisePropertyChanged("MapNode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player Player {
-            get {
-                return this.PlayerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PlayerField, value) != true)) {
-                    this.PlayerField = value;
-                    this.RaisePropertyChanged("Player");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction RoundAction {
-            get {
-                return this.RoundActionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoundActionField, value) != true)) {
-                    this.RoundActionField = value;
-                    this.RaisePropertyChanged("RoundAction");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PlayerAnswer", Namespace="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain")]
     [System.SerializableAttribute()]
     public partial class PlayerAnswer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1016,51 +662,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MapNode", Namespace="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain")]
-    [System.SerializableAttribute()]
-    public partial class MapNode : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ConquestionServiceReference.IConquestionService")]
     public interface IConquestionService {
@@ -1101,18 +702,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllQuestionSets", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllQuestionSetsResponse")]
         System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet[]> RetrieveAllQuestionSetsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllMaps", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllMapsResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map[] RetrieveAllMaps();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllMaps", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllMapsResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map[]> RetrieveAllMapsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AskQuestion", ReplyAction="http://tempuri.org/IConquestionService/AskQuestionResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question AskQuestion();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AskQuestion", ReplyAction="http://tempuri.org/IConquestionService/AskQuestionResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question> AskQuestionAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ValidateAnswer", ReplyAction="http://tempuri.org/IConquestionService/ValidateAnswerResponse")]
         bool ValidateAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer answer);
         
@@ -1120,16 +709,10 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         System.Threading.Tasks.Task<bool> ValidateAnswerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer answer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerAnswers", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerAnswersResponse")]
-        bool CheckPlayerAnswers(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction);
+        bool CheckPlayerAnswers(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerAnswers", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerAnswersResponse")]
-        System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ChooseMap", ReplyAction="http://tempuri.org/IConquestionService/ChooseMapResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map ChooseMap(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ChooseMap", ReplyAction="http://tempuri.org/IConquestionService/ChooseMapResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map> ChooseMapAsync(string name);
+        System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/RetrieveQuestionSetResponse")]
         ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSet(int id);
@@ -1142,12 +725,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitle", ReplyAction="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitleResponse")]
         System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetByTitleAsync(string title);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddMap", ReplyAction="http://tempuri.org/IConquestionService/AddMapResponse")]
-        void AddMap(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map map);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddMap", ReplyAction="http://tempuri.org/IConquestionService/AddMapResponse")]
-        System.Threading.Tasks.Task AddMapAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map map);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/AddQuestionSetResponse")]
         void AddQuestionSet(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet questionSet);
@@ -1173,23 +750,11 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/LeaveGame", ReplyAction="http://tempuri.org/IConquestionService/LeaveGameResponse")]
         System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfNodeIsFree", ReplyAction="http://tempuri.org/IConquestionService/CheckIfNodeIsFreeResponse")]
-        bool CheckIfNodeIsFree(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, int mapNodeId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfNodeIsFree", ReplyAction="http://tempuri.org/IConquestionService/CheckIfNodeIsFreeResponse")]
-        System.Threading.Tasks.Task<bool> CheckIfNodeIsFreeAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, int mapNodeId);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse")]
         ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse")]
         System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ReturnNodeOwner", ReplyAction="http://tempuri.org/IConquestionService/ReturnNodeOwnerResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player ReturnNodeOwner(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, int mapNodeId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ReturnNodeOwner", ReplyAction="http://tempuri.org/IConquestionService/ReturnNodeOwnerResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player> ReturnNodeOwnerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, int mapNodeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/StartGame", ReplyAction="http://tempuri.org/IConquestionService/StartGameResponse")]
         bool StartGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
@@ -1198,46 +763,16 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/SubmitAnswer", ReplyAction="http://tempuri.org/IConquestionService/SubmitAnswerResponse")]
-        void SubmitAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer);
+        void SubmitAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/SubmitAnswer", ReplyAction="http://tempuri.org/IConquestionService/SubmitAnswerResponse")]
-        System.Threading.Tasks.Task SubmitAnswerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer);
+        System.Threading.Tasks.Task SubmitAnswerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnswered", ReplyAction="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnsweredResponse")]
-        bool CheckIfAllPlayersAnswered(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction);
+        bool CheckIfAllPlayersAnswered(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnswered", ReplyAction="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnsweredResponse")]
-        System.Threading.Tasks.Task<bool> CheckIfAllPlayersAnsweredAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/GetPlayerOrder", ReplyAction="http://tempuri.org/IConquestionService/GetPlayerOrderResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[] GetPlayerOrder(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/GetPlayerOrder", ReplyAction="http://tempuri.org/IConquestionService/GetPlayerOrderResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[]> GetPlayerOrderAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/getGamePlayerOrder", ReplyAction="http://tempuri.org/IConquestionService/getGamePlayerOrderResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerOrder[] getGamePlayerOrder(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/getGamePlayerOrder", ReplyAction="http://tempuri.org/IConquestionService/getGamePlayerOrderResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerOrder[]> getGamePlayerOrderAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/SetMapStartTime", ReplyAction="http://tempuri.org/IConquestionService/SetMapStartTimeResponse")]
-        void SetMapStartTime(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/SetMapStartTime", ReplyAction="http://tempuri.org/IConquestionService/SetMapStartTimeResponse")]
-        System.Threading.Tasks.Task SetMapStartTimeAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerTurn", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerTurnResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player CheckPlayerTurn(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerTurn", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerTurnResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player> CheckPlayerTurnAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/SelectMapNode", ReplyAction="http://tempuri.org/IConquestionService/SelectMapNodeResponse")]
-        bool SelectMapNode(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player, int MapNodeIndex);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/SelectMapNode", ReplyAction="http://tempuri.org/IConquestionService/SelectMapNodeResponse")]
-        System.Threading.Tasks.Task<bool> SelectMapNodeAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player, int MapNodeIndex);
+        System.Threading.Tasks.Task<bool> CheckIfAllPlayersAnsweredAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1315,22 +850,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
             return base.Channel.RetrieveAllQuestionSetsAsync();
         }
         
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map[] RetrieveAllMaps() {
-            return base.Channel.RetrieveAllMaps();
-        }
-        
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map[]> RetrieveAllMapsAsync() {
-            return base.Channel.RetrieveAllMapsAsync();
-        }
-        
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question AskQuestion() {
-            return base.Channel.AskQuestion();
-        }
-        
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question> AskQuestionAsync() {
-            return base.Channel.AskQuestionAsync();
-        }
-        
         public bool ValidateAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer answer) {
             return base.Channel.ValidateAnswer(answer);
         }
@@ -1339,20 +858,12 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
             return base.Channel.ValidateAnswerAsync(answer);
         }
         
-        public bool CheckPlayerAnswers(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction) {
-            return base.Channel.CheckPlayerAnswers(game, roundAction);
+        public bool CheckPlayerAnswers(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round) {
+            return base.Channel.CheckPlayerAnswers(game, round);
         }
         
-        public System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction) {
-            return base.Channel.CheckPlayerAnswersAsync(game, roundAction);
-        }
-        
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map ChooseMap(string name) {
-            return base.Channel.ChooseMap(name);
-        }
-        
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map> ChooseMapAsync(string name) {
-            return base.Channel.ChooseMapAsync(name);
+        public System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round) {
+            return base.Channel.CheckPlayerAnswersAsync(game, round);
         }
         
         public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSet(int id) {
@@ -1369,14 +880,6 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         
         public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetByTitleAsync(string title) {
             return base.Channel.RetrieveQuestionSetByTitleAsync(title);
-        }
-        
-        public void AddMap(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map map) {
-            base.Channel.AddMap(game, map);
-        }
-        
-        public System.Threading.Tasks.Task AddMapAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map map) {
-            return base.Channel.AddMapAsync(game, map);
         }
         
         public void AddQuestionSet(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet questionSet) {
@@ -1411,28 +914,12 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
             return base.Channel.LeaveGameAsync(game, player);
         }
         
-        public bool CheckIfNodeIsFree(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, int mapNodeId) {
-            return base.Channel.CheckIfNodeIsFree(game, mapNodeId);
-        }
-        
-        public System.Threading.Tasks.Task<bool> CheckIfNodeIsFreeAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, int mapNodeId) {
-            return base.Channel.CheckIfNodeIsFreeAsync(game, mapNodeId);
-        }
-        
         public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
             return base.Channel.RetrieveAllPlayersByGameId(game);
         }
         
         public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
             return base.Channel.RetrieveAllPlayersByGameIdAsync(game);
-        }
-        
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player ReturnNodeOwner(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, int mapNodeId) {
-            return base.Channel.ReturnNodeOwner(game, mapNodeId);
-        }
-        
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player> ReturnNodeOwnerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, int mapNodeId) {
-            return base.Channel.ReturnNodeOwnerAsync(game, mapNodeId);
         }
         
         public bool StartGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
@@ -1443,60 +930,20 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
             return base.Channel.StartGameAsync(game, player);
         }
         
-        public void SubmitAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer) {
-            base.Channel.SubmitAnswer(roundAction, playerAnswer);
+        public void SubmitAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer) {
+            base.Channel.SubmitAnswer(round, playerAnswer);
         }
         
-        public System.Threading.Tasks.Task SubmitAnswerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer) {
-            return base.Channel.SubmitAnswerAsync(roundAction, playerAnswer);
+        public System.Threading.Tasks.Task SubmitAnswerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer) {
+            return base.Channel.SubmitAnswerAsync(round, playerAnswer);
         }
         
-        public bool CheckIfAllPlayersAnswered(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction) {
-            return base.Channel.CheckIfAllPlayersAnswered(game, roundAction);
+        public bool CheckIfAllPlayersAnswered(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round) {
+            return base.Channel.CheckIfAllPlayersAnswered(game, round);
         }
         
-        public System.Threading.Tasks.Task<bool> CheckIfAllPlayersAnsweredAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction) {
-            return base.Channel.CheckIfAllPlayersAnsweredAsync(game, roundAction);
-        }
-        
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[] GetPlayerOrder(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction) {
-            return base.Channel.GetPlayerOrder(game, roundAction);
-        }
-        
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[]> GetPlayerOrderAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction) {
-            return base.Channel.GetPlayerOrderAsync(game, roundAction);
-        }
-        
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerOrder[] getGamePlayerOrder(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
-            return base.Channel.getGamePlayerOrder(game);
-        }
-        
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerOrder[]> getGamePlayerOrderAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
-            return base.Channel.getGamePlayerOrderAsync(game);
-        }
-        
-        public void SetMapStartTime(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction) {
-            base.Channel.SetMapStartTime(roundAction);
-        }
-        
-        public System.Threading.Tasks.Task SetMapStartTimeAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction) {
-            return base.Channel.SetMapStartTimeAsync(roundAction);
-        }
-        
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player CheckPlayerTurn(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
-            return base.Channel.CheckPlayerTurn(roundAction, game);
-        }
-        
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player> CheckPlayerTurnAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
-            return base.Channel.CheckPlayerTurnAsync(roundAction, game);
-        }
-        
-        public bool SelectMapNode(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player, int MapNodeIndex) {
-            return base.Channel.SelectMapNode(roundAction, game, player, MapNodeIndex);
-        }
-        
-        public System.Threading.Tasks.Task<bool> SelectMapNodeAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.RoundAction roundAction, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player, int MapNodeIndex) {
-            return base.Channel.SelectMapNodeAsync(roundAction, game, player, MapNodeIndex);
+        public System.Threading.Tasks.Task<bool> CheckIfAllPlayersAnsweredAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round) {
+            return base.Channel.CheckIfAllPlayersAnsweredAsync(game, round);
         }
     }
 }

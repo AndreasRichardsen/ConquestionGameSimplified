@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -13,18 +15,18 @@ namespace ConquestionGame.Domain
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        public RoundTypeEnum RoundType { get; set; }
+        public int RoundNo { get; set; }
         [DataMember]
-        public List<RoundAction> RoundActions { get; set; }
-        public Game Game { get; set; }
+        public DateTime QuestionStartTime { get; set; }
 
-        
-     
-        public enum RoundTypeEnum
-        {
-            starting = 0,
-            expansion = 1,
-            conquest = 2,
-        };
+        [DataMember]
+        public Question Question { get; set; }
+  
+        [DataMember]
+        public List<PlayerAnswer> PlayerAnswers { get; set; }
+        [DataMember]
+        [ConcurrencyCheck]
+        public Player RoundWinner { get; set; }
+
     }
 }

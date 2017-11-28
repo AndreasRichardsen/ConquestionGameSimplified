@@ -10,20 +10,17 @@ using System.Threading.Tasks;
 namespace ConquestionGame.Domain
 {
     [DataContract]
-    public class PlayerOrder
+    public class AskedQuestion
     {
         [Key, Column(Order = 0)]
         public int GameId { get; set; }
+        [Key, Column(Order = 1)]
+        public int QuestionId { get; set; }
         [DataMember]
         public Game Game { get; set; }
-
-        [Key, Column(Order = 1)]
-        public int PlayerId { get; set; }
         [DataMember]
-        public Player Player { get; set; }
-
+        public Question Question { get; set; }
         [DataMember]
-        public int Position { get; set; }
-
+        public bool HasBeenAsked { get; set; }
     }
 }
