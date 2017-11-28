@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConquestionGame.PresentationLayer.SimpleWinForm.Properties
+namespace ConquestionGame.Presentation.WinForm.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ConquestionGame.PresentationLayer.SimpleWinForm.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ConquestionGame.Presentation.WinForm.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

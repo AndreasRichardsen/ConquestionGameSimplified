@@ -1,4 +1,4 @@
-﻿namespace ConquestionGame.PresentationLayer.SimpleWinForm
+﻿namespace ConquestionGame.Presentation.WinForm
 {
     partial class JoinGame
     {

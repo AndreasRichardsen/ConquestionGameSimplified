@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference {
+namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
     using System.Runtime.Serialization;
     using System;
     
@@ -84,7 +84,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game.GameStatusEnum GameStatusField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game.GameStatusEnum GameStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -93,13 +93,13 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[] PlayersField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player[] PlayersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet QuestionSetField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet QuestionSetField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round[] RoundsField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round[] RoundsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -112,7 +112,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game.GameStatusEnum GameStatus {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game.GameStatusEnum GameStatus {
             get {
                 return this.GameStatusField;
             }
@@ -151,7 +151,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[] Players {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player[] Players {
             get {
                 return this.PlayersField;
             }
@@ -164,7 +164,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet QuestionSet {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet QuestionSet {
             get {
                 return this.QuestionSetField;
             }
@@ -177,7 +177,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round[] Rounds {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round[] Rounds {
             get {
                 return this.RoundsField;
             }
@@ -229,7 +229,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question[] QuestionsField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Question[] QuestionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
@@ -271,7 +271,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question[] Questions {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Question[] Questions {
             get {
                 return this.QuestionsField;
             }
@@ -319,10 +319,10 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer[] PlayerAnswersField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.PlayerAnswer[] PlayerAnswersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question QuestionField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Question QuestionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime QuestionStartTimeField;
@@ -331,7 +331,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         private int RoundNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player RoundWinnerField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player RoundWinnerField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -357,7 +357,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer[] PlayerAnswers {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.PlayerAnswer[] PlayerAnswers {
             get {
                 return this.PlayerAnswersField;
             }
@@ -370,7 +370,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question Question {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Question Question {
             get {
                 return this.QuestionField;
             }
@@ -409,7 +409,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player RoundWinner {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player RoundWinner {
             get {
                 return this.RoundWinnerField;
             }
@@ -441,7 +441,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer[] AnswersField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Answer[] AnswersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -460,7 +460,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer[] Answers {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Answer[] Answers {
             get {
                 return this.AnswersField;
             }
@@ -579,13 +579,13 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer AnswerGivenField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Answer AnswerGivenField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player PlayerField;
+        private ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player PlayerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime PlayerAnswerTimeField;
@@ -601,7 +601,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer AnswerGiven {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Answer AnswerGiven {
             get {
                 return this.AnswerGivenField;
             }
@@ -627,7 +627,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player Player {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player Player {
             get {
                 return this.PlayerField;
             }
@@ -667,127 +667,127 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
     public interface IConquestionService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreatePlayer", ReplyAction="http://tempuri.org/IConquestionService/CreatePlayerResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player CreatePlayer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player CreatePlayer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreatePlayer", ReplyAction="http://tempuri.org/IConquestionService/CreatePlayerResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player> CreatePlayerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player> CreatePlayerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame", ReplyAction="http://tempuri.org/IConquestionService/CreateGameResponse")]
-        void CreateGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
+        void CreateGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame", ReplyAction="http://tempuri.org/IConquestionService/CreateGameResponse")]
-        System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
+        System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddPlayer", ReplyAction="http://tempuri.org/IConquestionService/AddPlayerResponse")]
-        void AddPlayer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        void AddPlayer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddPlayer", ReplyAction="http://tempuri.org/IConquestionService/AddPlayerResponse")]
-        System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ActiveGames", ReplyAction="http://tempuri.org/IConquestionService/ActiveGamesResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game[] ActiveGames();
+        ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game[] ActiveGames();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ActiveGames", ReplyAction="http://tempuri.org/IConquestionService/ActiveGamesResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game[]> ActiveGamesAsync();
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game[]> ActiveGamesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ChooseGame", ReplyAction="http://tempuri.org/IConquestionService/ChooseGameResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game ChooseGame(string name, bool retrieveAssociation);
+        ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game ChooseGame(string name, bool retrieveAssociation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ChooseGame", ReplyAction="http://tempuri.org/IConquestionService/ChooseGameResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game> ChooseGameAsync(string name, bool retrieveAssociation);
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game> ChooseGameAsync(string name, bool retrieveAssociation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllQuestionSets", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllQuestionSetsResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet[] RetrieveAllQuestionSets();
+        ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet[] RetrieveAllQuestionSets();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllQuestionSets", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllQuestionSetsResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet[]> RetrieveAllQuestionSetsAsync();
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet[]> RetrieveAllQuestionSetsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ValidateAnswer", ReplyAction="http://tempuri.org/IConquestionService/ValidateAnswerResponse")]
-        bool ValidateAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer answer);
+        bool ValidateAnswer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Answer answer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ValidateAnswer", ReplyAction="http://tempuri.org/IConquestionService/ValidateAnswerResponse")]
-        System.Threading.Tasks.Task<bool> ValidateAnswerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer answer);
+        System.Threading.Tasks.Task<bool> ValidateAnswerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Answer answer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerAnswers", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerAnswersResponse")]
-        bool CheckPlayerAnswers(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round);
+        bool CheckPlayerAnswers(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerAnswers", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerAnswersResponse")]
-        System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round);
+        System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/RetrieveQuestionSetResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSet(int id);
+        ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSet(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/RetrieveQuestionSetResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetAsync(int id);
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitle", ReplyAction="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitleResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSetByTitle(string title);
+        ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSetByTitle(string title);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitle", ReplyAction="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitleResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetByTitleAsync(string title);
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetByTitleAsync(string title);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/AddQuestionSetResponse")]
-        void AddQuestionSet(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet questionSet);
+        void AddQuestionSet(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet questionSet);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/AddQuestionSetResponse")]
-        System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet questionSet);
+        System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet questionSet);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrievePlayer", ReplyAction="http://tempuri.org/IConquestionService/RetrievePlayerResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player RetrievePlayer(string name);
+        ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player RetrievePlayer(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrievePlayer", ReplyAction="http://tempuri.org/IConquestionService/RetrievePlayerResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player> RetrievePlayerAsync(string name);
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player> RetrievePlayerAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/JoinGame", ReplyAction="http://tempuri.org/IConquestionService/JoinGameResponse")]
-        bool JoinGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        bool JoinGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/JoinGame", ReplyAction="http://tempuri.org/IConquestionService/JoinGameResponse")]
-        System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/LeaveGame", ReplyAction="http://tempuri.org/IConquestionService/LeaveGameResponse")]
-        bool LeaveGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        bool LeaveGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/LeaveGame", ReplyAction="http://tempuri.org/IConquestionService/LeaveGameResponse")]
-        System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse")]
-        ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
+        ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/StartGame", ReplyAction="http://tempuri.org/IConquestionService/StartGameResponse")]
-        bool StartGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        bool StartGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/StartGame", ReplyAction="http://tempuri.org/IConquestionService/StartGameResponse")]
-        System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/SubmitAnswer", ReplyAction="http://tempuri.org/IConquestionService/SubmitAnswerResponse")]
-        void SubmitAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer);
+        void SubmitAnswer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.PlayerAnswer playerAnswer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/SubmitAnswer", ReplyAction="http://tempuri.org/IConquestionService/SubmitAnswerResponse")]
-        System.Threading.Tasks.Task SubmitAnswerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer);
+        System.Threading.Tasks.Task SubmitAnswerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.PlayerAnswer playerAnswer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnswered", ReplyAction="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnsweredResponse")]
-        bool CheckIfAllPlayersAnswered(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round);
+        bool CheckIfAllPlayersAnswered(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnswered", ReplyAction="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnsweredResponse")]
-        System.Threading.Tasks.Task<bool> CheckIfAllPlayersAnsweredAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round);
+        System.Threading.Tasks.Task<bool> CheckIfAllPlayersAnsweredAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateRound", ReplyAction="http://tempuri.org/IConquestionService/CreateRoundResponse")]
-        void CreateRound(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
+        void CreateRound(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateRound", ReplyAction="http://tempuri.org/IConquestionService/CreateRoundResponse")]
-        System.Threading.Tasks.Task CreateRoundAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game);
+        System.Threading.Tasks.Task CreateRoundAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IConquestionServiceChannel : ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.IConquestionService, System.ServiceModel.IClientChannel {
+    public interface IConquestionServiceChannel : ConquestionGame.Presentation.WinForm.ConquestionServiceReference.IConquestionService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ConquestionServiceClient : System.ServiceModel.ClientBase<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.IConquestionService>, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.IConquestionService {
+    public partial class ConquestionServiceClient : System.ServiceModel.ClientBase<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.IConquestionService>, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.IConquestionService {
         
         public ConquestionServiceClient() {
         }
@@ -808,155 +808,155 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceRefe
                 base(binding, remoteAddress) {
         }
         
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player CreatePlayer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player CreatePlayer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             return base.Channel.CreatePlayer(player);
         }
         
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player> CreatePlayerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player> CreatePlayerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             return base.Channel.CreatePlayerAsync(player);
         }
         
-        public void CreateGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
+        public void CreateGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
             base.Channel.CreateGame(game);
         }
         
-        public System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
+        public System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
             return base.Channel.CreateGameAsync(game);
         }
         
-        public void AddPlayer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public void AddPlayer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             base.Channel.AddPlayer(game, player);
         }
         
-        public System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             return base.Channel.AddPlayerAsync(game, player);
         }
         
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game[] ActiveGames() {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game[] ActiveGames() {
             return base.Channel.ActiveGames();
         }
         
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game[]> ActiveGamesAsync() {
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game[]> ActiveGamesAsync() {
             return base.Channel.ActiveGamesAsync();
         }
         
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game ChooseGame(string name, bool retrieveAssociation) {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game ChooseGame(string name, bool retrieveAssociation) {
             return base.Channel.ChooseGame(name, retrieveAssociation);
         }
         
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game> ChooseGameAsync(string name, bool retrieveAssociation) {
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game> ChooseGameAsync(string name, bool retrieveAssociation) {
             return base.Channel.ChooseGameAsync(name, retrieveAssociation);
         }
         
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet[] RetrieveAllQuestionSets() {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet[] RetrieveAllQuestionSets() {
             return base.Channel.RetrieveAllQuestionSets();
         }
         
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet[]> RetrieveAllQuestionSetsAsync() {
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet[]> RetrieveAllQuestionSetsAsync() {
             return base.Channel.RetrieveAllQuestionSetsAsync();
         }
         
-        public bool ValidateAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer answer) {
+        public bool ValidateAnswer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Answer answer) {
             return base.Channel.ValidateAnswer(answer);
         }
         
-        public System.Threading.Tasks.Task<bool> ValidateAnswerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Answer answer) {
+        public System.Threading.Tasks.Task<bool> ValidateAnswerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Answer answer) {
             return base.Channel.ValidateAnswerAsync(answer);
         }
         
-        public bool CheckPlayerAnswers(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round) {
+        public bool CheckPlayerAnswers(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round) {
             return base.Channel.CheckPlayerAnswers(game, round);
         }
         
-        public System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round) {
+        public System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round) {
             return base.Channel.CheckPlayerAnswersAsync(game, round);
         }
         
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSet(int id) {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSet(int id) {
             return base.Channel.RetrieveQuestionSet(id);
         }
         
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetAsync(int id) {
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetAsync(int id) {
             return base.Channel.RetrieveQuestionSetAsync(id);
         }
         
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSetByTitle(string title) {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet RetrieveQuestionSetByTitle(string title) {
             return base.Channel.RetrieveQuestionSetByTitle(title);
         }
         
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetByTitleAsync(string title) {
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetByTitleAsync(string title) {
             return base.Channel.RetrieveQuestionSetByTitleAsync(title);
         }
         
-        public void AddQuestionSet(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet questionSet) {
+        public void AddQuestionSet(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet questionSet) {
             base.Channel.AddQuestionSet(game, questionSet);
         }
         
-        public System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet questionSet) {
+        public System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet questionSet) {
             return base.Channel.AddQuestionSetAsync(game, questionSet);
         }
         
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player RetrievePlayer(string name) {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player RetrievePlayer(string name) {
             return base.Channel.RetrievePlayer(name);
         }
         
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player> RetrievePlayerAsync(string name) {
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player> RetrievePlayerAsync(string name) {
             return base.Channel.RetrievePlayerAsync(name);
         }
         
-        public bool JoinGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public bool JoinGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             return base.Channel.JoinGame(game, player);
         }
         
-        public System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             return base.Channel.JoinGameAsync(game, player);
         }
         
-        public bool LeaveGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public bool LeaveGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             return base.Channel.LeaveGame(game, player);
         }
         
-        public System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             return base.Channel.LeaveGameAsync(game, player);
         }
         
-        public ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
             return base.Channel.RetrieveAllPlayersByGameId(game);
         }
         
-        public System.Threading.Tasks.Task<ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
             return base.Channel.RetrieveAllPlayersByGameIdAsync(game);
         }
         
-        public bool StartGame(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public bool StartGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             return base.Channel.StartGame(game, player);
         }
         
-        public System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player player) {
+        public System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
             return base.Channel.StartGameAsync(game, player);
         }
         
-        public void SubmitAnswer(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer) {
+        public void SubmitAnswer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.PlayerAnswer playerAnswer) {
             base.Channel.SubmitAnswer(round, playerAnswer);
         }
         
-        public System.Threading.Tasks.Task SubmitAnswerAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerAnswer playerAnswer) {
+        public System.Threading.Tasks.Task SubmitAnswerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.PlayerAnswer playerAnswer) {
             return base.Channel.SubmitAnswerAsync(round, playerAnswer);
         }
         
-        public bool CheckIfAllPlayersAnswered(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round) {
+        public bool CheckIfAllPlayersAnswered(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round) {
             return base.Channel.CheckIfAllPlayersAnswered(game, round);
         }
         
-        public System.Threading.Tasks.Task<bool> CheckIfAllPlayersAnsweredAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game, ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Round round) {
+        public System.Threading.Tasks.Task<bool> CheckIfAllPlayersAnsweredAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round) {
             return base.Channel.CheckIfAllPlayersAnsweredAsync(game, round);
         }
         
-        public void CreateRound(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
+        public void CreateRound(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
             base.Channel.CreateRound(game);
         }
         
-        public System.Threading.Tasks.Task CreateRoundAsync(ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game game) {
+        public System.Threading.Tasks.Task CreateRoundAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
             return base.Channel.CreateRoundAsync(game);
         }
     }

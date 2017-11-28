@@ -1,4 +1,4 @@
-﻿using ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference;
+﻿using ConquestionGame.Presentation.WinForm.ConquestionServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ConquestionGame.PresentationLayer.SimpleWinForm
+namespace ConquestionGame.Presentation.WinForm
 {
     public partial class QuizTime : Form
     {

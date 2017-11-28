@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A7B128DD-640A-4C28-894D-7C454BD27C99}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ConquestionGame.PresentationLayer.SimpleWinForm</RootNamespace>
-    <AssemblyName>ConquestionGame.PresentationLayer.SimpleWinForm</AssemblyName>
+    <RootNamespace>ConquestionGame.Presentation.WinForm</RootNamespace>
+    <AssemblyName>ConquestionGame.Presentation.WinForm</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -108,13 +108,13 @@
     <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.Domain.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game.datasource">
+    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player.datasource">
+    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet.datasource">
+    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ConquestionServiceReference\service.wsdl" />

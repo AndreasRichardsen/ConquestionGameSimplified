@@ -1,11 +1,11 @@
-﻿using ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference;
+﻿using ConquestionGame.Presentation.WinForm.ConquestionServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConquestionGame.PresentationLayer.SimpleWinForm
+namespace ConquestionGame.Presentation.WinForm
 {
     class GameInstance
     {
