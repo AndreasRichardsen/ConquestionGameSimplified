@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace ConquestionGame.PresentationLayer.SimpleWinForm
 {
-    class CurrentRound
+    class RoundInstance
     {
-        private static CurrentRound instance;
+        private static RoundInstance instance;
         public Round Round { get; set; }
 
-        private CurrentRound()
+        private RoundInstance()
         {
 
         }
 
-        public static CurrentRound Instance
+        public static RoundInstance Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new CurrentRound();
+                    instance = new RoundInstance();
                 }
                 return instance;
             }

@@ -80,7 +80,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
         public void StartGameWindow()
         {
             GameInstance.Instance.UpdateCurrentGame();
-            CurrentRound.Instance.Round = GameInstance.Instance.Game.Rounds[0];
+            RoundInstance.Instance.Round = GameInstance.Instance.Game.Rounds[0];
             timer1.Stop();
             this.Hide();
 

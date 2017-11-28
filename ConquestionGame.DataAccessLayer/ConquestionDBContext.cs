@@ -88,7 +88,7 @@ namespace ConquestionGame.DataAccessLayer
             Question q9 = MakeQuestion("What is Asynchronous Programming?", qs);
             Answer q9a1 = MakeAnswer(false, "Programming that uses threads to display an arbitrary number of messages in a random order");
             Answer q9a2 = MakeAnswer(false, "A means of programming in which a unit of work runs together with the main thread");
-            Answer q9a3 = MakeAnswer(false, "A means of determining what the square root of a random number is when multiplied with the first seven prime numbers");
+            Answer q9a3 = MakeAnswer(true, "A means of determining what the square root of a random number is when multiplied with the first seven prime numbers");
             Answer q9a4 = MakeAnswer(false, "A means of parrallel programming in which a unit of work runs seperately from the main application thread and notifies the calling thread of its complition failure or progress");
             AddAnswersToQuestion(q9, q9a1, q9a2, q9a3, q9a4);
 
@@ -240,7 +240,7 @@ namespace ConquestionGame.DataAccessLayer
             AddAnswersToQuestion(q30, q30a1, q30a2, q30a3, q30a4);
 
             Question q31 = MakeQuestion("What is a class?", qs);
-            Answer q31a1 = MakeAnswer(false, "a room with teachers and students");
+            Answer q31a1 = MakeAnswer(false, "A room with teachers and students");
             Answer q31a2 = MakeAnswer(true, "A template for creating objects");
             Answer q31a3 = MakeAnswer(false, "A way to store data");
             Answer q31a4 = MakeAnswer(false, "A way to access a database");
@@ -372,11 +372,11 @@ namespace ConquestionGame.DataAccessLayer
             Answer q49a4 = MakeAnswer(false, "nr as a decimal");
             AddAnswersToQuestion(q49, q49a1, q49a2, q49a3, q49a4);
 
-            Question q50 = MakeQuestion("What is the highest integer?", qs);
-            Answer q50a1 = MakeAnswer(false, "999");
-            Answer q50a2 = MakeAnswer(false, "1024");
-            Answer q50a3 = MakeAnswer(false, "2048");
-            Answer q50a4 = MakeAnswer(true, "");
+            Question q50 = MakeQuestion("What is the highest integer in 32-bit?", qs);
+            Answer q50a1 = MakeAnswer(false, "9 999 999 999");
+            Answer q50a2 = MakeAnswer(false, "1024 595 222");
+            Answer q50a3 = MakeAnswer(false, "1 073 741 824");
+            Answer q50a4 = MakeAnswer(true, "2 147 483 647");
             AddAnswersToQuestion(q50, q50a1, q50a2, q50a3, q50a4);
 
             return qs;

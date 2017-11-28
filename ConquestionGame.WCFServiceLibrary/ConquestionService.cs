@@ -109,5 +109,10 @@ namespace ConquestionGame.WCFServiceLibrary
         {
             return roundCtr.CheckIfAllPlayersAnswered(game, round);
         }
+
+        public void CreateRound(Game game)
+        {
+            roundCtr.CreateRound(game);
+        }
     }
 }
