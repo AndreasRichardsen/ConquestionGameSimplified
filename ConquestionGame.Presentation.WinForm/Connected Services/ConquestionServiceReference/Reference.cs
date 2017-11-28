@@ -779,6 +779,12 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateRound", ReplyAction="http://tempuri.org/IConquestionService/CreateRoundResponse")]
         System.Threading.Tasks.Task CreateRoundAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/GetRoundWinner", ReplyAction="http://tempuri.org/IConquestionService/GetRoundWinnerResponse")]
+        ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player GetRoundWinner(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/GetRoundWinner", ReplyAction="http://tempuri.org/IConquestionService/GetRoundWinnerResponse")]
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player> GetRoundWinnerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -958,6 +964,14 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
         
         public System.Threading.Tasks.Task CreateRoundAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
             return base.Channel.CreateRoundAsync(game);
+        }
+        
+        public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player GetRoundWinner(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round) {
+            return base.Channel.GetRoundWinner(round);
+        }
+        
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player> GetRoundWinnerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Round round) {
+            return base.Channel.GetRoundWinnerAsync(round);
         }
     }
 }

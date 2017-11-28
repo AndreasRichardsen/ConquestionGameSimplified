@@ -67,5 +67,7 @@ namespace ConquestionGame.WCFServiceLibrary
 
         [OperationContract]
         void CreateRound(Game game);
+        [OperationContract]
+        Player GetRoundWinner(Round round);
     }
 }

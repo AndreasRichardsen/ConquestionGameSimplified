@@ -121,6 +121,12 @@
   <wsdl:message name="IConquestionService_CreateRound_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateRoundResponse" />
   </wsdl:message>
+  <wsdl:message name="IConquestionService_GetRoundWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoundWinner" />
+  </wsdl:message>
+  <wsdl:message name="IConquestionService_GetRoundWinner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoundWinnerResponse" />
+  </wsdl:message>
   <wsdl:portType name="IConquestionService">
     <wsdl:operation name="CreatePlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/CreatePlayer" message="tns:IConquestionService_CreatePlayer_InputMessage" />
@@ -197,6 +203,10 @@
     <wsdl:operation name="CreateRound">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/CreateRound" message="tns:IConquestionService_CreateRound_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/CreateRoundResponse" message="tns:IConquestionService_CreateRound_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoundWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/GetRoundWinner" message="tns:IConquestionService_GetRoundWinner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/GetRoundWinnerResponse" message="tns:IConquestionService_GetRoundWinner_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IConquestionService" type="tns:IConquestionService">
@@ -365,6 +375,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateRound">
       <soap:operation soapAction="http://tempuri.org/IConquestionService/CreateRound" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoundWinner">
+      <soap:operation soapAction="http://tempuri.org/IConquestionService/GetRoundWinner" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

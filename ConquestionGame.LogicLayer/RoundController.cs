@@ -69,18 +69,18 @@ namespace ConquestionGame.LogicLayer
             playerAnswer.PlayerAnswerTime = DateTime.Now;
             db.Players.Attach(playerAnswer.Player);
             db.Answers.Attach(playerAnswer.AnswerGiven);
-            Round raEntity = db.Rounds.Include("PlayerAnswers").Include("RoundWinner").Where(ra => ra.Id == round.Id).FirstOrDefault();
+            Round rEntity = db.Rounds.Include("PlayerAnswers.Player").Include("RoundWinner").Where(r => r.Id == round.Id).FirstOrDefault();
 
             // Check is the list has been initialised, if not intialise it
-            if (raEntity.PlayerAnswers == null)
+            if (rEntity.PlayerAnswers == null)
             {
-                raEntity.PlayerAnswers = new List<PlayerAnswer>();
+                rEntity.PlayerAnswers = new List<PlayerAnswer>();
             }
 
             //Checking if the player answers in time and that they haven't already submitted an answer
-            int elapsedSeconds = (int)(playerAnswer.PlayerAnswerTime - raEntity.QuestionStartTime).TotalSeconds;
+            int elapsedSeconds = (int)(playerAnswer.PlayerAnswerTime - rEntity.QuestionStartTime).TotalSeconds;
             bool playerHasntAnswered = true;
-            if (raEntity.PlayerAnswers.Where(pa => pa.Player.Id == playerAnswer.Player.Id).FirstOrDefault() != null)
+            if (rEntity.PlayerAnswers.Where(pa => pa.Player.Id == playerAnswer.Player.Id).FirstOrDefault() != null)
             {
                 playerHasntAnswered = false;
             }
@@ -88,12 +88,12 @@ namespace ConquestionGame.LogicLayer
             //Saves the player's answer to the database  
             if (elapsedSeconds <= 35 && playerHasntAnswered)
             {
-                raEntity.PlayerAnswers.Add(playerAnswer);
-                if (ValidateAnswer(playerAnswer.AnswerGiven) && raEntity.RoundWinner == null)
+                rEntity.PlayerAnswers.Add(playerAnswer);
+                if (ValidateAnswer(playerAnswer.AnswerGiven) && rEntity.RoundWinner == null)
                 {
-                    raEntity.RoundWinner = playerAnswer.Player;
+                    rEntity.RoundWinner = playerAnswer.Player;
                 }
-                db.Entry(raEntity).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(rEntity).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
         }
@@ -116,6 +116,12 @@ namespace ConquestionGame.LogicLayer
                 allPlayersAnswered = true;
             }
             return allPlayersAnswered;
+        }
+
+        public Player GetRoundWinner(Round round)
+        {
+            var rEntity = db.Rounds.Include("RoundWinner").Where(r => r.Id == round.Id).FirstOrDefault();
+            return rEntity.RoundWinner;
         }
     }
 }

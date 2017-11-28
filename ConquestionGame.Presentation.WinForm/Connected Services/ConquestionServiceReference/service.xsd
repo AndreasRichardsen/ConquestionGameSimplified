@@ -262,4 +262,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetRoundWinner">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain" minOccurs="0" name="round" nillable="true" type="q30:Round" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoundWinnerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ConquestionGame.Domain" minOccurs="0" name="GetRoundWinnerResult" nillable="true" type="q31:Player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

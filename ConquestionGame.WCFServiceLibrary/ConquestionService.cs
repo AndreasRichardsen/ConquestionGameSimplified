@@ -114,5 +114,10 @@ namespace ConquestionGame.WCFServiceLibrary
         {
             roundCtr.CreateRound(game);
         }
+
+        public Player GetRoundWinner(Round round)
+        {
+            return roundCtr.GetRoundWinner(round);
+        }
     }
 }
