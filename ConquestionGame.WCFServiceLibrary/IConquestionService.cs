@@ -64,5 +64,8 @@ namespace ConquestionGame.WCFServiceLibrary
 
         [OperationContract]
         bool CheckIfAllPlayersAnswered(Game game, Round round);
+
+        [OperationContract]
+        void CreateRound(Game game);
     }
 }

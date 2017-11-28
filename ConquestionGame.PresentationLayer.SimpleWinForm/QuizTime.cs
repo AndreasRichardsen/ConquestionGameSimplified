@@ -17,21 +17,34 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
         ConquestionServiceClient Client = new ConquestionServiceClient();
 
         Game CurrentGame = null;
-
         Question CurrentQuestion = null;
-
         Round CurrentRound = null;
+        PlayerAnswer PlayerAnswer = new PlayerAnswer { Player = PlayerCredentials.Instance.Player };
+
+        List<Button> AnswerButtons;
 
         DateTime startTime;
-        private int TimerCountdown = 5;
+        private int TimerCountdown = 30;
+        private int AnswerViewingTime = 5;
 
         public QuizTime()
         {
             InitializeComponent();
-            GameInstance.Instance.UpdateCurrentGame();
-            CurrentGame = GameInstance.Instance.Game;
-            CurrentQuestion = CurrentGame.Rounds.LastOrDefault().Question;
-            CurrentRound = CurrentGame.Rounds.LastOrDefault();
+            AnswerButtons = new List<Button>();
+            AddButtonsToList();
+
+            UpdateGameInformation();
+
+            ShowQuestionInformation();
+
+            PlayerNoLabel.Text = PlayerCredentials.Instance.Player.Name;
+      
+            startTime = DateTime.Now;
+        }
+
+        private void ShowQuestionInformation()
+        {
+
 
             QuestionTextField.Text = CurrentQuestion.Text;
 
@@ -40,44 +53,133 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
             AnswerButton3.Text = CurrentQuestion.Answers[2].Text;
             AnswerButton4.Text = CurrentQuestion.Answers[3].Text;
 
-            PlayerNoLabel.Text = PlayerCredentials.Instance.Player.Name;
             QuestionNoLabel.Text = CurrentRound.RoundNo.ToString();
+        }
 
-            startTime = DateTime.Now;
+        private void UpdateGameInformation()
+        {
+            GameInstance.Instance.UpdateCurrentGame();
+            CurrentGame = GameInstance.Instance.Game;
+            CurrentRound = CurrentGame.Rounds.LastOrDefault();
+            CurrentQuestion = CurrentRound.Question;
+
+            EnableDisableButtons(true);
+
+            foreach(Button aButton in AnswerButtons)
+            {
+                aButton.BackColor = Color.Transparent;
+            }
+        }
+
+        private void AddButtonsToList()
+        {
+            AnswerButtons.Add(AnswerButton1);
+            AnswerButtons.Add(AnswerButton2);
+            AnswerButtons.Add(AnswerButton3);
+            AnswerButtons.Add(AnswerButton4);
         }
 
         private void AnswerButton1_Click(object sender, EventArgs e)
         {
-
+            EnableDisableButtons(false);
+            PlayerAnswer.AnswerGiven = CurrentQuestion.Answers[0];
+            Client.SubmitAnswer(CurrentRound, PlayerAnswer);
         }
 
         private void AnswerButton2_Click(object sender, EventArgs e)
         {
-
+            EnableDisableButtons(false);
+            PlayerAnswer.AnswerGiven = CurrentQuestion.Answers[1];
+            Client.SubmitAnswer(CurrentRound, PlayerAnswer);
         }
 
         private void AnswerButton3_Click(object sender, EventArgs e)
         {
-
+            EnableDisableButtons(false);
+            PlayerAnswer.AnswerGiven = CurrentQuestion.Answers[2];
+            Client.SubmitAnswer(CurrentRound, PlayerAnswer);
         }
 
         private void AnswerButton4_Click(object sender, EventArgs e)
         {
-
+            EnableDisableButtons(false);
+            PlayerAnswer.AnswerGiven = CurrentQuestion.Answers[3];
+            Client.SubmitAnswer(CurrentRound, PlayerAnswer);
         }
+
+        public void EnableDisableButtons(bool setting)
+        {
+            foreach(Button aButton in AnswerButtons)
+            {
+                aButton.Enabled = setting;
+            }
+        }
+
+        public void CheckButton()
+        {
+            for(int i =0; i<AnswerButtons.Count;i++)
+            {
+                bool correct = Client.ValidateAnswer(CurrentQuestion.Answers[i]);
+
+                if (correct == true)
+                {
+                    AnswerButtons[i].BackColor = Color.Lime;
+                }
+                else
+                {
+                    AnswerButtons[i].BackColor = Color.Red;
+                }
+            } 
+        }
+
+        //public void CheckAllButtons()
+        //{
+        //    CheckButton(AnswerButton1);
+        //    CheckButton(AnswerButton2);
+        //    CheckButton(AnswerButton3);
+        //    CheckButton(AnswerButton4);
+        //    DisableButtons();
+        //}
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             int elaspedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
             int remainingSeconds = TimerCountdown - elaspedSeconds;
-            StatusLabel.Text = String.Format("{0}", remainingSeconds);
+            StatusLabel.Text = String.Format("Time left to answer question: {0}", remainingSeconds);
 
-            if(remainingSeconds <= 0 )
+            if (remainingSeconds <= 0 || Client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound))
+            {
+                EnableDisableButtons(false);
+                CheckButton();
+                timer1.Stop();
+                startTime = DateTime.Now;
+                timer1.Tick -= timer1_Tick;
+
+                timer1.Tick += new EventHandler(NextRoundCountdown);
+                timer1.Start();
+            }
+        }
+
+        private void NextRoundCountdown(object sender, EventArgs e)
+        {
+
+            int elaspedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
+            int remainingSeconds = AnswerViewingTime - elaspedSeconds;
+            StatusLabel.Text = String.Format("Seconds left until next round: {0}", remainingSeconds);
+
+            if(remainingSeconds == 0 )
             {
                 timer1.Stop();
-                // code to show correct answers here 
+                Client.CreateRound(CurrentGame);
 
-                // code to start next round 
+                UpdateGameInformation();
+                ShowQuestionInformation();
+
+                startTime = DateTime.Now;
+                timer1.Tick -= NextRoundCountdown;
+
+                timer1.Tick += new EventHandler(timer1_Tick);
+                timer1.Start();
             }
         }
 
