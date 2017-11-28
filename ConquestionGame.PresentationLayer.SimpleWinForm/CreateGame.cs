@@ -17,22 +17,21 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
         public CreateGame()
         {
             InitializeComponent();
-            comboBox1.DataSource = client.RetrieveAllMaps();
-            comboBox1.DisplayMember = "Name";
+ 
             comboBox2.DataSource = client.RetrieveAllQuestionSets();
             comboBox2.DisplayMember = "Title";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBox1.Text) && comboBox1.SelectedItem != null && comboBox2.SelectedItem != null)
+            if (!string.IsNullOrEmpty(textBox1.Text) &&  comboBox2.SelectedItem != null)
             {
                 //label4.Text = comboBox1.SelectedText;
                 client.CreateGame(new Game { Name = textBox1.Text });
                 Game game = client.ChooseGame(textBox1.Text, false);
-                Map map = client.ChooseMap(comboBox1.Text);
+              
                 QuestionSet questionSet = client.RetrieveQuestionSetByTitle(comboBox2.Text);
-                client.AddMap(game, map);
+             
                 client.AddQuestionSet(game, questionSet);
                 client.AddPlayer(game, PlayerCredentials.Instance.Player);
 

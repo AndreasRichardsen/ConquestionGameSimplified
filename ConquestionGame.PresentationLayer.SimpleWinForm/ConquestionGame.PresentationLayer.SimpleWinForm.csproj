@@ -87,6 +87,12 @@
     <Compile Include="QuizTime.Designer.cs">
       <DependentUpon>QuizTime.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CreateGame.resx">
+      <DependentUpon>CreateGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lobby.resx">
+      <DependentUpon>Lobby.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,16 +111,7 @@
     <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Map.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Player.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.PlayerOrder.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.Question.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.PresentationLayer.SimpleWinForm.ConquestionServiceReference.QuestionSet.datasource">

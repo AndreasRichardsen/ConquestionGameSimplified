@@ -23,7 +23,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
             GameInstance.Instance.Game = gameEntity;
             label1.Text = gameEntity.Name;
             label3.Text = gameEntity.QuestionSet.Title;
-            label5.Text = gameEntity.Map.Name;
+          
 
             listBox1.DataSource = gameEntity.Players;
             listBox1.DisplayMember = "Name";
@@ -84,8 +84,7 @@ namespace ConquestionGame.PresentationLayer.SimpleWinForm
             timer1.Stop();
             this.Hide();
 
-            //(new MapScreen(CurrentGame.Instance.Game)).Show();
-            //(new QuizTime(CurrentGame.Instance.Game)).Show();
+            (new QuizTime()).Show();
 
         }
 

@@ -15,44 +15,13 @@ namespace ConquestionGame.DataAccessLayer
         public DbSet<QuestionSet> QuestionSets { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
-        public DbSet<Map> Maps { get; set; }
-        public DbSet<RoundAction> RoundActions { get; set; }
+        public DbSet<Round> Rounds { get; set; }
         public DbSet<PlayerAnswer> PlayerAnswers { get; set; }
-        public DbSet<MapNode> MapNodes { get; set; }
-        public DbSet<MapNodeOwner> MapNodeOwners { get; set; }
-        public DbSet<PlayerOrder> PlayerOrders { get; set; }
-        public DbSet<AcquiredMapNode> AcquiredMapNodes { get; set; }
-
+        public DbSet<AskedQuestion> AskedQuestions { get; set; }
+     
         public ConquestionDBContext()
             : base("name=ConquestionConnection")
         {
-
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<MapNodeOwner>()
-                .HasKey(mno => new { mno.GameId, mno.MapNodeId });
-
-            modelBuilder.Entity<MapNodeOwner>()
-                .HasRequired(mno => mno.Game)
-                .WithMany(g => g.MapNodeOwners)
-                .HasForeignKey(mno => mno.GameId);
-
-            modelBuilder.Entity<MapNodeOwner>()
-                .HasRequired(mno => mno.MapNode)
-                .WithMany(m => m.MapNodeOwners)
-                .HasForeignKey(mno => mno.MapNodeId);
-
-            modelBuilder.Entity<MapNode>()
-                    .HasMany(mn => mn.NeighbouringNodes)
-                    .WithMany(mn => mn.NeighboringNodes)
-                    .Map(c =>
-                    {
-                        c.MapLeftKey("MapNodeId");
-                        c.MapRightKey("NeighbourMapNodeId");
-                        c.ToTable("NeighbouringNodes");
-                    });
 
         }
 

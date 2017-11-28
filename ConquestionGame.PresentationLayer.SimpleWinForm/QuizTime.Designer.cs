@@ -116,6 +116,10 @@
             this.StatusLabel.TabIndex = 7;
             this.StatusLabel.Text = "Status message";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // QuizTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -131,6 +135,7 @@
             this.Controls.Add(this.QuestionTextField);
             this.Name = "QuizTime";
             this.Text = "QuizTime";
+            this.Load += new System.EventHandler(this.QuizTime_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

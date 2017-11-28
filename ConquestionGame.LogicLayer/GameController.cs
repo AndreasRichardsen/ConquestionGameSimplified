@@ -52,27 +52,7 @@ namespace ConquestionGame.LogicLayer
             }
         }
 
-        public void AddMap(Game game, Map map)
-        {
-            var gameEntity = db.Games.Where(g => g.Name.Equals(game.Name)).FirstOrDefault();
-            var mapEntity = db.Maps.Where(m => m.Name.Equals(map.Name)).FirstOrDefault();
-            if (gameEntity != null && mapEntity != null)
-            {
-                if (gameEntity.Map == null || gameEntity.Map.Name.Equals(""))
-                {
-                    gameEntity.Map = mapEntity;
-                    db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                }
-
-
-            }
-            else
-            {
-                throw new Exception();
-            }
-
-        }
+     
         public void AddQuestionSet(Game game, QuestionSet questionSet)
         {
             var gameEntity = db.Games.Where(g => g.Name.Equals(game.Name)).FirstOrDefault();
@@ -109,8 +89,8 @@ namespace ConquestionGame.LogicLayer
             {
                 Game chosenGame = db.Games.Include("Players")
                     .Include("QuestionSet.Questions.Answers")
-                    .Include("Map")
-                    .Include("Rounds.RoundActions.Question.Answers")
+                    .Include("Rounds.Question.Answers")
+                    .Include("Rounds.PlayerAnswers")
                 .Where(x => x.Name.Equals(name))
                 .FirstOrDefault();
                 
@@ -218,7 +198,7 @@ namespace ConquestionGame.LogicLayer
             if (playerEntity.Name.Equals(gameEntity.Players[0].Name) && gameEntity.GameStatus.Equals(Game.GameStatusEnum.starting))
             {
                 gameEntity.GameStatus = Game.GameStatusEnum.ongoing;
-                roundCtr.CreateStartingRound(gameEntity); 
+                roundCtr.CreateRound(gameEntity); 
                 db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return true;
@@ -230,11 +210,5 @@ namespace ConquestionGame.LogicLayer
 
         }
 
-        public List<PlayerOrder> getGamePlayerOrder(Game game)
-        {
-            var playerOrder = db.PlayerOrders.Include("Player").Where(g => g.GameId == game.Id).ToList();
-            playerOrder = playerOrder.OrderBy(po => po.Position).ToList();
-            return playerOrder;
-        }
     }
 }

@@ -18,6 +18,6 @@ namespace ConquestionGame.Domain
         public Answer AnswerGiven { get; set; }
         [DataMember]
         public DateTime PlayerAnswerTime { get; set; }
-        public RoundAction RoundAction { get; set; }
+        public Round Round { get; set; }
     }
 }
