@@ -17,6 +17,11 @@ namespace ConquestionGame.Domain
         [StringLength(20, ErrorMessage ="Name must be between 1 and 20 characters", MinimumLength = 1)]
         [Required]
         public string Name { get; set; }
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
+        public string Email { get; set; }
+        
+        public string HashedPassword { get; set; }
 
         public List<Game> Games { get; set; }
 
