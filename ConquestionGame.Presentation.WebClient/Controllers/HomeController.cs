@@ -5,41 +5,21 @@ using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 using ConquestionGame.Presentation.WebClient.ConquestionServiceReference;
-
+using ConquestionGame.Presentation.WebClient.ViewModels;
 
 namespace ConquestionGame.Presentation.WebClient.Controllers
 {
     public class HomeController : Controller
     {
-        ConquestionServiceClient client = new ConquestionServiceClient();
-        Player currentPlayer = new Player();
-        //new dynamic ViewBag = new System.Dynamic.ExpandoObject();
-        
+        public PlayerCredentials PC { get; set; }
       
-        //public string ViewBagMessage
-        //{
-        //    get;
-        //    set;
-        //}
-       
+        ConquestionServiceClient client = new ConquestionServiceClient();
 
+       
+    
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return RedirectToAction("Login", "Home");
         }
 
         public ActionResult LogIn()
@@ -47,63 +27,103 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
             return View();
         }
 
-       [HttpPost]
-        public ActionResult LogIn(Player player)
+        [HttpPost]
+        public ActionResult LogIn(Player aPlayer)
         {
+            PC = PlayerCredentials.Instance;
             
-            Player foundPlayer = client.RetrievePlayer(player.Name);
-           
-            if (!string.IsNullOrEmpty(player.Name))
+            Player foundPlayer = new Player();
+            foundPlayer = client.RetrievePlayer(aPlayer.Name);
+            if (!string.IsNullOrEmpty(aPlayer.Name))
             {
                 if (foundPlayer == null)
                 {
-                    Player player1 = new Player {Name = player.Name};
-                    currentPlayer = player1;
-                    client.CreatePlayer(player1);
-                    return RedirectToAction("JoinGame", "Home");
+                    Player ourPlayer = new Player()
+                    {
+                        Name = aPlayer.Name
+                    };
+
+                    client.CreatePlayer(ourPlayer);
+                    Player player = client.RetrievePlayer(aPlayer.Name);
+                    PC.Player = player;
+                    // ourplayer has id 0
                 }
                 else
                 {
-                    return RedirectToAction("JoinGame", "Home");
+                    PC.Player = foundPlayer;
                 }
             }
-            
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("DisplayActiveGames", "Home");
         }
 
-        public ActionResult JoinGame()
+        public ActionResult JoinGame(string name)
         {
-            List<Game> gamesList = new List<Game>();
-            var list = client.ActiveGames();
-            
-            foreach (var item in list)
+            Game game = client.ChooseGame(name, false);
+            client.AddPlayer(game, PlayerCredentials.Instance.Player);
+
+            Game gameEntity = client.ChooseGame(game.Name, true);
+            GameInstance.Instance.Game = gameEntity;
+
+            return RedirectToAction("DisplayLobby", "Home");
+        }
+
+        public ActionResult DisplayLobby()
+        {
+            Game aGame = GameInstance.Instance.Game;
+            var listOfPlayers = new List<Player>();
+            try
             {
-                Game game = new Game();
-                game.Name = item.Name;
-                gamesList.Add(game);
+                listOfPlayers = aGame.Players.ToList();
             }
-            return View(gamesList);
+            catch(Exception e)
+            {
+                Console.WriteLine("error", e);
+            }
+            return View(listOfPlayers);
+        }
+
+        public ActionResult DisplayActiveGames()
+        {
+            List<Game> listOfGames = new List<Game>();
+            var games = client.ActiveGames();
+            foreach (var game in games)
+            {
+                Game aGame = new Game
+                {
+                    Name = game.Name
+                };
+                listOfGames.Add(aGame);
+            }
+            return View(listOfGames);
         }
 
         [HttpPost]
-        public ActionResult CreateGame(Game game)
+        public ActionResult CreateGame(Game aGame)
         {
-            
-            if (!string.IsNullOrEmpty(game.Name))
+            Game ourGame = new Game();
+            if (!string.IsNullOrEmpty(aGame.Name))
             {
-                Game aGame = new Game();
-                aGame.Name = game.Name;
-                //client.AddQuestionSet(aGame, client.RetrieveQuestionSet(1));
-               // client.AddPlayer(aGame, currentPlayer);
+                ourGame.Name = aGame.Name;
+                client.CreateGame(ourGame);
 
-                client.CreateGame(aGame);
             }
-            return RedirectToAction("JoinGame", "Home");
+
+            Game game = client.ChooseGame(aGame.Name,false);
+            var qs = client.RetrieveQuestionSet(1);
+
+            var questionSets = client.RetrieveAllQuestionSets();
+
+            client.AddQuestionSet(game, qs);
+            client.AddPlayer(game, PlayerCredentials.Instance.Player);
+
+            //return View();
+            return RedirectToAction("DisplayActiveGames", "Home");
         }
 
         public ActionResult CreateGame()
         {
             return View();
         }
+
     }
 }
