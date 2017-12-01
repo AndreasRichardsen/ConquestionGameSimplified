@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,8 +15,10 @@ namespace ConquestionGame.Presentation.WinForm
     public partial class LogIn : Form
     {
         public PlayerCredentials PC { get; set; }
+
         public LogIn()
         {
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
             InitializeComponent();
             PC = PlayerCredentials.Instance;
         }
@@ -27,8 +30,10 @@ namespace ConquestionGame.Presentation.WinForm
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             ConquestionServiceClient client = new ConquestionServiceClient();
-
+            client.ClientCredentials.UserName.UserName = textBox1.Text;
+            client.ClientCredentials.UserName.Password = textBox2.Text;
             Player foundPlayer = client.RetrievePlayer(textBox1.Text);
             if (textBox1.Text != null && textBox1.Text != String.Empty)
             {

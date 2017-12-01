@@ -3,6 +3,7 @@ using ConquestionGame.LogicLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -75,6 +76,7 @@ namespace ConquestionGame.WCFServiceLibrary
             return quesCtr.RetrieveQuestionSetByTitle(title);
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Player")]
         public Player RetrievePlayer(string name)
         {
             return playerCtr.RetrievePlayer(name);

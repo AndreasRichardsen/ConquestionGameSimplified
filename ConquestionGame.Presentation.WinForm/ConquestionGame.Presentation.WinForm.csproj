@@ -93,6 +93,9 @@
     <EmbeddedResource Include="Lobby.resx">
       <DependentUpon>Lobby.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LogIn.resx">
+      <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,9 +108,6 @@
     <EmbeddedResource Include="QuizTime.resx">
       <DependentUpon>QuizTime.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.Domain.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -117,11 +117,14 @@
     <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ConquestionServiceReference\service.wsdl" />
-    <None Include="Connected Services\ConquestionServiceReference\service.xsd">
+    <None Include="Connected Services\ConquestionServiceReference\ConquestionService.wsdl" />
+    <None Include="Connected Services\ConquestionServiceReference\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ConquestionServiceReference\service1.xsd">
+    <None Include="Connected Services\ConquestionServiceReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ConquestionServiceReference\item2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -142,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ConquestionServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ConquestionServiceReference\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ConquestionServiceReference\configuration91.svcinfo" />

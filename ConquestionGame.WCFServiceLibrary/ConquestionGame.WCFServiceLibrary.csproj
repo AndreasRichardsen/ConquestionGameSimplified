@@ -45,14 +45,19 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationService.cs" />
     <Compile Include="ConquestionService.cs" />
+    <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IConquestionService.cs" />
+    <Compile Include="PlayerValidation\CredentialValidator.cs" />
+    <Compile Include="PlayerValidation\RoleValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

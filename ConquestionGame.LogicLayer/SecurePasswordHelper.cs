@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConquestionGame.LogicLayer
 {
-    class SecurePasswordHelper
+    public class SecurePasswordHelper
     {
         // SALT_BYTES is set to 24 bytes because it is more than enough and the accepted standard is 16 bytes.
         public const int SALT_BYTES = 24;
@@ -153,7 +153,7 @@ namespace ConquestionGame.LogicLayer
             }
         }
     }
-    class InvalidHashException : Exception
+    public class InvalidHashException : Exception
     {
         public InvalidHashException() { }
         public InvalidHashException(string message)
@@ -162,7 +162,7 @@ namespace ConquestionGame.LogicLayer
             : base(message, inner) { }
     }
 
-    class CannotPerformOperationException : Exception
+    public class CannotPerformOperationException : Exception
     {
         public CannotPerformOperationException() { }
         public CannotPerformOperationException(string message)

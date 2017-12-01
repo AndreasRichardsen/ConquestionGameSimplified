@@ -1,6 +1,7 @@
 ﻿using ConquestionGame.DataAccessLayer;
 using ConquestionGame.Domain;
 using System.Linq;
+using System.Security.Permissions;
 
 namespace ConquestionGame.LogicLayer
 {
@@ -13,7 +14,7 @@ namespace ConquestionGame.LogicLayer
             db.SaveChanges();
             return player;
         }
-
+   
         public Player RetrievePlayer(string name)
         {
             var playerEntity = new Player();
