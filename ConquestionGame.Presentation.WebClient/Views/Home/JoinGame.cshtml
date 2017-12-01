@@ -7,7 +7,11 @@
 <h2>Join Game</h2>
 
 <div>
-  <p>@Html.ActionLink("Create Game", "CreateGame", "Home")</p>
+    <p>@Html.ActionLink("Create Game", "CreateGame", "Home")</p>
+    @if (!Model.Any())
+    {
+        <p> There are no active games found! </p>
+    }
     <table>
         <tr>
             <th>

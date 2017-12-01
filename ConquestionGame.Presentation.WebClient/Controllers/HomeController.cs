@@ -75,10 +75,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
         {
             List<Game> gamesList = new List<Game>();
             var list = client.ActiveGames();
-            //if (list.Length == 0)
-            //{
-            //   ViewBagMessage = "No active games found!";
-            //}
+            
             foreach (var item in list)
             {
                 Game game = new Game();
@@ -97,7 +94,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
                 Game aGame = new Game();
                 aGame.Name = game.Name;
                 //client.AddQuestionSet(aGame, client.RetrieveQuestionSet(1));
-                client.AddPlayer(aGame, currentPlayer);
+               // client.AddPlayer(aGame, currentPlayer);
 
                 client.CreateGame(aGame);
             }
