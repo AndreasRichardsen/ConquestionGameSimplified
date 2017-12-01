@@ -242,13 +242,13 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ConquestionServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ConquestionGame.LogicLayer\ConquestionGame.LogicLayer.csproj">
       <Project>{FC58F67F-E94C-4504-8BE2-597A0BC106AE}</Project>
       <Name>ConquestionGame.LogicLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ConquestionServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
