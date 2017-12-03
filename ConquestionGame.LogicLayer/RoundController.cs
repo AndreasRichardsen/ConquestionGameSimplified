@@ -11,6 +11,7 @@ namespace ConquestionGame.LogicLayer
     public class RoundController
     {
         ConquestionDBContext db = new ConquestionDBContext();
+        List<Question> AlreadyAskedQuestions = new List<Question>();
 
         public bool CheckPlayerAnswers(Game game, Round round)
         {
@@ -35,32 +36,41 @@ namespace ConquestionGame.LogicLayer
                 .Where(x => x.Id.Equals(game.Id))
                 .FirstOrDefault();
 
-            //Check if rounds list has been initialised
-            if (gameEntity.Rounds == null)
+            if (gameEntity.Rounds.Count < gameEntity.NoOfRounds)
             {
-                gameEntity.Rounds = new List<Round>();
-            }
+                //Check if rounds list has been initialised
+                if (gameEntity.Rounds == null)
+                {
+                    gameEntity.Rounds = new List<Round>();
+                }
 
-            // if there are rounds get the count and set the round number to the count + 1
-            int? noOfRounds = gameEntity.Rounds.Count();
-            var newRound = new Round();
+                // if there are rounds get the count and set the round number to the count + 1
+                int? noOfRounds = gameEntity.Rounds.Count();
+                var newRound = new Round();
 
-            if (noOfRounds == null || noOfRounds == 0)
-            {
-                newRound.RoundNo = 1;
-                
+                if (noOfRounds == null || noOfRounds == 0)
+                {
+                    newRound.RoundNo = 1;
+
+                }
+                else
+                {
+                    newRound.RoundNo = (int)noOfRounds + 1;
+                }
+
+                newRound.QuestionStartTime = DateTime.Now;
+                newRound.Question = GetRandomQuestion(gameEntity);
+                gameEntity.Rounds.Add(newRound);
+
+                db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
             }
             else
             {
-                newRound.RoundNo = (int) noOfRounds + 1;
+                gameEntity.GameStatus = Game.GameStatusEnum.finished;
+                db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
             }
-
-            newRound.QuestionStartTime = DateTime.Now;
-            newRound.Question = gameEntity.QuestionSet.Questions.Where(q => q.Id == newRound.RoundNo).FirstOrDefault();
-            gameEntity.Rounds.Add(newRound);
-
-            db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
         }
 
         public void SubmitAnswer(Round round, PlayerAnswer playerAnswer)
@@ -122,6 +132,21 @@ namespace ConquestionGame.LogicLayer
         {
             var rEntity = db.Rounds.Include("RoundWinner").Where(r => r.Id == round.Id).FirstOrDefault();
             return rEntity.RoundWinner;
+        }
+
+        public Question GetRandomQuestion(Game game)
+        {
+            var unaskedQuestion = db.AskedQuestions.Include("Question").Include("Question.Answers").Where(q => q.GameId == game.Id && q.HasBeenAsked == false).ToList();
+            AskedQuestion question = new AskedQuestion();
+            unaskedQuestion.Shuffle();
+            question = unaskedQuestion[0];
+
+            var askedQuestionEntity = db.AskedQuestions.Where(q => q.GameId == game.Id && q.QuestionId == question.QuestionId).FirstOrDefault();
+            askedQuestionEntity.HasBeenAsked = true;
+            db.Entry(askedQuestionEntity).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return question.Question;
+
         }
     }
 }

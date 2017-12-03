@@ -15,7 +15,7 @@ namespace ConquestionGame.WCFServiceLibrary
         Player CreatePlayer(Player player);
 
         [OperationContract]
-        void CreateGame(Game game);
+        void CreateGame(Game game, String questionSet, int noOfRounds);
 
         [OperationContract]
         void AddPlayer(Game game, Player player);
@@ -69,5 +69,11 @@ namespace ConquestionGame.WCFServiceLibrary
         void CreateRound(Game game);
         [OperationContract]
         Player GetRoundWinner(Round round);
+        [OperationContract]
+        Question GetRandomQuestion(Game game);
+        [OperationContract]
+        Player DetermineGameWinner(Game game);
+        [OperationContract]
+        int DetermineNoOfCorrectAnswers(Game game, Player player);
     }
 }

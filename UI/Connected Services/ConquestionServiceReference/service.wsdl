@@ -43,18 +43,6 @@
   <wsdl:message name="IConquestionService_RetrieveAllQuestionSets_OutputMessage">
     <wsdl:part name="parameters" element="tns:RetrieveAllQuestionSetsResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_RetrieveAllMaps_InputMessage">
-    <wsdl:part name="parameters" element="tns:RetrieveAllMaps" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_RetrieveAllMaps_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RetrieveAllMapsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_AskQuestion_InputMessage">
-    <wsdl:part name="parameters" element="tns:AskQuestion" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_AskQuestion_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AskQuestionResponse" />
-  </wsdl:message>
   <wsdl:message name="IConquestionService_ValidateAnswer_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidateAnswer" />
   </wsdl:message>
@@ -67,12 +55,6 @@
   <wsdl:message name="IConquestionService_CheckPlayerAnswers_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckPlayerAnswersResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_ChooseMap_InputMessage">
-    <wsdl:part name="parameters" element="tns:ChooseMap" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_ChooseMap_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ChooseMapResponse" />
-  </wsdl:message>
   <wsdl:message name="IConquestionService_RetrieveQuestionSet_InputMessage">
     <wsdl:part name="parameters" element="tns:RetrieveQuestionSet" />
   </wsdl:message>
@@ -84,12 +66,6 @@
   </wsdl:message>
   <wsdl:message name="IConquestionService_RetrieveQuestionSetByTitle_OutputMessage">
     <wsdl:part name="parameters" element="tns:RetrieveQuestionSetByTitleResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_AddMap_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddMap" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_AddMap_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddMapResponse" />
   </wsdl:message>
   <wsdl:message name="IConquestionService_AddQuestionSet_InputMessage">
     <wsdl:part name="parameters" element="tns:AddQuestionSet" />
@@ -115,23 +91,11 @@
   <wsdl:message name="IConquestionService_LeaveGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeaveGameResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_CheckIfNodeIsFree_InputMessage">
-    <wsdl:part name="parameters" element="tns:CheckIfNodeIsFree" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_CheckIfNodeIsFree_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CheckIfNodeIsFreeResponse" />
-  </wsdl:message>
   <wsdl:message name="IConquestionService_RetrieveAllPlayersByGameId_InputMessage">
     <wsdl:part name="parameters" element="tns:RetrieveAllPlayersByGameId" />
   </wsdl:message>
   <wsdl:message name="IConquestionService_RetrieveAllPlayersByGameId_OutputMessage">
     <wsdl:part name="parameters" element="tns:RetrieveAllPlayersByGameIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_ReturnNodeOwner_InputMessage">
-    <wsdl:part name="parameters" element="tns:ReturnNodeOwner" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_ReturnNodeOwner_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ReturnNodeOwnerResponse" />
   </wsdl:message>
   <wsdl:message name="IConquestionService_StartGame_InputMessage">
     <wsdl:part name="parameters" element="tns:StartGame" />
@@ -151,35 +115,23 @@
   <wsdl:message name="IConquestionService_CheckIfAllPlayersAnswered_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckIfAllPlayersAnsweredResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_GetPlayerOrder_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayerOrder" />
+  <wsdl:message name="IConquestionService_CreateRound_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRound" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_GetPlayerOrder_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayerOrderResponse" />
+  <wsdl:message name="IConquestionService_CreateRound_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRoundResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_getGamePlayerOrder_InputMessage">
-    <wsdl:part name="parameters" element="tns:getGamePlayerOrder" />
+  <wsdl:message name="IConquestionService_GetRoundWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoundWinner" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_getGamePlayerOrder_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getGamePlayerOrderResponse" />
+  <wsdl:message name="IConquestionService_GetRoundWinner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoundWinnerResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_SetMapStartTime_InputMessage">
-    <wsdl:part name="parameters" element="tns:SetMapStartTime" />
+  <wsdl:message name="IConquestionService_RandomQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:RandomQuestion" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_SetMapStartTime_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SetMapStartTimeResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_CheckPlayerTurn_InputMessage">
-    <wsdl:part name="parameters" element="tns:CheckPlayerTurn" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_CheckPlayerTurn_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CheckPlayerTurnResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_SelectMapNode_InputMessage">
-    <wsdl:part name="parameters" element="tns:SelectMapNode" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_SelectMapNode_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SelectMapNodeResponse" />
+  <wsdl:message name="IConquestionService_RandomQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RandomQuestionResponse" />
   </wsdl:message>
   <wsdl:portType name="IConquestionService">
     <wsdl:operation name="CreatePlayer">
@@ -206,14 +158,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveAllQuestionSets" message="tns:IConquestionService_RetrieveAllQuestionSets_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RetrieveAllQuestionSetsResponse" message="tns:IConquestionService_RetrieveAllQuestionSets_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="RetrieveAllMaps">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveAllMaps" message="tns:IConquestionService_RetrieveAllMaps_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RetrieveAllMapsResponse" message="tns:IConquestionService_RetrieveAllMaps_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AskQuestion">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/AskQuestion" message="tns:IConquestionService_AskQuestion_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/AskQuestionResponse" message="tns:IConquestionService_AskQuestion_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="ValidateAnswer">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/ValidateAnswer" message="tns:IConquestionService_ValidateAnswer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/ValidateAnswerResponse" message="tns:IConquestionService_ValidateAnswer_OutputMessage" />
@@ -222,10 +166,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/CheckPlayerAnswers" message="tns:IConquestionService_CheckPlayerAnswers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/CheckPlayerAnswersResponse" message="tns:IConquestionService_CheckPlayerAnswers_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ChooseMap">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/ChooseMap" message="tns:IConquestionService_ChooseMap_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/ChooseMapResponse" message="tns:IConquestionService_ChooseMap_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="RetrieveQuestionSet">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveQuestionSet" message="tns:IConquestionService_RetrieveQuestionSet_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RetrieveQuestionSetResponse" message="tns:IConquestionService_RetrieveQuestionSet_OutputMessage" />
@@ -233,10 +173,6 @@
     <wsdl:operation name="RetrieveQuestionSetByTitle">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitle" message="tns:IConquestionService_RetrieveQuestionSetByTitle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitleResponse" message="tns:IConquestionService_RetrieveQuestionSetByTitle_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddMap">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/AddMap" message="tns:IConquestionService_AddMap_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/AddMapResponse" message="tns:IConquestionService_AddMap_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddQuestionSet">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/AddQuestionSet" message="tns:IConquestionService_AddQuestionSet_InputMessage" />
@@ -254,17 +190,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/LeaveGame" message="tns:IConquestionService_LeaveGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/LeaveGameResponse" message="tns:IConquestionService_LeaveGame_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CheckIfNodeIsFree">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/CheckIfNodeIsFree" message="tns:IConquestionService_CheckIfNodeIsFree_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/CheckIfNodeIsFreeResponse" message="tns:IConquestionService_CheckIfNodeIsFree_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="RetrieveAllPlayersByGameId">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId" message="tns:IConquestionService_RetrieveAllPlayersByGameId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse" message="tns:IConquestionService_RetrieveAllPlayersByGameId_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ReturnNodeOwner">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/ReturnNodeOwner" message="tns:IConquestionService_ReturnNodeOwner_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/ReturnNodeOwnerResponse" message="tns:IConquestionService_ReturnNodeOwner_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="StartGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/StartGame" message="tns:IConquestionService_StartGame_InputMessage" />
@@ -278,25 +206,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnswered" message="tns:IConquestionService_CheckIfAllPlayersAnswered_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/CheckIfAllPlayersAnsweredResponse" message="tns:IConquestionService_CheckIfAllPlayersAnswered_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPlayerOrder">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/GetPlayerOrder" message="tns:IConquestionService_GetPlayerOrder_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/GetPlayerOrderResponse" message="tns:IConquestionService_GetPlayerOrder_OutputMessage" />
+    <wsdl:operation name="CreateRound">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/CreateRound" message="tns:IConquestionService_CreateRound_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/CreateRoundResponse" message="tns:IConquestionService_CreateRound_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getGamePlayerOrder">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/getGamePlayerOrder" message="tns:IConquestionService_getGamePlayerOrder_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/getGamePlayerOrderResponse" message="tns:IConquestionService_getGamePlayerOrder_OutputMessage" />
+    <wsdl:operation name="GetRoundWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/GetRoundWinner" message="tns:IConquestionService_GetRoundWinner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/GetRoundWinnerResponse" message="tns:IConquestionService_GetRoundWinner_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SetMapStartTime">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/SetMapStartTime" message="tns:IConquestionService_SetMapStartTime_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/SetMapStartTimeResponse" message="tns:IConquestionService_SetMapStartTime_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CheckPlayerTurn">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/CheckPlayerTurn" message="tns:IConquestionService_CheckPlayerTurn_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/CheckPlayerTurnResponse" message="tns:IConquestionService_CheckPlayerTurn_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SelectMapNode">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/SelectMapNode" message="tns:IConquestionService_SelectMapNode_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/SelectMapNodeResponse" message="tns:IConquestionService_SelectMapNode_OutputMessage" />
+    <wsdl:operation name="RandomQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RandomQuestion" message="tns:IConquestionService_RandomQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RandomQuestionResponse" message="tns:IConquestionService_RandomQuestion_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IConquestionService" type="tns:IConquestionService">
@@ -355,24 +275,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RetrieveAllMaps">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/RetrieveAllMaps" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AskQuestion">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/AskQuestion" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ValidateAnswer">
       <soap:operation soapAction="http://tempuri.org/IConquestionService/ValidateAnswer" style="document" />
       <wsdl:input>
@@ -391,15 +293,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ChooseMap">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/ChooseMap" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="RetrieveQuestionSet">
       <soap:operation soapAction="http://tempuri.org/IConquestionService/RetrieveQuestionSet" style="document" />
       <wsdl:input>
@@ -411,15 +304,6 @@
     </wsdl:operation>
     <wsdl:operation name="RetrieveQuestionSetByTitle">
       <soap:operation soapAction="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitle" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddMap">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/AddMap" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -463,26 +347,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CheckIfNodeIsFree">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/CheckIfNodeIsFree" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="RetrieveAllPlayersByGameId">
       <soap:operation soapAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ReturnNodeOwner">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/ReturnNodeOwner" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -517,8 +383,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPlayerOrder">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/GetPlayerOrder" style="document" />
+    <wsdl:operation name="CreateRound">
+      <soap:operation soapAction="http://tempuri.org/IConquestionService/CreateRound" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -526,8 +392,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getGamePlayerOrder">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/getGamePlayerOrder" style="document" />
+    <wsdl:operation name="GetRoundWinner">
+      <soap:operation soapAction="http://tempuri.org/IConquestionService/GetRoundWinner" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -535,26 +401,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetMapStartTime">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/SetMapStartTime" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CheckPlayerTurn">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/CheckPlayerTurn" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SelectMapNode">
-      <soap:operation soapAction="http://tempuri.org/IConquestionService/SelectMapNode" style="document" />
+    <wsdl:operation name="RandomQuestion">
+      <soap:operation soapAction="http://tempuri.org/IConquestionService/RandomQuestion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
