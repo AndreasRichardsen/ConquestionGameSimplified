@@ -67,8 +67,10 @@ namespace ConquestionGame.LogicLayer
         {
             //This is important to compare to the question start time to see if the player answered in time.
             playerAnswer.PlayerAnswerTime = DateTime.Now;
-            db.Players.Attach(playerAnswer.Player);
-            db.Answers.Attach(playerAnswer.AnswerGiven);
+            var playerEntity = db.Players.Where(p => p.Name.Equals(playerAnswer.Player.Name)).FirstOrDefault();
+            playerAnswer.Player = playerEntity;
+            var answerEntity = db.Answers.Where(a => a.Id == playerAnswer.AnswerGiven.Id).FirstOrDefault();
+            playerAnswer.AnswerGiven = answerEntity; 
             Round rEntity = db.Rounds.Include("PlayerAnswers.Player").Include("RoundWinner").Where(r => r.Id == round.Id).FirstOrDefault();
 
             // Check is the list has been initialised, if not intialise it

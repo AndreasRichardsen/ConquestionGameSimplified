@@ -10,7 +10,7 @@ namespace ConquestionGame.Presentation.WinForm
     class GameInstance
     {
         private static GameInstance instance;
-        ConquestionServiceClient client = new ConquestionServiceClient();
+        public ConquestionServiceClient client;
         public Game Game { get; set; }
 
         private GameInstance()

@@ -14,7 +14,7 @@ namespace ConquestionGame.Presentation.WinForm
 {
     public partial class QuizTime : Form
     {
-        ConquestionServiceClient Client = new ConquestionServiceClient();
+        ConquestionServiceClient Client;
 
         Game CurrentGame = null;
         Question CurrentQuestion = null;
@@ -29,9 +29,10 @@ namespace ConquestionGame.Presentation.WinForm
         private int NextRoundCoutdownTimer = 5;
         bool NextRoundCountdownCanRun = false;
 
-        public QuizTime()
+        public QuizTime(ConquestionServiceClient conquestionServiceClient)
         {
             InitializeComponent();
+            Client = conquestionServiceClient;
             AnswerButtons = new List<Button>();
             AddButtonsToList();
             UpdateGameInformation();

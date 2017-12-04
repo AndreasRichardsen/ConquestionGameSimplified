@@ -11,9 +11,15 @@ namespace ConquestionGame.WCFServiceLibrary
     [ServiceContract]
     public interface IConquestionService
     {
+
+        //Player Controller
         [OperationContract]
         Player CreatePlayer(Player player);
 
+        [OperationContract]
+        Player RetrievePlayer(string name);
+
+        //Game Controller
         [OperationContract]
         void CreateGame(Game game);
 
@@ -25,27 +31,6 @@ namespace ConquestionGame.WCFServiceLibrary
 
         [OperationContract]
         Game ChooseGame(string name, bool retrieveAssociation);
-
-        [OperationContract]
-        List<QuestionSet> RetrieveAllQuestionSets();
-
-        [OperationContract]
-        bool ValidateAnswer(Answer answer);
-
-        [OperationContract]
-        bool CheckPlayerAnswers(Game game, Round round);
-        
-        [OperationContract]
-        QuestionSet RetrieveQuestionSet(int id);
-
-        [OperationContract]
-        QuestionSet RetrieveQuestionSetByTitle(string title);
-     
-        [OperationContract]
-        void AddQuestionSet(Game game, QuestionSet questionSet);
-
-        [OperationContract]
-        Player RetrievePlayer(string name);
 
         [OperationContract]
         bool JoinGame(Game game, Player player);
@@ -60,6 +45,26 @@ namespace ConquestionGame.WCFServiceLibrary
         bool StartGame(Game game, Player player);
 
         [OperationContract]
+        void AddQuestionSet(Game game, QuestionSet questionSet);
+
+        //QuestionSetController
+        [OperationContract]
+        List<QuestionSet> RetrieveAllQuestionSets();
+
+        [OperationContract]
+        QuestionSet RetrieveQuestionSet(int id);
+
+        [OperationContract]
+        QuestionSet RetrieveQuestionSetByTitle(string title);
+
+        //RoundController
+        [OperationContract]
+        bool ValidateAnswer(Answer answer);
+
+        [OperationContract]
+        bool CheckPlayerAnswers(Game game, Round round);
+
+        [OperationContract]
         void SubmitAnswer(Round round, PlayerAnswer playerAnswer);
 
         [OperationContract]
@@ -67,6 +72,7 @@ namespace ConquestionGame.WCFServiceLibrary
 
         [OperationContract]
         void CreateRound(Game game);
+
         [OperationContract]
         Player GetRoundWinner(Round round);
     }

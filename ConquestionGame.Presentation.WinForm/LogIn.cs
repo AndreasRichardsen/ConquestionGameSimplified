@@ -1,4 +1,5 @@
-﻿using ConquestionGame.Presentation.WinForm.ConquestionServiceReference;
+﻿using ConquestionGame.Presentation.WinForm.AuthenticationServiceReference;
+using ConquestionGame.Presentation.WinForm.ConquestionServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,13 +15,15 @@ namespace ConquestionGame.Presentation.WinForm
 {
     public partial class LogIn : Form
     {
-        public PlayerCredentials PC { get; set; }
+        ConquestionServiceClient client = new ConquestionServiceClient();
+        AuthenticationServiceClient AuthClient = new AuthenticationServiceClient();
+        bool IsLoggedIn = false;
 
         public LogIn()
         {
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
             InitializeComponent();
-            PC = PlayerCredentials.Instance;
+            textBox2.PasswordChar = '\u25CF';
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -30,47 +33,24 @@ namespace ConquestionGame.Presentation.WinForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            ConquestionServiceClient client = new ConquestionServiceClient();
-            client.ClientCredentials.UserName.UserName = textBox1.Text;
-            client.ClientCredentials.UserName.Password = textBox2.Text;
-            Player foundPlayer = client.RetrievePlayer(textBox1.Text);
-            if (textBox1.Text != null && textBox1.Text != String.Empty)
+
+            IsLoggedIn = AuthClient.Login(textBox1.Text, textBox2.Text);
+            if (IsLoggedIn)
             {
-
-                if (foundPlayer == null)
-                {
-                    Player newPlayer = client.CreatePlayer(new Player { Name = textBox1.Text });
-                    PC.Player = newPlayer;
-                    this.Hide();
-                    (new JoinGame()).Show();
-                }
-                else
-                {
-                    this.Hide();
-                    PC.Player = foundPlayer;
-                    (new JoinGame()).Show();
-                }
-
+                client.ClientCredentials.UserName.UserName = textBox1.Text;
+                client.ClientCredentials.UserName.Password = textBox2.Text;
+                PlayerCredentials.Instance.Player = client.RetrievePlayer(textBox1.Text);
+                this.Hide();
+                (new JoinGame(client)).Show();
             }
+           
             else
             {
-                MessageBox.Show("Name can not be empty!", "Error",
+                MessageBox.Show("Error logging in! User name or password was incorrect", "Error",
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            (new JoinGame()).Show();
-
-        }
 
         private void exit_button_Click(object sender, EventArgs e)
         {
@@ -80,6 +60,12 @@ namespace ConquestionGame.Presentation.WinForm
         private void Login_Closing(object sender, FormClosingEventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void RegisterButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new RegisterPlayer()).Show();
         }
     }
 }

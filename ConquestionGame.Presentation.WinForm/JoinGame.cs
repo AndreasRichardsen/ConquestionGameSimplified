@@ -13,10 +13,11 @@ namespace ConquestionGame.Presentation.WinForm
 {
     public partial class JoinGame : Form
     {
-        public ConquestionServiceClient client = new ConquestionServiceClient();
-        public JoinGame()
+        private ConquestionServiceClient client = new ConquestionServiceClient();
+        public JoinGame(ConquestionServiceClient ConquestionServiceClient)
         {
             InitializeComponent();
+            client = ConquestionServiceClient;
             if (client.ActiveGames().Length != 0)
             {
                 listBox1.DataSource = client.ActiveGames();
@@ -45,7 +46,7 @@ namespace ConquestionGame.Presentation.WinForm
             if (success)
             {
                 this.Hide();
-                (new Lobby(game2)).Show();
+                (new Lobby(game2, client)).Show();
             }
             else
             {
@@ -58,7 +59,7 @@ namespace ConquestionGame.Presentation.WinForm
         private void CreateGame_Click(object sender, EventArgs e)
         {
             this.Hide();
-            (new CreateGame()).Show();
+            (new CreateGame(client)).Show();
         }
 
         private void JoinGame_Load(object sender, EventArgs e)
@@ -81,9 +82,22 @@ namespace ConquestionGame.Presentation.WinForm
         {
             if (client.ActiveGames().Length != 0)
             {
+                int currentSelected = listBox1.SelectedIndex;
                 listBox1.DataSource = client.ActiveGames();
                 listBox1.DisplayMember = "Name";
                 listBox1.ValueMember = "Name";
+                try
+                {
+                    listBox1.SelectedIndex = currentSelected;
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    listBox1.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                listBox1.DataSource = null;
             }
         }
 

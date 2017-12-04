@@ -13,14 +13,15 @@ namespace ConquestionGame.Presentation.WinForm
 {
     public partial class Lobby : Form
     {
-        ConquestionServiceClient client = new ConquestionServiceClient();
+        ConquestionServiceClient client;
 
-        public Lobby(Game game)
+        public Lobby(Game game, ConquestionServiceClient conquestionServiceClient)
         {
             InitializeComponent();
-
+            client = conquestionServiceClient;
             Game gameEntity = client.ChooseGame(game.Name, true);
             GameInstance.Instance.Game = gameEntity;
+            GameInstance.Instance.client = client;
             label1.Text = gameEntity.Name;
             label3.Text = gameEntity.QuestionSet.Title;
           
@@ -84,7 +85,7 @@ namespace ConquestionGame.Presentation.WinForm
             timer1.Stop();
             this.Hide();
 
-            (new QuizTime()).Show();
+            (new QuizTime(client)).Show();
 
         }
 
@@ -93,7 +94,7 @@ namespace ConquestionGame.Presentation.WinForm
             client.LeaveGame(GameInstance.Instance.Game, PlayerCredentials.Instance.Player);
             GameInstance.Instance.Game = null;
             this.Hide();
-            (new JoinGame()).Show();
+            (new JoinGame(client)).Show();
         }
 
         private void timer2_Tick(object sender, EventArgs e)

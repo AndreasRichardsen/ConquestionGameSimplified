@@ -13,10 +13,11 @@ namespace ConquestionGame.Presentation.WinForm
 {
     public partial class CreateGame : Form
     {
-        ConquestionServiceClient client = new ConquestionServiceClient();
-        public CreateGame()
+        ConquestionServiceClient client;
+        public CreateGame(ConquestionServiceClient conquestionServiceClient)
         {
             InitializeComponent();
+            client = conquestionServiceClient;
  
             comboBox2.DataSource = client.RetrieveAllQuestionSets();
             comboBox2.DisplayMember = "Title";
@@ -40,7 +41,7 @@ namespace ConquestionGame.Presentation.WinForm
                  MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.Hide();
-                (new Lobby(game)).Show();
+                (new Lobby(game, client)).Show();
             }
             else
             {
@@ -90,7 +91,7 @@ namespace ConquestionGame.Presentation.WinForm
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            (new JoinGame()).Show();
+            (new JoinGame(client)).Show();
         }
 
         private void CreateGame_Closing(object sender, FormClosingEventArgs e)

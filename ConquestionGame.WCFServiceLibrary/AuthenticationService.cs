@@ -23,5 +23,12 @@ namespace ConquestionGame.WCFServiceLibrary
                 return false;
             }
         }
+
+        public Player RegisterPlayer(Player player, string email, string password)
+        {
+            player.Email = email;
+            player.HashedPassword = SecurePasswordHelper.CreateHash(password);
+            return playerCtr.CreatePlayer(player);
+        }
     }
 }

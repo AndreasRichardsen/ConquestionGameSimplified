@@ -13,14 +13,14 @@ namespace ConquestionGame.ServiceHostConsole
         static void Main(string[] args)
         {
             ServiceHost host = new ServiceHost(typeof(ConquestionService));
-            //ServiceHost authHost = new ServiceHost(typeof(AuthenticationService));
+            ServiceHost authHost = new ServiceHost(typeof(AuthenticationService));
             host.Open();
             Console.WriteLine("Running Conquestion service host...");
-            //authHost.Open();
+            authHost.Open();
             Console.WriteLine("Running authentication service...");
             Console.ReadLine();
             host.Close();
-            //authHost.Close();
+            authHost.Close();
         }
     }
 }

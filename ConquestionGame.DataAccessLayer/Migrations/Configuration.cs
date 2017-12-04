@@ -17,8 +17,12 @@ namespace ConquestionGame.DataAccessLayer.Migrations
 
         protected override void Seed(ConquestionGame.DataAccessLayer.ConquestionDBContext context)
         {
+            bool exists = context.QuestionSets.Any(x => x.Id == 1);
             //  This method will be called after migrating to the latest version.
-            context.QuestionSets.AddOrUpdate(InitializeData());
+            if (!exists)
+            {
+                context.QuestionSets.AddOrUpdate(InitializeData());
+            }
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
         }

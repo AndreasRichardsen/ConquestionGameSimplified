@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConquestionGame.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -12,5 +13,8 @@ namespace ConquestionGame.WCFServiceLibrary
     {
         [OperationContract]
         bool Login(string userName, string password);
+
+        [OperationContract]
+        Player RegisterPlayer(Player player, string email, string password);
     }
 }
