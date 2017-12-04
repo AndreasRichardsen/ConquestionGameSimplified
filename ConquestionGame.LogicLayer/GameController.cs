@@ -11,19 +11,41 @@ namespace ConquestionGame.LogicLayer
         ConquestionDBContext db = new ConquestionDBContext();
         RoundController roundCtr = new RoundController();
 
-        public Game CreateGame(Game game)
+        public Game CreateGame(Game game, String questionSet, int noOfRounds)
         {
+
             if (!ActiveGamesNames().Contains(game.Name))
             {
                 game.GameStatus = Game.GameStatusEnum.starting;
+                game.QuestionSet = db.QuestionSets.Include("Questions").Include("Questions.Answers").Where(q => q.Title == questionSet).FirstOrDefault();
+                game.NoOfRounds = noOfRounds;
                 db.Games.Add(game);
                 db.SaveChanges();
+
+                var askedQuestionEntity = db.AskedQuestions.Where(q => q.GameId == game.Id).ToList();
+                var allQuestionsEntity = db.Questions.Include("Answers").Where(q => q.QuestionSetId == game.QuestionSet.Id).ToList();
+                if (askedQuestionEntity.Count == 0)
+                {
+                    foreach (Question q in allQuestionsEntity)
+                    {
+                        // askedQuestionEntity.Add(new AskedQuestion { GameId = game.Id, QuestionId = q.Id, HasBeenAsked = false });
+                        db.AskedQuestions.Add(new AskedQuestion { GameId = game.Id, QuestionId = q.Id, HasBeenAsked = false });
+                        db.SaveChanges();
+
+                    }
+
+                }
+
+
+
                 return game;
             }
             else
             {
                 throw new Exception("Game name is already taken, please select an unique name.");
             }
+
+
 
         }
 
@@ -208,6 +230,36 @@ namespace ConquestionGame.LogicLayer
                 return false;
             }
 
+        }
+
+        public Player DetermineGameWinner(Game game)
+        {
+
+            var roundsEntity = db.Games.Include("Rounds").Include("Players").Where(g => g.Id == game.Id).FirstOrDefault().Rounds.ToList();
+            var winner = roundsEntity.GroupBy(r => r.RoundWinner).OrderByDescending(r => r.Count()).ToList()
+                .First().Key;
+
+            return winner;
+        }
+
+        public int DetermineNoOfCorrectAnswers(Game game, Player player)
+        {
+            int noOfCorrectAnswers=0;
+            int correctAnswers=0;
+
+            var playerAnwsersEntity = db.PlayerAnswers.Include("Round.Game").Include("Player").Include("AnswerGiven").ToList();
+
+            correctAnswers = 0;
+            foreach (PlayerAnswer pA in playerAnwsersEntity)
+            {
+                if (pA.Player.Id == player.Id && pA.AnswerGiven.IsValid == true && pA.Round.Game.Id == game.Id)
+                {
+                    correctAnswers++;
+                }
+            }
+            noOfCorrectAnswers = correctAnswers;    
+
+            return noOfCorrectAnswers;
         }
 
     }

@@ -28,5 +28,7 @@ namespace ConquestionGame.Domain
         [ConcurrencyCheck]
         public Player RoundWinner { get; set; }
 
+        public Game Game { get; set; }
+
     }
 }

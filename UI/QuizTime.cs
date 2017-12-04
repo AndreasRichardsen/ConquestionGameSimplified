@@ -25,7 +25,8 @@ namespace UI
         {
             InitializeComponent();
             currentRoundAction = CurrentRound.Instance.Round.RoundActions.LastOrDefault();
-            q = currentRoundAction.Question;
+            //q = currentRoundAction.Question;
+            q = client.random
             label1.Text = string.Format("Question number: {0}", index + 1);
             richTextBox1.Text = q.Text;
             button1.Text = q.Answers[0].Text;

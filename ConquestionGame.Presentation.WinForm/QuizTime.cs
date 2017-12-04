@@ -193,12 +193,26 @@ namespace ConquestionGame.Presentation.WinForm
             timer1.Interval = (1 * 500);
             timer1.Tick += new EventHandler(QuestionCountdown);
             timer1.Tick += new EventHandler(NextRoundCountdown);
+            timer1.Tick += new EventHandler(CheckEndCondition);
             timer1.Start();
         }
 
         private void QuizTime_Closing(object sender, FormClosingEventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void CheckEndCondition(object sender, EventArgs e)
+        {
+            if (CurrentGame.GameStatus.Equals(Game.GameStatusEnum.finished))
+            {
+                timer1.Stop();
+                QuestionCountdownCanRun = false;
+                NextRoundCountdownCanRun = false;
+                this.Hide();
+                (new EndScreen()).Show();
+                //QuestionTextField.Text = Client.DetermineGameWinner(CurrentGame).Name;
+            }
         }
     }
 }

@@ -31,5 +31,9 @@ namespace ConquestionGame.Domain
         [DataMember]
         public List<Round> Rounds { get; set; }
         public List<AskedQuestion> QuestionsAsked { get; set; }
+
+        [DataMember]
+        [Range(1, 50, ErrorMessage = "Rounds must be between 1 and 50")]
+        public int NoOfRounds { get; set; }
     }
 }
