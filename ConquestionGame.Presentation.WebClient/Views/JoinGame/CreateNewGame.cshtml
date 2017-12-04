@@ -1,17 +1,15 @@
-﻿@model ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player
+﻿@model ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game
 
 @{
-    ViewBag.Title = "LogIn";
+    ViewBag.Title = "CreateNewGame";
 }
-
-<h2>Log In</h2>
-
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        <h4>Game</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -24,7 +22,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Log In" class="btn btn-default" />
+                <input type="submit" value="Create Game" class="btn btn-default" />
             </div>
         </div>
     </div>

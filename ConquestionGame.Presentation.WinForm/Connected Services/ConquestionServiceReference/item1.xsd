@@ -12,6 +12,7 @@
       <xs:element minOccurs="0" name="GameStatus" type="tns:Game.GameStatusEnum" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NoOfRounds" type="xs:int" />
       <xs:element minOccurs="0" name="Players" nillable="true" type="tns:ArrayOfPlayer" />
       <xs:element minOccurs="0" name="QuestionSet" nillable="true" type="tns:QuestionSet" />
       <xs:element minOccurs="0" name="Rounds" nillable="true" type="tns:ArrayOfRound" />

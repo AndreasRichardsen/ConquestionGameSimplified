@@ -21,9 +21,9 @@ namespace ConquestionGame.WCFServiceLibrary
             return playerCtr.CreatePlayer(player);
         }
 
-        public void CreateGame(Game game)
+        public void CreateGame(Game game, String questionSet, int noOfRounds)
         {
-            gameCtr.CreateGame(game);
+            gameCtr.CreateGame(game, questionSet, noOfRounds);
         }
 
         public void AddPlayer(Game game, Player player)
@@ -120,6 +120,21 @@ namespace ConquestionGame.WCFServiceLibrary
         public Player GetRoundWinner(Round round)
         {
             return roundCtr.GetRoundWinner(round);
+        }
+
+        public Question GetRandomQuestion(Game game)
+        {
+            return roundCtr.GetRandomQuestion(game);
+        }
+
+        public Player DetermineGameWinner(Game game)
+        {
+             return gameCtr.DetermineGameWinner(game);
+        }
+
+        public int DetermineNoOfCorrectAnswers(Game game, Player player)
+        {
+            return gameCtr.DetermineNoOfCorrectAnswers(game, player);
         }
     }
 }

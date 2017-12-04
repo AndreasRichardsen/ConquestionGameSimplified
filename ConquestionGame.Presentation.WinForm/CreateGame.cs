@@ -28,12 +28,13 @@ namespace ConquestionGame.Presentation.WinForm
             if (!string.IsNullOrEmpty(textBox1.Text) &&  comboBox2.SelectedItem != null)
             {
                 //label4.Text = comboBox1.SelectedText;
-                client.CreateGame(new Game { Name = textBox1.Text });
-                Game game = client.ChooseGame(textBox1.Text, false);
-              
                 QuestionSet questionSet = client.RetrieveQuestionSetByTitle(comboBox2.Text);
+                client.CreateGame(new Game { Name = textBox1.Text }, questionSet.Title, Int32.Parse(maskedTextBox1.Text));
+                Game game = client.ChooseGame(textBox1.Text, false); ;
+              
+                //QuestionSet questionSet = client.RetrieveQuestionSetByTitle(comboBox2.Text);
              
-                client.AddQuestionSet(game, questionSet);
+                //client.AddQuestionSet(game, questionSet);
                 client.AddPlayer(game, PlayerCredentials.Instance.Player);
 
 
@@ -67,11 +68,6 @@ namespace ConquestionGame.Presentation.WinForm
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
         {
 
         }

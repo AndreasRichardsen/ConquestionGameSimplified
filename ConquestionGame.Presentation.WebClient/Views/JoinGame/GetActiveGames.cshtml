@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game>
+
+@{
+    ViewBag.Title = "GetActiveGames";
+}
+
+<h2>Hello @ViewBag.PlayerName. Join an active game.</h2>
+
+<a href="@Url.Action("CreateNewGame","JoinGame")" class="btn btn-primary">Create Game</a>
+
+@if (Model.Count() == 0)
+{
+    <p>There are no active games.</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Join Game", "JoinGame", new { name = item.Name })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
