@@ -19,6 +19,7 @@ namespace ConquestionGame.WCFServiceLibrary
         [OperationContract]
         Player RetrievePlayer(string name);
 
+
         //Game Controller
         [OperationContract]
         void CreateGame(Game game, String questionSet, int noOfRounds);
@@ -46,6 +47,8 @@ namespace ConquestionGame.WCFServiceLibrary
 
         [OperationContract]
         void AddQuestionSet(Game game, QuestionSet questionSet);
+        [OperationContract]
+        bool CheckIfGameIsFinished(Game game);
 
         //QuestionSetController
         [OperationContract]

@@ -11,6 +11,22 @@ namespace ConquestionGame.LogicLayer
         ConquestionDBContext db = new ConquestionDBContext();
         RoundController roundCtr = new RoundController();
 
+        public Game CreateGame(Game game)
+        {
+            if (!ActiveGamesNames().Contains(game.Name))
+            {
+                game.GameStatus = Game.GameStatusEnum.starting;
+                db.Games.Add(game);
+                db.SaveChanges();
+                return game;
+            }
+            else
+            {
+                throw new Exception("Game name is already taken, please select an unique name.");
+            }
+
+        }
+
         public Game CreateGame(Game game, String questionSet, int noOfRounds)
         {
 
@@ -213,7 +229,7 @@ namespace ConquestionGame.LogicLayer
         }
         public bool StartGame(Game game, Player player)
         {
-            var gameEntity = ChooseGame(game.Name, true);
+            var gameEntity = db.Games.Where(g => g.Id == game.Id).FirstOrDefault();
             var playerEntity = db.Players.Where(p => p.Id == player.Id).FirstOrDefault();
 
 
@@ -239,16 +255,16 @@ namespace ConquestionGame.LogicLayer
             
             //var noWinner = roundsEntity.GroupBy(r => r.RoundWinner).OrderByDescending(r => r.Count()).ToList()
             //    .First().Key;
-            try
-            {
+          //  try
+           // {
                 var winner = roundsEntity.Where(r => r.RoundWinner != null).GroupBy(r => r.RoundWinner).OrderByDescending(r => r.Count()).ToList()
                 .First().Key;
                 return winner;
-            }
-            catch (InvalidOperationException)
-            {
-                return null;
-            }
+        //    }
+         //   catch (InvalidOperationException)
+          //  {
+         //       return null;
+           // }
         }
 
         public int DetermineNoOfCorrectAnswers(Game game, Player player)
@@ -269,6 +285,17 @@ namespace ConquestionGame.LogicLayer
             noOfCorrectAnswers = correctAnswers;    
 
             return noOfCorrectAnswers;
+        }
+
+        public bool CheckIfGameIsFinished(Game game)
+        {
+            bool finished = false;
+            Game gameEntity = db.Games.Where(g => g.Id == game.Id).FirstOrDefault();
+            if (gameEntity.GameStatus.Equals(Game.GameStatusEnum.finished))
+            {
+                finished = true;
+            }
+            return finished;
         }
 
     }

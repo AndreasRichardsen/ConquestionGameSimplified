@@ -136,5 +136,10 @@ namespace ConquestionGame.WCFServiceLibrary
         {
             return gameCtr.DetermineNoOfCorrectAnswers(game, player);
         }
+
+        public bool CheckIfGameIsFinished(Game game)
+        {
+            return gameCtr.CheckIfGameIsFinished(game);
+        }
     }
 }

@@ -748,6 +748,12 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/AddQuestionSetResponse")]
         System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet questionSet);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfGameIsFinished", ReplyAction="http://tempuri.org/IConquestionService/CheckIfGameIsFinishedResponse")]
+        bool CheckIfGameIsFinished(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfGameIsFinished", ReplyAction="http://tempuri.org/IConquestionService/CheckIfGameIsFinishedResponse")]
+        System.Threading.Tasks.Task<bool> CheckIfGameIsFinishedAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllQuestionSets", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllQuestionSetsResponse")]
         ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet[] RetrieveAllQuestionSets();
         
@@ -856,7 +862,6 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
             return base.Channel.CreatePlayerAsync(player);
         }
         
-
         public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player RetrievePlayer(string name) {
             return base.Channel.RetrievePlayer(name);
         }
@@ -865,10 +870,8 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
             return base.Channel.RetrievePlayerAsync(name);
         }
         
-
         public void CreateGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds) {
             base.Channel.CreateGame(game, questionSet, noOfRounds);
-
         }
         
         public System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds) {
@@ -937,6 +940,14 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
         
         public System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet questionSet) {
             return base.Channel.AddQuestionSetAsync(game, questionSet);
+        }
+        
+        public bool CheckIfGameIsFinished(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.CheckIfGameIsFinished(game);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckIfGameIsFinishedAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.CheckIfGameIsFinishedAsync(game);
         }
         
         public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet[] RetrieveAllQuestionSets() {

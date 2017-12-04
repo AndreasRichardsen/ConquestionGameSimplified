@@ -351,7 +351,7 @@ namespace ConquestionGame.DataAccessLayer.Migrations
             Answer q46a2 = MakeAnswer(false, "Public, private and secured");
             Answer q46a3 = MakeAnswer(true, "Public, private and protected");
             Answer q46a4 = MakeAnswer(false, "Public, private and safe");
-            AddAnswersToQuestion(q4, q46a1, q46a2, q46a3, q46a4);
+            AddAnswersToQuestion(q46, q46a1, q46a2, q46a3, q46a4);
 
             Question q47 = MakeQuestion("Which of these method heads are written correctly?", qs);
             Answer q47a1 = MakeAnswer(false, "public getNumber()");

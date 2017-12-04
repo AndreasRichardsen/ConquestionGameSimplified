@@ -137,7 +137,7 @@ namespace ConquestionGame.Presentation.WinForm
                 bool playersAnswered = Client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound);
                 if (remainingSeconds <= 0 || playersAnswered)
                 {
-                    if(PlayerCredentials.Instance.Player.Id == CurrentGame.Players.FirstOrDefault().Id)
+                    if (PlayerCredentials.Instance.Player.Id == CurrentGame.Players.FirstOrDefault().Id)
                     {
                         Client.CreateRound(CurrentGame);
                     }
@@ -201,13 +201,13 @@ namespace ConquestionGame.Presentation.WinForm
 
         private void CheckEndCondition(object sender, EventArgs e)
         {
-            if (CurrentGame.GameStatus.Equals(Game.GameStatusEnum.finished))
+            if (Client.CheckIfGameIsFinished(CurrentGame))
             {
                 timer1.Stop();
                 QuestionCountdownCanRun = false;
                 NextRoundCountdownCanRun = false;
                 this.Hide();
-                (new EndScreen()).Show();
+                (new EndScreen(Client)).Show();
                 //QuestionTextField.Text = Client.DetermineGameWinner(CurrentGame).Name;
             }
         }

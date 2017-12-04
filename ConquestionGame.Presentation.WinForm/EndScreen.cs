@@ -13,10 +13,11 @@ namespace ConquestionGame.Presentation.WinForm
 {
     public partial class EndScreen : Form
     {
-        ConquestionServiceClient Client = new ConquestionServiceClient();
+        ConquestionServiceClient Client;
         Game CurrentGame = GameInstance.Instance.Game;
-        public EndScreen()
+        public EndScreen(ConquestionServiceClient conquestionServiceClient)
         {
+            Client = conquestionServiceClient;
             InitializeComponent();
         }
 
