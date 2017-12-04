@@ -236,8 +236,9 @@ namespace ConquestionGame.LogicLayer
         {
 
             var roundsEntity = db.Games.Include("Rounds").Include("Players").Where(g => g.Id == game.Id).FirstOrDefault().Rounds.ToList();
-            var winner = roundsEntity.GroupBy(r => r.RoundWinner).OrderByDescending(r => r.Count()).ToList()
+            var winner = roundsEntity.Where(r => r.RoundWinner!=null).GroupBy(r => r.RoundWinner).OrderByDescending(r => r.Count()).ToList()
                 .First().Key;
+            
 
             return winner;
         }
