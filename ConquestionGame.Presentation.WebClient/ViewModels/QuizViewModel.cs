@@ -6,15 +6,14 @@ using System.Web;
 
 namespace ConquestionGame.Presentation.WebClient.ViewModels
 {
-    public class CreateGameViewModel
+    public class QuizViewModel
     {
-        public Game Game { get; set; }
+        public Game CurrentGame { get; set; }
 
-        public List<QuestionSet> QuestionSets = new List<QuestionSet>();
+        public Question CurrentQuestion { get; set; }
 
-        public CreateGameViewModel()
-        {
-           
-        }
+        public Round CurrentRound { get; set; }
+
+        public PlayerAnswer PlayerAnswer { get; set; }
     }
 }
