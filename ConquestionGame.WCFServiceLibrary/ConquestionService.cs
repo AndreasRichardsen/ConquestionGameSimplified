@@ -49,11 +49,6 @@ namespace ConquestionGame.WCFServiceLibrary
             return quesCtr.RetrieveAllQuestionSets();
         }
 
-        public Question AskQuestion()
-        {
-            return quesCtr.AskQuestion();
-        }
-
         public bool ValidateAnswer(Answer answer)
         {
             return roundCtr.ValidateAnswer(answer);

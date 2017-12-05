@@ -10,23 +10,25 @@ namespace ConquestionGame.LogicLayer
 {
     public class RoundController
     {
-        ConquestionDBContext db = new ConquestionDBContext();
         List<Question> AlreadyAskedQuestions = new List<Question>();
 
         public bool CheckPlayerAnswers(Game game, Round round)
         {
-            bool ready = false;
-
-            var gameEntity = db.Games.Include("Players").Where(g => g.Name.Equals(game.Name)).FirstOrDefault();
-
-            var roundActionEntity = db.Rounds.Include("PlayerAnswers").Where(p => p.Id == (round.Id)).FirstOrDefault();
-
-            while (gameEntity.Players.Count != roundActionEntity.PlayerAnswers.Count)
+            using (var db = new ConquestionDBContext())
             {
-                Console.WriteLine("waiting");
+                bool ready = false;
+
+                var gameEntity = db.Games.Include("Players").Where(g => g.Name.Equals(game.Name)).FirstOrDefault();
+
+                var roundActionEntity = db.Rounds.Include("PlayerAnswers").Where(p => p.Id == (round.Id)).FirstOrDefault();
+
+                while (gameEntity.Players.Count != roundActionEntity.PlayerAnswers.Count)
+                {
+                    Console.WriteLine("waiting");
+                }
+                ready = true;
+                return ready; 
             }
-            ready = true;
-            return ready;
         }
 
         public void CreateRound(Game game)
@@ -65,7 +67,9 @@ namespace ConquestionGame.LogicLayer
                             }
 
                             newRound.QuestionStartTime = DateTime.Now;
-                            newRound.Question = GetRandomQuestion(gameEntity);
+                            var question = GetRandomQuestion(gameEntity);
+                            var questionEntity = db.Questions.Include("Answers").Where(q => q.Id == question.Id).FirstOrDefault();
+                            newRound.Question = questionEntity;
                             gameEntity.Rounds.Add(newRound);
 
                             db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
@@ -91,79 +95,94 @@ namespace ConquestionGame.LogicLayer
 
         public void SubmitAnswer(Round round, PlayerAnswer playerAnswer)
         {
-            //This is important to compare to the question start time to see if the player answered in time.
-            playerAnswer.PlayerAnswerTime = DateTime.Now;
-            var playerEntity = db.Players.Where(p => p.Name.Equals(playerAnswer.Player.Name)).FirstOrDefault();
-            playerAnswer.Player = playerEntity;
-            var answerEntity = db.Answers.Where(a => a.Id == playerAnswer.AnswerGiven.Id).FirstOrDefault();
-            playerAnswer.AnswerGiven = answerEntity;
-            Round rEntity = db.Rounds.Include("PlayerAnswers.Player").Include("RoundWinner").Where(r => r.Id == round.Id).FirstOrDefault();
-
-            // Check is the list has been initialised, if not intialise it
-            if (rEntity.PlayerAnswers == null)
+            using (var db = new ConquestionDBContext())
             {
-                rEntity.PlayerAnswers = new List<PlayerAnswer>();
-            }
+                //This is important to compare to the question start time to see if the player answered in time.
+                playerAnswer.PlayerAnswerTime = DateTime.Now;
+                var playerEntity = db.Players.Where(p => p.Name.Equals(playerAnswer.Player.Name)).FirstOrDefault();
+                playerAnswer.Player = playerEntity;
+                var answerEntity = db.Answers.Where(a => a.Id == playerAnswer.AnswerGiven.Id).FirstOrDefault();
+                playerAnswer.AnswerGiven = answerEntity;
+                Round rEntity = db.Rounds.Include("PlayerAnswers.Player").Include("RoundWinner").Where(r => r.Id == round.Id).FirstOrDefault();
 
-            //Checking if the player answers in time and that they haven't already submitted an answer
-            int elapsedSeconds = (int)(playerAnswer.PlayerAnswerTime - rEntity.QuestionStartTime).TotalSeconds;
-            bool playerHasntAnswered = true;
-            if (rEntity.PlayerAnswers.Where(pa => pa.Player.Id == playerAnswer.Player.Id).FirstOrDefault() != null)
-            {
-                playerHasntAnswered = false;
-            }
-
-            //Saves the player's answer to the database  
-            if (elapsedSeconds <= 35 && playerHasntAnswered)
-            {
-                rEntity.PlayerAnswers.Add(playerAnswer);
-                if (ValidateAnswer(playerAnswer.AnswerGiven) && rEntity.RoundWinner == null)
+                // Check is the list has been initialised, if not intialise it
+                if (rEntity.PlayerAnswers == null)
                 {
-                    rEntity.RoundWinner = playerAnswer.Player;
+                    rEntity.PlayerAnswers = new List<PlayerAnswer>();
                 }
-                db.Entry(rEntity).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+
+                //Checking if the player answers in time and that they haven't already submitted an answer
+                int elapsedSeconds = (int)(playerAnswer.PlayerAnswerTime - rEntity.QuestionStartTime).TotalSeconds;
+                bool playerHasntAnswered = true;
+                if (rEntity.PlayerAnswers.Where(pa => pa.Player.Id == playerAnswer.Player.Id).FirstOrDefault() != null)
+                {
+                    playerHasntAnswered = false;
+                }
+
+                //Saves the player's answer to the database  
+                if (elapsedSeconds <= 35 && playerHasntAnswered)
+                {
+                    rEntity.PlayerAnswers.Add(playerAnswer);
+                    if (ValidateAnswer(playerAnswer.AnswerGiven) && rEntity.RoundWinner == null)
+                    {
+                        rEntity.RoundWinner = playerAnswer.Player;
+                    }
+                    db.Entry(rEntity).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                } 
             }
         }
 
         public bool ValidateAnswer(Answer answer)
         {
-            bool success = db.Answers.AsNoTracking().Where(a => a.Id == answer.Id).FirstOrDefault().IsValid;
-            return success;
+            using (var db = new ConquestionDBContext())
+            {
+                bool success = db.Answers.AsNoTracking().Where(a => a.Id == answer.Id).FirstOrDefault().IsValid;
+                return success; 
+            }
         }
 
         //To see if everyone has answered in this round
         public bool CheckIfAllPlayersAnswered(Game game, Round round)
         {
-            bool allPlayersAnswered = false;
-            int noOfPlayers = game.Players.Count;
-            var raEntity = db.Rounds.Include("PlayerAnswers").Where(ra => ra.Id == round.Id).FirstOrDefault();
-            int? noOfAnswers = raEntity.PlayerAnswers?.Count;
-            if (noOfPlayers == noOfAnswers)
+            using (var db = new ConquestionDBContext())
             {
-                allPlayersAnswered = true;
+                bool allPlayersAnswered = false;
+                int noOfPlayers = game.Players.Count;
+                var raEntity = db.Rounds.Include("PlayerAnswers").Where(ra => ra.Id == round.Id).FirstOrDefault();
+                int? noOfAnswers = raEntity.PlayerAnswers?.Count;
+                if (noOfPlayers == noOfAnswers)
+                {
+                    allPlayersAnswered = true;
+                }
+                return allPlayersAnswered; 
             }
-            return allPlayersAnswered;
         }
 
         public Player GetRoundWinner(Round round)
         {
-            var rEntity = db.Rounds.Include("RoundWinner").Where(r => r.Id == round.Id).FirstOrDefault();
-            return rEntity.RoundWinner;
+            using (var db = new ConquestionDBContext())
+            {
+                var rEntity = db.Rounds.Include("RoundWinner").Where(r => r.Id == round.Id).FirstOrDefault();
+                return rEntity.RoundWinner; 
+            }
         }
 
         public Question GetRandomQuestion(Game game)
         {
-            var unaskedQuestion = db.AskedQuestions.Include("Question").Include("Question.Answers").Where(q => q.GameId == game.Id && q.HasBeenAsked == false).ToList();
-            AskedQuestion question = new AskedQuestion();
-            unaskedQuestion.Shuffle();
-            question = unaskedQuestion[0];
+            using (var db = new ConquestionDBContext())
+            {
+                var unaskedQuestion = db.AskedQuestions.AsNoTracking().Include("Question").Include("Question.Answers").Where(q => q.GameId == game.Id && q.HasBeenAsked == false).ToList();
+                AskedQuestion question = new AskedQuestion();
+                unaskedQuestion.Shuffle();
+                question = unaskedQuestion[0];
 
-            var askedQuestionEntity = db.AskedQuestions.Where(q => q.GameId == game.Id && q.QuestionId == question.QuestionId).FirstOrDefault();
-            askedQuestionEntity.HasBeenAsked = true;
-            db.Entry(askedQuestionEntity).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-            return question.Question;
+                var askedQuestionEntity = db.AskedQuestions.Where(q => q.GameId == game.Id && q.QuestionId == question.QuestionId).FirstOrDefault();
+                askedQuestionEntity.HasBeenAsked = true;
+                db.Entry(askedQuestionEntity).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return question.Question; 
+            }
 
         }
     }
