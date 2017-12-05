@@ -31,46 +31,62 @@ namespace ConquestionGame.LogicLayer
 
         public void CreateRound(Game game)
         {
-            // Should be ok
-            var gameEntity = db.Games.Include("Players").Include("QuestionSet.Questions.Answers").Include("Rounds.Question.Answers")
-                .Where(x => x.Id.Equals(game.Id))
-                .FirstOrDefault();
-
-            if (gameEntity.Rounds.Count < gameEntity.NoOfRounds)
+            using (ConquestionDBContext db = new ConquestionDBContext())
             {
-                //Check if rounds list has been initialised
-                if (gameEntity.Rounds == null)
+                using (var transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
-                    gameEntity.Rounds = new List<Round>();
+                    // Should be ok
+                    try
+                    {
+                        var gameEntity = db.Games.Include("Players").Include("QuestionSet.Questions.Answers").Include("Rounds.Question.Answers")
+                                        .Where(x => x.Id.Equals(game.Id))
+                                        .FirstOrDefault();
+
+                        if (gameEntity.Rounds.Count < gameEntity.NoOfRounds)
+                        {
+                            //Check if rounds list has been initialised
+                            if (gameEntity.Rounds == null)
+                            {
+                                gameEntity.Rounds = new List<Round>();
+                            }
+
+                            // if there are rounds get the count and set the round number to the count + 1
+                            int? noOfRounds = gameEntity.Rounds.Count();
+                            var newRound = new Round();
+
+                            if (noOfRounds == null || noOfRounds == 0)
+                            {
+                                newRound.RoundNo = 1;
+
+                            }
+                            else
+                            {
+                                newRound.RoundNo = (int)noOfRounds + 1;
+                            }
+
+                            newRound.QuestionStartTime = DateTime.Now;
+                            newRound.Question = GetRandomQuestion(gameEntity);
+                            gameEntity.Rounds.Add(newRound);
+
+                            db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();              
+                        }
+                        else
+                        {
+                            gameEntity.GameStatus = Game.GameStatusEnum.finished;
+                            db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        //Explicity dont rollback here because we expect deadlock situations which will be solved by SQL server auto rollbacking no need to here.
+                       // transaction.Rollback();
+                    }
                 }
-
-                // if there are rounds get the count and set the round number to the count + 1
-                int? noOfRounds = gameEntity.Rounds.Count();
-                var newRound = new Round();
-
-                if (noOfRounds == null || noOfRounds == 0)
-                {
-                    newRound.RoundNo = 1;
-
-                }
-                else
-                {
-                    newRound.RoundNo = (int)noOfRounds + 1;
-                }
-
-                newRound.QuestionStartTime = DateTime.Now;
-                newRound.Question = GetRandomQuestion(gameEntity);
-                gameEntity.Rounds.Add(newRound);
-
-                db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
             }
-            else
-            {
-                gameEntity.GameStatus = Game.GameStatusEnum.finished;
-                db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-            }
+
         }
 
         public void SubmitAnswer(Round round, PlayerAnswer playerAnswer)
@@ -80,7 +96,7 @@ namespace ConquestionGame.LogicLayer
             var playerEntity = db.Players.Where(p => p.Name.Equals(playerAnswer.Player.Name)).FirstOrDefault();
             playerAnswer.Player = playerEntity;
             var answerEntity = db.Answers.Where(a => a.Id == playerAnswer.AnswerGiven.Id).FirstOrDefault();
-            playerAnswer.AnswerGiven = answerEntity; 
+            playerAnswer.AnswerGiven = answerEntity;
             Round rEntity = db.Rounds.Include("PlayerAnswers.Player").Include("RoundWinner").Where(r => r.Id == round.Id).FirstOrDefault();
 
             // Check is the list has been initialised, if not intialise it

@@ -137,10 +137,10 @@ namespace ConquestionGame.Presentation.WinForm
                 bool playersAnswered = Client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound);
                 if (remainingSeconds <= 0 || playersAnswered)
                 {
-                    if (PlayerCredentials.Instance.Player.Id == CurrentGame.Players.FirstOrDefault().Id)
-                    {
+                    //if (PlayerCredentials.Instance.Player.Id == CurrentGame.Players.FirstOrDefault().Id)
+                   // {
                         Client.CreateRound(CurrentGame);
-                    }
+                  //  }
 
                     EnableDisableButtons(false);
                     CheckButton();

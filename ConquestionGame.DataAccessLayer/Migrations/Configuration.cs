@@ -90,8 +90,8 @@ namespace ConquestionGame.DataAccessLayer.Migrations
             Question q9 = MakeQuestion("What is Asynchronous Programming?", qs);
             Answer q9a1 = MakeAnswer(false, "Programming that uses threads to display an arbitrary number of messages in a random order");
             Answer q9a2 = MakeAnswer(false, "A means of programming in which a unit of work runs together with the main thread");
-            Answer q9a3 = MakeAnswer(true, "A means of determining what the square root of a random number is when multiplied with the first seven prime numbers");
-            Answer q9a4 = MakeAnswer(false, "A means of parrallel programming in which a unit of work runs seperately from the main application thread and notifies the calling thread of its complition failure or progress");
+            Answer q9a3 = MakeAnswer(false, "A means of determining what the square root of a random number is when multiplied with the first seven prime numbers");
+            Answer q9a4 = MakeAnswer(true, "A means of parrallel programming in which a unit of work runs seperately from the main application thread and notifies the calling thread of its complition failure or progress");
             AddAnswersToQuestion(q9, q9a1, q9a2, q9a3, q9a4);
 
             Question q10 = MakeQuestion("What does API stand for?", qs);

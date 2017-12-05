@@ -14,12 +14,15 @@ namespace ConquestionGame.LogicLayer
             db.SaveChanges();
             return player;
         }
-   
+
         public Player RetrievePlayer(string name)
         {
-            var playerEntity = new Player();
-            playerEntity = db.Players.Where(p => p.Name.Equals(name)).FirstOrDefault();
-            return playerEntity;
+            using (ConquestionDBContext db = new ConquestionDBContext())
+            {
+                var playerEntity = new Player();
+                playerEntity = db.Players.Where(p => p.Name.Equals(name)).FirstOrDefault();
+                return playerEntity;
+            }
         }
     }
 }

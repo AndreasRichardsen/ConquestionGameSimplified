@@ -30,7 +30,7 @@ namespace ConquestionGame.WCFServiceLibrary
 
         public void AddPlayer(Game game, Player player)
         {
-            player.Name = Thread.CurrentPrincipal.Identity.Name; 
+            player = playerCtr.RetrievePlayer(Thread.CurrentPrincipal.Identity.Name); 
             gameCtr.AddPlayer(game, player);
         }
 

@@ -90,7 +90,7 @@ namespace ConquestionGame.LogicLayer
             }
         }
 
-     
+
         public void AddQuestionSet(Game game, QuestionSet questionSet)
         {
             var gameEntity = db.Games.Where(g => g.Name.Equals(game.Name)).FirstOrDefault();
@@ -115,7 +115,7 @@ namespace ConquestionGame.LogicLayer
 
         public Game ChooseGame(string name, bool retrieveAssociations)
         {
-            if(retrieveAssociations != true)
+            if (retrieveAssociations != true)
             {
                 Game chosenGame = db.Games.AsNoTracking()
                 .Where(x => x.Name.Equals(name))
@@ -132,11 +132,11 @@ namespace ConquestionGame.LogicLayer
                     .Include("Rounds.PlayerAnswers")
                 .Where(x => x.Name.Equals(name))
                 .FirstOrDefault();
-                
+
 
                 return chosenGame;
             }
-            
+
         }
 
         public List<Game> ActiveGames()
@@ -152,7 +152,7 @@ namespace ConquestionGame.LogicLayer
             List<Game> activeGames = new List<Game>();
             activeGames = db.Games.Where(g => g.GameStatus == Game.GameStatusEnum.starting).ToList();
             List<string> activeGamesNames = new List<string>();
-            foreach(Game g in activeGames)
+            foreach (Game g in activeGames)
             {
                 activeGamesNames.Add(g.Name);
             }
@@ -161,32 +161,42 @@ namespace ConquestionGame.LogicLayer
 
         public bool JoinGame(Game game, Player player)
         {
-            var gameEntity = db.Games.Include("Players").Where(g => g.Id == game.Id).FirstOrDefault();
-            var playerEntity = db.Players.Where(p => p.Name.Equals(player.Name)).FirstOrDefault();
+            bool success = false;
+            using (ConquestionDBContext db = new ConquestionDBContext())
+            {
+                var playerEntity = db.Players.Where(p => p.Name.Equals(player.Name)).FirstOrDefault();
+                using (var transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
+                {
+                    try
+                    {
+                        var gameEntity = db.Games.Include("Players").Where(g => g.Id == game.Id).FirstOrDefault();
+                        if (gameEntity != null && playerEntity != null)
+                        {
+                            if (gameEntity.Players.Count < 4)
+                            {
 
-            if (gameEntity != null && playerEntity != null)
-            {
-                if (gameEntity.Players.Count < 4)
-                {
-                    gameEntity.Players.Add(playerEntity);
-                    db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    return true;
-                }
-                else if(gameEntity.Players.Contains(playerEntity))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
+                                gameEntity.Players.Add(playerEntity);
+                                db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
+                                db.SaveChanges();
+                                System.Threading.Thread.Sleep(5000);
+                                transaction.Commit();
+                                success = true;
+                            }
+                            else if (gameEntity.Players.Contains(playerEntity))
+                            {
+                                success = true;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                    }
                 }
             }
-            else
-            {
-                return false;
-            }
+            return success;
         }
+
 
         public bool LeaveGame(Game game, Player player)
         {
@@ -230,14 +240,19 @@ namespace ConquestionGame.LogicLayer
         }
         public bool StartGame(Game game, Player player)
         {
-            var gameEntity = db.Games.Where(g => g.Id == game.Id).FirstOrDefault();
+            var gameEntity = db.Games.Include("Players").Where(g => g.Id == game.Id).FirstOrDefault();
             var playerEntity = db.Players.Where(p => p.Id == player.Id).FirstOrDefault();
 
 
             if (playerEntity.Name.Equals(gameEntity.Players[0].Name) && gameEntity.GameStatus.Equals(Game.GameStatusEnum.starting))
             {
                 gameEntity.GameStatus = Game.GameStatusEnum.ongoing;
-                roundCtr.CreateRound(gameEntity); 
+                gameEntity.Rounds = new List<Round>();
+                Round firstRound = new Round { RoundNo = 1, QuestionStartTime = DateTime.Now };
+                var randQuestion = roundCtr.GetRandomQuestion(gameEntity);
+                var questionEntity = db.Questions.Include("Answers").Where(r => r.Id == randQuestion.Id).FirstOrDefault();
+                firstRound.Question = questionEntity;
+                gameEntity.Rounds.Add(firstRound);
                 db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return true;
@@ -253,25 +268,23 @@ namespace ConquestionGame.LogicLayer
         {
 
             var roundsEntity = db.Games.Include("Rounds").Include("Players").Where(g => g.Id == game.Id).FirstOrDefault().Rounds.ToList();
-            
-            //var noWinner = roundsEntity.GroupBy(r => r.RoundWinner).OrderByDescending(r => r.Count()).ToList()
-            //    .First().Key;
-          //  try
-           // {
+
+            try
+            {
                 var winner = roundsEntity.Where(r => r.RoundWinner != null).GroupBy(r => r.RoundWinner).OrderByDescending(r => r.Count()).ToList()
                 .First().Key;
                 return winner;
-        //    }
-         //   catch (InvalidOperationException)
-          //  {
-         //       return null;
-           // }
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
 
         public int DetermineNoOfCorrectAnswers(Game game, Player player)
         {
-            int noOfCorrectAnswers=0;
-            int correctAnswers=0;
+            int noOfCorrectAnswers = 0;
+            int correctAnswers = 0;
 
             var playerAnwsersEntity = db.PlayerAnswers.Include("Round.Game").Include("Player").Include("AnswerGiven").ToList();
 
@@ -283,7 +296,7 @@ namespace ConquestionGame.LogicLayer
                     correctAnswers++;
                 }
             }
-            noOfCorrectAnswers = correctAnswers;    
+            noOfCorrectAnswers = correctAnswers;
 
             return noOfCorrectAnswers;
         }
