@@ -117,7 +117,7 @@ namespace ConquestionGame.LogicLayer
         {
             if(retrieveAssociations != true)
             {
-                Game chosenGame = db.Games
+                Game chosenGame = db.Games.AsNoTracking()
                 .Where(x => x.Name.Equals(name))
                 .FirstOrDefault();
 
@@ -125,7 +125,8 @@ namespace ConquestionGame.LogicLayer
             }
             else
             {
-                Game chosenGame = db.Games.Include("Players")
+                Game chosenGame = db.Games.AsNoTracking()
+                    .Include("Players")
                     .Include("QuestionSet.Questions.Answers")
                     .Include("Rounds.Question.Answers")
                     .Include("Rounds.PlayerAnswers")
@@ -290,8 +291,8 @@ namespace ConquestionGame.LogicLayer
         public bool CheckIfGameIsFinished(Game game)
         {
             bool finished = false;
-            Game gameEntity = db.Games.Where(g => g.Id == game.Id).FirstOrDefault();
-            if (gameEntity.GameStatus.Equals(Game.GameStatusEnum.finished))
+            Game gameEntity = db.Games.AsNoTracking().Where(g => g.Id == game.Id).FirstOrDefault();
+            if (gameEntity.GameStatus == Game.GameStatusEnum.finished)
             {
                 finished = true;
             }

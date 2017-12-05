@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.CreateNewGameButton = new System.Windows.Forms.Button();
+            this.JoinGameButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.back_button = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -40,48 +40,50 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(23, 155);
+            this.listBox1.Location = new System.Drawing.Point(15, 101);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(452, 404);
+            this.listBox1.Size = new System.Drawing.Size(303, 264);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // button2
+            // CreateNewGameButton
             // 
-            this.button2.Location = new System.Drawing.Point(637, 606);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 45);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Create New Game";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.CreateGame_Click);
+            this.CreateNewGameButton.Location = new System.Drawing.Point(425, 394);
+            this.CreateNewGameButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CreateNewGameButton.Name = "CreateNewGameButton";
+            this.CreateNewGameButton.Size = new System.Drawing.Size(117, 29);
+            this.CreateNewGameButton.TabIndex = 2;
+            this.CreateNewGameButton.Text = "Create New Game";
+            this.CreateNewGameButton.UseVisualStyleBackColor = true;
+            this.CreateNewGameButton.Click += new System.EventHandler(this.CreateGame_Click);
             // 
-            // button4
+            // JoinGameButton
             // 
-            this.button4.Location = new System.Drawing.Point(690, 155);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(123, 32);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Join Game";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.JoinGame_Click);
+            this.JoinGameButton.Location = new System.Drawing.Point(460, 101);
+            this.JoinGameButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.JoinGameButton.Name = "JoinGameButton";
+            this.JoinGameButton.Size = new System.Drawing.Size(82, 21);
+            this.JoinGameButton.TabIndex = 4;
+            this.JoinGameButton.Text = "Join Game";
+            this.JoinGameButton.UseVisualStyleBackColor = true;
+            this.JoinGameButton.Click += new System.EventHandler(this.JoinGame_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(704, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(469, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "label1";
             // 
             // back_button
             // 
-            this.back_button.Location = new System.Drawing.Point(23, 38);
+            this.back_button.Location = new System.Drawing.Point(15, 25);
+            this.back_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.back_button.Name = "back_button";
-            this.back_button.Size = new System.Drawing.Size(108, 32);
+            this.back_button.Size = new System.Drawing.Size(72, 21);
             this.back_button.TabIndex = 6;
             this.back_button.Text = "< Back";
             this.back_button.UseVisualStyleBackColor = true;
@@ -93,14 +95,15 @@
             // 
             // JoinGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 682);
+            this.ClientSize = new System.Drawing.Size(571, 443);
             this.Controls.Add(this.back_button);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.JoinGameButton);
+            this.Controls.Add(this.CreateNewGameButton);
             this.Controls.Add(this.listBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "JoinGame";
             this.Text = "JoinGame";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JoinGame_Closing);
@@ -113,8 +116,8 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button CreateNewGameButton;
+        private System.Windows.Forms.Button JoinGameButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button back_button;
         private System.Windows.Forms.Timer timer1;

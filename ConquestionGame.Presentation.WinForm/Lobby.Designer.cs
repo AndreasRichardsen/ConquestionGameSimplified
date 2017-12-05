@@ -43,31 +43,26 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 28);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(38, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 17);
+            this.label1.Size = new System.Drawing.Size(125, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Game Name Placeholder";
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(50, 90);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Location = new System.Drawing.Point(38, 73);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(445, 132);
+            this.listBox1.Size = new System.Drawing.Size(335, 108);
             this.listBox1.TabIndex = 1;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 262);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(38, 213);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 17);
+            this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Question Set";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -75,19 +70,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 300);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(38, 244);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 17);
+            this.label3.Size = new System.Drawing.Size(127, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Question Set Placeholder";
             // 
             // Start_Game
             // 
-            this.Start_Game.Location = new System.Drawing.Point(640, 90);
-            this.Start_Game.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Start_Game.Location = new System.Drawing.Point(480, 73);
             this.Start_Game.Name = "Start_Game";
-            this.Start_Game.Size = new System.Drawing.Size(100, 28);
+            this.Start_Game.Size = new System.Drawing.Size(75, 23);
             this.Start_Game.TabIndex = 6;
             this.Start_Game.Text = "Start Game";
             this.Start_Game.UseVisualStyleBackColor = true;
@@ -95,10 +88,9 @@
             // 
             // Exit_Lobby
             // 
-            this.Exit_Lobby.Location = new System.Drawing.Point(640, 169);
-            this.Exit_Lobby.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Exit_Lobby.Location = new System.Drawing.Point(480, 137);
             this.Exit_Lobby.Name = "Exit_Lobby";
-            this.Exit_Lobby.Size = new System.Drawing.Size(100, 28);
+            this.Exit_Lobby.Size = new System.Drawing.Size(75, 23);
             this.Exit_Lobby.TabIndex = 7;
             this.Exit_Lobby.Text = "Exit Lobby";
             this.Exit_Lobby.UseVisualStyleBackColor = true;
@@ -115,18 +107,17 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(871, 11);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(653, 9);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 17);
+            this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 8;
             this.label6.Text = "label6";
             // 
             // Lobby
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 604);
+            this.ClientSize = new System.Drawing.Size(754, 491);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Exit_Lobby);
             this.Controls.Add(this.Start_Game);
@@ -134,7 +125,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Lobby";
             this.Text = "Lobby";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Lobby_Closing);

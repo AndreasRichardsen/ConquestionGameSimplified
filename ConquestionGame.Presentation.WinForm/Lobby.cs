@@ -67,9 +67,6 @@ namespace ConquestionGame.Presentation.WinForm
             timer1.Tick += new EventHandler(timer2_Tick);
             timer1.Start();
             label6.Text = PlayerCredentials.Instance.Player.Name;
-            //timer2.Interval = (1 * 1000); // 1 Sec
-            //timer2.Tick += new EventHandler(timer2_Tick);
-            //timer2.Start();
         }
 
         private void Start_Game_Click(object sender, EventArgs e)
@@ -81,7 +78,6 @@ namespace ConquestionGame.Presentation.WinForm
         public void StartGameWindow()
         {
             GameInstance.Instance.UpdateCurrentGame();
-            RoundInstance.Instance.Round = GameInstance.Instance.Game.Rounds[0];
             timer1.Stop();
             this.Hide();
 
@@ -124,11 +120,6 @@ namespace ConquestionGame.Presentation.WinForm
                     Start_Game.Enabled = false;
                 }
             }
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Lobby_Closing(object sender, FormClosingEventArgs e)

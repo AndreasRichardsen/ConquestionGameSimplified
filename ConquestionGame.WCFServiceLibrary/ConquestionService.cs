@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Permissions;
+using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConquestionGame.WCFServiceLibrary
@@ -28,6 +30,7 @@ namespace ConquestionGame.WCFServiceLibrary
 
         public void AddPlayer(Game game, Player player)
         {
+            player.Name = Thread.CurrentPrincipal.Identity.Name; 
             gameCtr.AddPlayer(game, player);
         }
 

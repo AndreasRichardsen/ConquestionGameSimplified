@@ -76,7 +76,6 @@
     <Compile Include="RegisterPlayer.Designer.cs">
       <DependentUpon>RegisterPlayer.cs</DependentUpon>
     </Compile>
-    <Compile Include="RoundInstance.cs" />
     <Compile Include="JoinGame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EndScreen.resx">
       <DependentUpon>EndScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JoinGame.resx">
+      <DependentUpon>JoinGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lobby.resx">
       <DependentUpon>Lobby.cs</DependentUpon>

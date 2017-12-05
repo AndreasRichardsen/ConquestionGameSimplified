@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,7 +14,7 @@ namespace ConquestionGame.Presentation.WinForm
 {
     public partial class JoinGame : Form
     {
-        private ConquestionServiceClient client = new ConquestionServiceClient();
+        private ConquestionServiceClient client;
         public JoinGame(ConquestionServiceClient ConquestionServiceClient)
         {
             InitializeComponent();
@@ -26,8 +27,8 @@ namespace ConquestionGame.Presentation.WinForm
             }
             else
             {
-                MessageBox.Show("No active games found!", "Error",
-                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                JoinGameButton.Enabled = false;
+                listBox1.DataSource = new List<string>{ "No Active Games Found" };
             }
 
 
@@ -64,7 +65,8 @@ namespace ConquestionGame.Presentation.WinForm
 
         private void JoinGame_Load(object sender, EventArgs e)
         {
-            label1.Text = PlayerCredentials.Instance.Player.Name;
+            //label1.Text = PlayerCredentials.Instance.Player.Name;
+            label1.Text = client.ClientCredentials.UserName.UserName;
 
             timer1.Interval = (1 * 1000); // 5 secs
             timer1.Tick += new EventHandler(timer1_Tick);
@@ -82,6 +84,7 @@ namespace ConquestionGame.Presentation.WinForm
         {
             if (client.ActiveGames().Length != 0)
             {
+                JoinGameButton.Enabled = true;
                 int currentSelected = listBox1.SelectedIndex;
                 listBox1.DataSource = client.ActiveGames();
                 listBox1.DisplayMember = "Name";
@@ -97,7 +100,8 @@ namespace ConquestionGame.Presentation.WinForm
             }
             else
             {
-                listBox1.DataSource = null;
+                listBox1.DataSource = new List<string> { "No Active Games Found" };
+                JoinGameButton.Enabled = false;
             }
         }
 

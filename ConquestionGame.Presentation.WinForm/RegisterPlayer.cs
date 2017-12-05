@@ -51,14 +51,15 @@ namespace ConquestionGame.Presentation.WinForm
                 AuthenticationServiceReference.Player player = AuthClient.RegisterPlayer(newPlayer, email, password);
                 ConqClient.ClientCredentials.UserName.UserName = UserNameTextBox.Text;
                 ConqClient.ClientCredentials.UserName.Password = PasswordTextbox.Text;
-                PlayerCredentials.Instance.Player =  new ConquestionServiceReference.Player { Name = player.Name };
+
+                PlayerCredentials.Instance.Player = ConqClient.RetrievePlayer(player.Name);
                 this.Hide();
                 (new JoinGame(ConqClient)).Show();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                MessageBox.Show("Error with registering a user", "Error",
+                string msg = ex.Message;
+                MessageBox.Show("Error with registering a user: " + msg, "Error",
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
