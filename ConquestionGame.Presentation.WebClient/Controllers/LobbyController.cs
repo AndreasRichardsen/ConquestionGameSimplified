@@ -1,4 +1,6 @@
 ﻿using ConquestionGame.Presentation.WebClient.ConquestionServiceReference;
+using ConquestionGame.Presentation.WebClient.Helpers;
+using ConquestionGame.Presentation.WebClient.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,8 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 {
     public class LobbyController : Controller
     {
-        ConquestionServiceClient client = new ConquestionServiceClient();
+        static LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
+        ConquestionServiceClient client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password);
 
         Game CurrentGame = new Game();
 
@@ -33,7 +36,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
             if (GameInstance.Instance.Game != null)
             {
                 var gameEntity = client.ChooseGame(GameInstance.Instance.Game.Name, true);
-                if (PlayerCredentials.Instance.Player.Name.Equals(gameEntity.Players[0].Name))
+                if (loginViewModel.Username.Equals(gameEntity.Players[0].Name))
                 {
                     ViewBag.IsHost = true;
                 }

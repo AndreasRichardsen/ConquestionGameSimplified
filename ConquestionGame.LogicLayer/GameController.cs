@@ -17,8 +17,25 @@ namespace ConquestionGame.LogicLayer
                 if (!ActiveGamesNames().Contains(game.Name))
                 {
                     game.GameStatus = Game.GameStatusEnum.starting;
+                    var qs = db.QuestionSets.Where(q => q.Id == game.QuestionSet.Id).FirstOrDefault();
+                    game.QuestionSet = qs;
                     db.Games.Add(game);
                     db.SaveChanges();
+
+                    var askedQuestionEntity = db.AskedQuestions.Where(q => q.GameId == game.Id).ToList();
+                    var allQuestionsEntity = db.Questions.Include("Answers").Where(q => q.QuestionSetId == game.QuestionSet.Id).ToList();
+                    if (askedQuestionEntity.Count == 0)
+                    {
+                        foreach (Question q in allQuestionsEntity)
+                        {
+                            // askedQuestionEntity.Add(new AskedQuestion { GameId = game.Id, QuestionId = q.Id, HasBeenAsked = false });
+                            db.AskedQuestions.Add(new AskedQuestion { GameId = game.Id, QuestionId = q.Id, HasBeenAsked = false });
+                            db.SaveChanges();
+
+                        }
+
+                    }
+
                     return game;
                 }
                 else
@@ -265,8 +282,7 @@ namespace ConquestionGame.LogicLayer
             using (var db = new ConquestionDBContext())
             {
                 var gameEntity = db.Games.Include("Players").Where(g => g.Id == game.Id).FirstOrDefault();
-                var playerEntity = db.Players.Where(p => p.Id == player.Id).FirstOrDefault();
-
+                var playerEntity = db.Players.Where(p => p.Name.Equals(player.Name)).FirstOrDefault();
 
                 if (playerEntity.Name.Equals(gameEntity.Players[0].Name) && gameEntity.GameStatus.Equals(Game.GameStatusEnum.starting))
                 {

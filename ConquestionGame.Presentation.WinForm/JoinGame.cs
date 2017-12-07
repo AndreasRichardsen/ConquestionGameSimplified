@@ -41,8 +41,11 @@ namespace ConquestionGame.Presentation.WinForm
         private void JoinGame_Click(object sender, EventArgs e)
         {
             Game game = listBox1.SelectedItem as Game;
-            Game game2 = client.RetrieveGame(game.Name, false);
-            bool success = client.JoinGame(game2, PlayerCredentials.Instance.Player);
+
+            Game game2 = client.ChooseGame(game.Name, false);
+            //label1.Text = CurrentPlayer.Name;
+            bool success = client.JoinGame(game2);
+
             if (success)
             {
                 this.Hide();

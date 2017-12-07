@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ConquestionGame.Presentation.WebClient.ConquestionServiceReference;
+using ConquestionGame.Presentation.WebClient.Helpers;
+using ConquestionGame.Presentation.WebClient.ViewModels;
 
 namespace ConquestionGame.Presentation.WebClient.Controllers
 {
     public class JoinGameController : Controller
     {
-        ConquestionServiceClient client = new ConquestionServiceClient();
+        static LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
+        ConquestionServiceClient client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password);
 
         // Gets a list of active games from the db to be displayed on the view
         public ActionResult GetActiveGames()
@@ -40,26 +43,34 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
         [HttpGet]
         public ActionResult CreateNewGame()
         {
-            return View();
+            List<QuestionSet> questionSet = new List<QuestionSet>();
+            var qs = client.RetrieveAllQuestionSets().ToList();
+            CreateGameViewModel viewModel = new CreateGameViewModel();
+            viewModel.QuestionSets = qs;
+
+            return View(viewModel);
         }
 
-        // Creates a new game using the game name given by the player
         [HttpPost]
-        public ActionResult CreateNewGame(Game aGame)
+        public ActionResult CreateNewGame(CreateGameViewModel viewModel)
         {
             Game ourGame = new Game();
-            if (!string.IsNullOrEmpty(aGame.Name))
+            if (viewModel != null)
             {
-                ourGame.Name = aGame.Name;
+                ourGame = viewModel.Game;
+                ourGame.QuestionSet = client.RetrieveQuestionSet(viewModel.SelectedQuestionSetID);
                 client.CreateGame(ourGame);
             }
 
-            Game gameEntity = client.ChooseGame(aGame.Name, true);
+            Game gameEntity = client.ChooseGame(viewModel.Game.Name, true);
             GameInstance.Instance.Game = gameEntity;
 
-            client.AddPlayer(gameEntity, PlayerCredentials.Instance.Player);
+            //gameEntity.QuestionSet = viewModel.QuestionSets.
+         
 
-            return RedirectToAction("ChooseQS", "JoinGame");
+            client.AddPlayer(gameEntity);
+
+            return RedirectToAction("GetActiveGames", "JoinGame");
         }
 
         [HttpGet]
@@ -91,7 +102,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
         public ActionResult JoinGame(string name)
         {
             Game game = client.ChooseGame(name, false);
-            client.AddPlayer(game, PlayerCredentials.Instance.Player);
+            client.AddPlayer(game);
 
             Game gameEntity = client.ChooseGame(game.Name, true);
             GameInstance.Instance.Game = gameEntity;

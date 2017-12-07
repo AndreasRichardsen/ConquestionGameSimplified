@@ -21,9 +21,7 @@ namespace ConquestionGame.LogicLayer
         {
             using (ConquestionDBContext db = new ConquestionDBContext())
             {
-                var playerEntity = new Player();
-                playerEntity = db.Players.Where(p => p.Name.Equals(name)).FirstOrDefault();
-                return playerEntity;
+                return db.Players.Where(p => p.Name.Equals(name)).FirstOrDefault();
             }
         }
     }

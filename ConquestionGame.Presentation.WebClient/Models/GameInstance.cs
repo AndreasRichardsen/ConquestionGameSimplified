@@ -1,4 +1,6 @@
 ﻿using ConquestionGame.Presentation.WebClient.ConquestionServiceReference;
+using ConquestionGame.Presentation.WebClient.Helpers;
+using ConquestionGame.Presentation.WebClient.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,8 @@ namespace ConquestionGame.Presentation.WebClient
     class GameInstance
     {
         private static GameInstance instance;
-        ConquestionServiceClient client = new ConquestionServiceClient();
+        static LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
+        ConquestionServiceClient client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password);
         public Game Game { get; set; }
 
         private GameInstance()

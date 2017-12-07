@@ -53,7 +53,7 @@ namespace ConquestionGame.Presentation.WinForm
             foreach (Player p in CurrentGame.Players)
             {
                 LabelList[i].Text = p.Name;
-                LabelList[i + 1].Text = string.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, p));
+                LabelList[i + 1].Text = string.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame));
                 i += 2;
             }
 

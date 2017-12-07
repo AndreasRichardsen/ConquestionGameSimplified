@@ -93,6 +93,9 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NoOfRoundsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player[] PlayersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -146,6 +149,19 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfRounds {
+            get {
+                return this.NoOfRoundsField;
+            }
+            set {
+                if ((this.NoOfRoundsField.Equals(value) != true)) {
+                    this.NoOfRoundsField = value;
+                    this.RaisePropertyChanged("NoOfRounds");
                 }
             }
         }
@@ -672,17 +688,29 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreatePlayer", ReplyAction="http://tempuri.org/IConquestionService/CreatePlayerResponse")]
         System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player> CreatePlayerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrievePlayer", ReplyAction="http://tempuri.org/IConquestionService/RetrievePlayerResponse")]
+        ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player RetrievePlayer(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrievePlayer", ReplyAction="http://tempuri.org/IConquestionService/RetrievePlayerResponse")]
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player> RetrievePlayerAsync(string name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame", ReplyAction="http://tempuri.org/IConquestionService/CreateGameResponse")]
         void CreateGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame", ReplyAction="http://tempuri.org/IConquestionService/CreateGameResponse")]
         System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddPlayer", ReplyAction="http://tempuri.org/IConquestionService/AddPlayerResponse")]
-        void AddPlayer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame2", ReplyAction="http://tempuri.org/IConquestionService/CreateGame2Response")]
+        void CreateGame2(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, string questionSet, int noOfRounds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame2", ReplyAction="http://tempuri.org/IConquestionService/CreateGame2Response")]
+        System.Threading.Tasks.Task CreateGame2Async(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, string questionSet, int noOfRounds);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddPlayer", ReplyAction="http://tempuri.org/IConquestionService/AddPlayerResponse")]
-        System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player);
+        void AddPlayer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddPlayer", ReplyAction="http://tempuri.org/IConquestionService/AddPlayerResponse")]
+        System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ActiveGames", ReplyAction="http://tempuri.org/IConquestionService/ActiveGamesResponse")]
         ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game[] ActiveGames();
@@ -696,23 +724,47 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ChooseGame", ReplyAction="http://tempuri.org/IConquestionService/ChooseGameResponse")]
         System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game> ChooseGameAsync(string name, bool retrieveAssociation);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/JoinGame", ReplyAction="http://tempuri.org/IConquestionService/JoinGameResponse")]
+        bool JoinGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/JoinGame", ReplyAction="http://tempuri.org/IConquestionService/JoinGameResponse")]
+        System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/LeaveGame", ReplyAction="http://tempuri.org/IConquestionService/LeaveGameResponse")]
+        bool LeaveGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/LeaveGame", ReplyAction="http://tempuri.org/IConquestionService/LeaveGameResponse")]
+        System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse")]
+        ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse")]
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/StartGame", ReplyAction="http://tempuri.org/IConquestionService/StartGameResponse")]
+        bool StartGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/StartGame", ReplyAction="http://tempuri.org/IConquestionService/StartGameResponse")]
+        System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/AddQuestionSetResponse")]
+        void AddQuestionSet(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet questionSet);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/AddQuestionSetResponse")]
+        System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet questionSet);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfGameIsFinished", ReplyAction="http://tempuri.org/IConquestionService/CheckIfGameIsFinishedResponse")]
+        bool CheckIfGameIsFinished(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckIfGameIsFinished", ReplyAction="http://tempuri.org/IConquestionService/CheckIfGameIsFinishedResponse")]
+        System.Threading.Tasks.Task<bool> CheckIfGameIsFinishedAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllQuestionSets", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllQuestionSetsResponse")]
         ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet[] RetrieveAllQuestionSets();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllQuestionSets", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllQuestionSetsResponse")]
         System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet[]> RetrieveAllQuestionSetsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ValidateAnswer", ReplyAction="http://tempuri.org/IConquestionService/ValidateAnswerResponse")]
-        bool ValidateAnswer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Answer answer);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ValidateAnswer", ReplyAction="http://tempuri.org/IConquestionService/ValidateAnswerResponse")]
-        System.Threading.Tasks.Task<bool> ValidateAnswerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Answer answer);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerAnswers", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerAnswersResponse")]
-        bool CheckPlayerAnswers(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerAnswers", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerAnswersResponse")]
-        System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/RetrieveQuestionSetResponse")]
         ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet RetrieveQuestionSet(int id);
@@ -726,41 +778,17 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitle", ReplyAction="http://tempuri.org/IConquestionService/RetrieveQuestionSetByTitleResponse")]
         System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet> RetrieveQuestionSetByTitleAsync(string title);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/AddQuestionSetResponse")]
-        void AddQuestionSet(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet questionSet);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ValidateAnswer", ReplyAction="http://tempuri.org/IConquestionService/ValidateAnswerResponse")]
+        bool ValidateAnswer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Answer answer);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/AddQuestionSetResponse")]
-        System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet questionSet);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ValidateAnswer", ReplyAction="http://tempuri.org/IConquestionService/ValidateAnswerResponse")]
+        System.Threading.Tasks.Task<bool> ValidateAnswerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Answer answer);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrievePlayer", ReplyAction="http://tempuri.org/IConquestionService/RetrievePlayerResponse")]
-        ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player RetrievePlayer(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerAnswers", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerAnswersResponse")]
+        bool CheckPlayerAnswers(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrievePlayer", ReplyAction="http://tempuri.org/IConquestionService/RetrievePlayerResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player> RetrievePlayerAsync(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/JoinGame", ReplyAction="http://tempuri.org/IConquestionService/JoinGameResponse")]
-        bool JoinGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/JoinGame", ReplyAction="http://tempuri.org/IConquestionService/JoinGameResponse")]
-        System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/LeaveGame", ReplyAction="http://tempuri.org/IConquestionService/LeaveGameResponse")]
-        bool LeaveGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/LeaveGame", ReplyAction="http://tempuri.org/IConquestionService/LeaveGameResponse")]
-        System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse")]
-        ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse")]
-        System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/StartGame", ReplyAction="http://tempuri.org/IConquestionService/StartGameResponse")]
-        bool StartGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/StartGame", ReplyAction="http://tempuri.org/IConquestionService/StartGameResponse")]
-        System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CheckPlayerAnswers", ReplyAction="http://tempuri.org/IConquestionService/CheckPlayerAnswersResponse")]
+        System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/SubmitAnswer", ReplyAction="http://tempuri.org/IConquestionService/SubmitAnswerResponse")]
         void SubmitAnswer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.PlayerAnswer playerAnswer);
@@ -785,6 +813,24 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/GetRoundWinner", ReplyAction="http://tempuri.org/IConquestionService/GetRoundWinnerResponse")]
         System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player> GetRoundWinnerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/GetRandomQuestion", ReplyAction="http://tempuri.org/IConquestionService/GetRandomQuestionResponse")]
+        ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Question GetRandomQuestion(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/GetRandomQuestion", ReplyAction="http://tempuri.org/IConquestionService/GetRandomQuestionResponse")]
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Question> GetRandomQuestionAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/DetermineGameWinner", ReplyAction="http://tempuri.org/IConquestionService/DetermineGameWinnerResponse")]
+        ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player DetermineGameWinner(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/DetermineGameWinner", ReplyAction="http://tempuri.org/IConquestionService/DetermineGameWinnerResponse")]
+        System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player> DetermineGameWinnerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswers", ReplyAction="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswersResponse")]
+        int DetermineNoOfCorrectAnswers(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswers", ReplyAction="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswersResponse")]
+        System.Threading.Tasks.Task<int> DetermineNoOfCorrectAnswersAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -822,6 +868,14 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
             return base.Channel.CreatePlayerAsync(player);
         }
         
+        public ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player RetrievePlayer(string name) {
+            return base.Channel.RetrievePlayer(name);
+        }
+        
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player> RetrievePlayerAsync(string name) {
+            return base.Channel.RetrievePlayerAsync(name);
+        }
+        
         public void CreateGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
             base.Channel.CreateGame(game);
         }
@@ -830,12 +884,20 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
             return base.Channel.CreateGameAsync(game);
         }
         
-        public void AddPlayer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player) {
-            base.Channel.AddPlayer(game, player);
+        public void CreateGame2(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, string questionSet, int noOfRounds) {
+            base.Channel.CreateGame2(game, questionSet, noOfRounds);
         }
         
-        public System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player) {
-            return base.Channel.AddPlayerAsync(game, player);
+        public System.Threading.Tasks.Task CreateGame2Async(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, string questionSet, int noOfRounds) {
+            return base.Channel.CreateGame2Async(game, questionSet, noOfRounds);
+        }
+        
+        public void AddPlayer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            base.Channel.AddPlayer(game);
+        }
+        
+        public System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.AddPlayerAsync(game);
         }
         
         public ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game[] ActiveGames() {
@@ -854,28 +916,60 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
             return base.Channel.ChooseGameAsync(name, retrieveAssociation);
         }
         
+        public bool JoinGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.JoinGame(game);
+        }
+        
+        public System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.JoinGameAsync(game);
+        }
+        
+        public bool LeaveGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.LeaveGame(game);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.LeaveGameAsync(game);
+        }
+        
+        public ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.RetrieveAllPlayersByGameId(game);
+        }
+        
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.RetrieveAllPlayersByGameIdAsync(game);
+        }
+        
+        public bool StartGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.StartGame(game);
+        }
+        
+        public System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.StartGameAsync(game);
+        }
+        
+        public void AddQuestionSet(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet questionSet) {
+            base.Channel.AddQuestionSet(game, questionSet);
+        }
+        
+        public System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet questionSet) {
+            return base.Channel.AddQuestionSetAsync(game, questionSet);
+        }
+        
+        public bool CheckIfGameIsFinished(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.CheckIfGameIsFinished(game);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckIfGameIsFinishedAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.CheckIfGameIsFinishedAsync(game);
+        }
+        
         public ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet[] RetrieveAllQuestionSets() {
             return base.Channel.RetrieveAllQuestionSets();
         }
         
         public System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet[]> RetrieveAllQuestionSetsAsync() {
             return base.Channel.RetrieveAllQuestionSetsAsync();
-        }
-        
-        public bool ValidateAnswer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Answer answer) {
-            return base.Channel.ValidateAnswer(answer);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ValidateAnswerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Answer answer) {
-            return base.Channel.ValidateAnswerAsync(answer);
-        }
-        
-        public bool CheckPlayerAnswers(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round) {
-            return base.Channel.CheckPlayerAnswers(game, round);
-        }
-        
-        public System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round) {
-            return base.Channel.CheckPlayerAnswersAsync(game, round);
         }
         
         public ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet RetrieveQuestionSet(int id) {
@@ -894,52 +988,20 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
             return base.Channel.RetrieveQuestionSetByTitleAsync(title);
         }
         
-        public void AddQuestionSet(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet questionSet) {
-            base.Channel.AddQuestionSet(game, questionSet);
+        public bool ValidateAnswer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Answer answer) {
+            return base.Channel.ValidateAnswer(answer);
         }
         
-        public System.Threading.Tasks.Task AddQuestionSetAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet questionSet) {
-            return base.Channel.AddQuestionSetAsync(game, questionSet);
+        public System.Threading.Tasks.Task<bool> ValidateAnswerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Answer answer) {
+            return base.Channel.ValidateAnswerAsync(answer);
         }
         
-        public ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player RetrievePlayer(string name) {
-            return base.Channel.RetrievePlayer(name);
+        public bool CheckPlayerAnswers(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round) {
+            return base.Channel.CheckPlayerAnswers(game, round);
         }
         
-        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player> RetrievePlayerAsync(string name) {
-            return base.Channel.RetrievePlayerAsync(name);
-        }
-        
-        public bool JoinGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player) {
-            return base.Channel.JoinGame(game, player);
-        }
-        
-        public System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player) {
-            return base.Channel.JoinGameAsync(game, player);
-        }
-        
-        public bool LeaveGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player) {
-            return base.Channel.LeaveGame(game, player);
-        }
-        
-        public System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player) {
-            return base.Channel.LeaveGameAsync(game, player);
-        }
-        
-        public ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
-            return base.Channel.RetrieveAllPlayersByGameId(game);
-        }
-        
-        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
-            return base.Channel.RetrieveAllPlayersByGameIdAsync(game);
-        }
-        
-        public bool StartGame(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player) {
-            return base.Channel.StartGame(game, player);
-        }
-        
-        public System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player player) {
-            return base.Channel.StartGameAsync(game, player);
+        public System.Threading.Tasks.Task<bool> CheckPlayerAnswersAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round) {
+            return base.Channel.CheckPlayerAnswersAsync(game, round);
         }
         
         public void SubmitAnswer(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round, ConquestionGame.Presentation.WebClient.ConquestionServiceReference.PlayerAnswer playerAnswer) {
@@ -972,6 +1034,30 @@ namespace ConquestionGame.Presentation.WebClient.ConquestionServiceReference {
         
         public System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player> GetRoundWinnerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Round round) {
             return base.Channel.GetRoundWinnerAsync(round);
+        }
+        
+        public ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Question GetRandomQuestion(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.GetRandomQuestion(game);
+        }
+        
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Question> GetRandomQuestionAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.GetRandomQuestionAsync(game);
+        }
+        
+        public ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player DetermineGameWinner(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.DetermineGameWinner(game);
+        }
+        
+        public System.Threading.Tasks.Task<ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player> DetermineGameWinnerAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.DetermineGameWinnerAsync(game);
+        }
+        
+        public int DetermineNoOfCorrectAnswers(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.DetermineNoOfCorrectAnswers(game);
+        }
+        
+        public System.Threading.Tasks.Task<int> DetermineNoOfCorrectAnswersAsync(ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game game) {
+            return base.Channel.DetermineNoOfCorrectAnswersAsync(game);
         }
     }
 }

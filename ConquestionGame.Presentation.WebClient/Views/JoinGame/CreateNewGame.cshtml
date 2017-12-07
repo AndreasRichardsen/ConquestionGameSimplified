@@ -1,32 +1,52 @@
-﻿@model ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game
+﻿@model ConquestionGame.Presentation.WebClient.ViewModels.CreateGameViewModel
 
 @{
     ViewBag.Title = "CreateNewGame";
 }
+
+<h2>CreateNewGame</h2>
+
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Game</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Game.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Game.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Game.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Game.QuestionSet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.SelectedQuestionSetID, new SelectList(Model.QuestionSets, "Id", "Title"), "Select Question Set")
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Game.NoOfRounds, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Game.NoOfRounds, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Game.NoOfRounds, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create Game" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

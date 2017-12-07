@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ConquestionGame.Presentation.WebClient.ConquestionServiceReference;
+using System.Net;
+using ConquestionGame.Presentation.WebClient.ViewModels;
+using ConquestionGame.Presentation.WebClient.Helpers;
 
 namespace ConquestionGame.Presentation.WebClient.Controllers
 {
@@ -11,6 +14,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
     {
         public PlayerCredentials PC { get; set; }
         ConquestionServiceClient client = new ConquestionServiceClient();
+       
 
         [HttpGet]
         public ActionResult Login()
@@ -20,31 +24,28 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 
         // An instance of player is saved to PC
         [HttpPost]
-        public ActionResult Login(Player aPlayer)
+        public ActionResult Login(LoginViewModel loginViewModel)
         {
-            PC = PlayerCredentials.Instance;
-            Player foundPlayer = new Player();
-            foundPlayer = client.RetrievePlayer(aPlayer.Name);
-            if (!string.IsNullOrEmpty(aPlayer.Name))
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+            bool canLogIn = false;
+            using(var authServ = ServiceHelper.GetAuthServiceClient())
             {
-                if (foundPlayer == null)
-                {
-                    Player ourPlayer = new Player()
-                    {
-                        Name = aPlayer.Name
-                    };
-
-                    client.CreatePlayer(ourPlayer);
-                    Player player = client.RetrievePlayer(aPlayer.Name);
-                    PC.Player = player;
-                }
-                else
-                {
-                    Player player = client.RetrievePlayer(aPlayer.Name);
-                    PC.Player = player;
-                }
+                canLogIn = authServ.Login(loginViewModel.Username, loginViewModel.Password);
             }
-            return RedirectToAction("GetActiveGames", "JoinGame");
+
+            if (canLogIn)
+            {
+                // Sets the current HTTP context to the valid credentials provided
+                AuthHelper.Login(loginViewModel);
+                return RedirectToAction("GetActiveGames", "JoinGame");
+            }
+            else
+            {
+                ViewBag.StatusMessage = "Could not log in. Invalid Credentials.";
+                return View("Login");
+            }
+
+            
         }
     }
 }

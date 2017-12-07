@@ -5,12 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using ConquestionGame.Presentation.WebClient.ViewModels;
 using ConquestionGame.Presentation.WebClient.ConquestionServiceReference;
+using ConquestionGame.Presentation.WebClient.Helpers;
 
 namespace ConquestionGame.Presentation.WebClient.Controllers
 {
     public class QuizController : Controller
     {
-        ConquestionServiceClient client = new ConquestionServiceClient();
+        static LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
+        ConquestionServiceClient client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password);
 
         Game CurrentGame = null;
         Round CurrentRound = null;
@@ -19,7 +21,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 
         public ActionResult StartQuiz()
         {
-            client.StartGame(GameInstance.Instance.Game, PlayerCredentials.Instance.Player);
+            client.StartGame(GameInstance.Instance.Game);
       
             GameInstance.Instance.UpdateCurrentGame();
             RoundInstance.Instance.Round = GameInstance.Instance.Game.Rounds[0];

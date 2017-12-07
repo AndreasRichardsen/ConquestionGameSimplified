@@ -28,7 +28,8 @@ namespace ConquestionGame.Presentation.WinForm
             if (!string.IsNullOrEmpty(textBox1.Text) &&  comboBox2.SelectedItem != null)
             {
                 QuestionSet questionSet = client.RetrieveQuestionSetByTitle(comboBox2.Text);
-                client.CreateGame(new Game { Name = textBox1.Text }, questionSet.Title, Int32.Parse(maskedTextBox1.Text));
+
+                client.CreateGame2(new Game { Name = textBox1.Text }, questionSet.Title, Int32.Parse(maskedTextBox1.Text));
                 Game game = client.RetrieveGame(textBox1.Text, false); ;
 
                 client.AddPlayer(game, PlayerCredentials.Instance.Player);
