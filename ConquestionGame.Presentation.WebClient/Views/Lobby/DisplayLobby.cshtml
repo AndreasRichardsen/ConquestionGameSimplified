@@ -4,7 +4,8 @@
     ViewBag.Title = "DisplayLobby";
 }
 
-<h2>Welcome to the Lobby</h2>
+<h2 id="ChangeMe">Welcome to the Lobby</h2>
+<h2>@ViewBag.GameName</h2>
 
 <table class="table">
     <tr>
@@ -19,17 +20,26 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
-                        @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-                        *@
-            
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) 
-           
-        </td>
+        
     </tr>
 }
 
 </table>
 
-@Html.ActionLink("Start Game", "StartQuiz", "Quiz", new { area = "" }, new { @class = "btn btn-primary" })
+<div>
+    <p>Question Set Description: @ViewBag.QSDescription</p>
+    <p>Question Set Title: @ViewBag.QSName</p>
+</div>
+
+
+@if (@ViewBag.IsHost == true)
+{
+    @Html.ActionLink("Start Game", "StartQuiz", "Quiz", new { area = "" }, new { @class = "btn btn-primary" })
+}
+
+@if (@ViewBag.IsHost == false)
+{
+    <p>You can't start the game because you are not the game host. Sorry.</p>
+}
+
+
