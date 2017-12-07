@@ -132,17 +132,17 @@
   <wsdl:message name="IConquestionService_AddPlayer_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddPlayerResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_ActiveGames_InputMessage">
-    <wsdl:part name="parameters" element="tns:ActiveGames" />
+  <wsdl:message name="IConquestionService_RetrieveActiveGames_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveActiveGames" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_ActiveGames_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ActiveGamesResponse" />
+  <wsdl:message name="IConquestionService_RetrieveActiveGames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveActiveGamesResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_ChooseGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:ChooseGame" />
+  <wsdl:message name="IConquestionService_RetrieveGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveGame" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_ChooseGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ChooseGameResponse" />
+  <wsdl:message name="IConquestionService_RetrieveGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveGameResponse" />
   </wsdl:message>
   <wsdl:message name="IConquestionService_JoinGame_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinGame" />
@@ -179,6 +179,18 @@
   </wsdl:message>
   <wsdl:message name="IConquestionService_CheckIfGameIsFinished_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckIfGameIsFinishedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConquestionService_DetermineGameWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetermineGameWinner" />
+  </wsdl:message>
+  <wsdl:message name="IConquestionService_DetermineGameWinner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetermineGameWinnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConquestionService_DetermineNoOfCorrectAnswers_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetermineNoOfCorrectAnswers" />
+  </wsdl:message>
+  <wsdl:message name="IConquestionService_DetermineNoOfCorrectAnswers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetermineNoOfCorrectAnswersResponse" />
   </wsdl:message>
   <wsdl:message name="IConquestionService_RetrieveAllQuestionSets_InputMessage">
     <wsdl:part name="parameters" element="tns:RetrieveAllQuestionSets" />
@@ -228,29 +240,17 @@
   <wsdl:message name="IConquestionService_CreateRound_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateRoundResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_GetRoundWinner_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRoundWinner" />
+  <wsdl:message name="IConquestionService_RetrieveRoundWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveRoundWinner" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_GetRoundWinner_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetRoundWinnerResponse" />
+  <wsdl:message name="IConquestionService_RetrieveRoundWinner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveRoundWinnerResponse" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_GetRandomQuestion_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRandomQuestion" />
+  <wsdl:message name="IConquestionService_RetrieveRandomQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveRandomQuestion" />
   </wsdl:message>
-  <wsdl:message name="IConquestionService_GetRandomQuestion_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetRandomQuestionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_DetermineGameWinner_InputMessage">
-    <wsdl:part name="parameters" element="tns:DetermineGameWinner" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_DetermineGameWinner_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DetermineGameWinnerResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_DetermineNoOfCorrectAnswers_InputMessage">
-    <wsdl:part name="parameters" element="tns:DetermineNoOfCorrectAnswers" />
-  </wsdl:message>
-  <wsdl:message name="IConquestionService_DetermineNoOfCorrectAnswers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DetermineNoOfCorrectAnswersResponse" />
+  <wsdl:message name="IConquestionService_RetrieveRandomQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveRandomQuestionResponse" />
   </wsdl:message>
   <wsdl:portType name="IConquestionService">
     <wsdl:operation name="CreatePlayer">
@@ -269,13 +269,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/AddPlayer" message="tns:IConquestionService_AddPlayer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/AddPlayerResponse" message="tns:IConquestionService_AddPlayer_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ActiveGames">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/ActiveGames" message="tns:IConquestionService_ActiveGames_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/ActiveGamesResponse" message="tns:IConquestionService_ActiveGames_OutputMessage" />
+    <wsdl:operation name="RetrieveActiveGames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveActiveGames" message="tns:IConquestionService_RetrieveActiveGames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RetrieveActiveGamesResponse" message="tns:IConquestionService_RetrieveActiveGames_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ChooseGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/ChooseGame" message="tns:IConquestionService_ChooseGame_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/ChooseGameResponse" message="tns:IConquestionService_ChooseGame_OutputMessage" />
+    <wsdl:operation name="RetrieveGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveGame" message="tns:IConquestionService_RetrieveGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RetrieveGameResponse" message="tns:IConquestionService_RetrieveGame_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="JoinGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/JoinGame" message="tns:IConquestionService_JoinGame_InputMessage" />
@@ -300,6 +300,14 @@
     <wsdl:operation name="CheckIfGameIsFinished">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/CheckIfGameIsFinished" message="tns:IConquestionService_CheckIfGameIsFinished_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/CheckIfGameIsFinishedResponse" message="tns:IConquestionService_CheckIfGameIsFinished_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetermineGameWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/DetermineGameWinner" message="tns:IConquestionService_DetermineGameWinner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/DetermineGameWinnerResponse" message="tns:IConquestionService_DetermineGameWinner_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetermineNoOfCorrectAnswers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswers" message="tns:IConquestionService_DetermineNoOfCorrectAnswers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswersResponse" message="tns:IConquestionService_DetermineNoOfCorrectAnswers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RetrieveAllQuestionSets">
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveAllQuestionSets" message="tns:IConquestionService_RetrieveAllQuestionSets_InputMessage" />
@@ -333,21 +341,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/CreateRound" message="tns:IConquestionService_CreateRound_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/CreateRoundResponse" message="tns:IConquestionService_CreateRound_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetRoundWinner">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/GetRoundWinner" message="tns:IConquestionService_GetRoundWinner_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/GetRoundWinnerResponse" message="tns:IConquestionService_GetRoundWinner_OutputMessage" />
+    <wsdl:operation name="RetrieveRoundWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveRoundWinner" message="tns:IConquestionService_RetrieveRoundWinner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RetrieveRoundWinnerResponse" message="tns:IConquestionService_RetrieveRoundWinner_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetRandomQuestion">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/GetRandomQuestion" message="tns:IConquestionService_GetRandomQuestion_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/GetRandomQuestionResponse" message="tns:IConquestionService_GetRandomQuestion_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DetermineGameWinner">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/DetermineGameWinner" message="tns:IConquestionService_DetermineGameWinner_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/DetermineGameWinnerResponse" message="tns:IConquestionService_DetermineGameWinner_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DetermineNoOfCorrectAnswers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswers" message="tns:IConquestionService_DetermineNoOfCorrectAnswers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswersResponse" message="tns:IConquestionService_DetermineNoOfCorrectAnswers_OutputMessage" />
+    <wsdl:operation name="RetrieveRandomQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConquestionService/RetrieveRandomQuestion" message="tns:IConquestionService_RetrieveRandomQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConquestionService/RetrieveRandomQuestionResponse" message="tns:IConquestionService_RetrieveRandomQuestion_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IConquestionService" type="tns:IConquestionService">
@@ -389,8 +389,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ActiveGames">
-      <soap12:operation soapAction="http://tempuri.org/IConquestionService/ActiveGames" style="document" />
+    <wsdl:operation name="RetrieveActiveGames">
+      <soap12:operation soapAction="http://tempuri.org/IConquestionService/RetrieveActiveGames" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -398,8 +398,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ChooseGame">
-      <soap12:operation soapAction="http://tempuri.org/IConquestionService/ChooseGame" style="document" />
+    <wsdl:operation name="RetrieveGame">
+      <soap12:operation soapAction="http://tempuri.org/IConquestionService/RetrieveGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -454,6 +454,24 @@
     </wsdl:operation>
     <wsdl:operation name="CheckIfGameIsFinished">
       <soap12:operation soapAction="http://tempuri.org/IConquestionService/CheckIfGameIsFinished" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetermineGameWinner">
+      <soap12:operation soapAction="http://tempuri.org/IConquestionService/DetermineGameWinner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetermineNoOfCorrectAnswers">
+      <soap12:operation soapAction="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -533,8 +551,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRoundWinner">
-      <soap12:operation soapAction="http://tempuri.org/IConquestionService/GetRoundWinner" style="document" />
+    <wsdl:operation name="RetrieveRoundWinner">
+      <soap12:operation soapAction="http://tempuri.org/IConquestionService/RetrieveRoundWinner" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -542,26 +560,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRandomQuestion">
-      <soap12:operation soapAction="http://tempuri.org/IConquestionService/GetRandomQuestion" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DetermineGameWinner">
-      <soap12:operation soapAction="http://tempuri.org/IConquestionService/DetermineGameWinner" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DetermineNoOfCorrectAnswers">
-      <soap12:operation soapAction="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswers" style="document" />
+    <wsdl:operation name="RetrieveRandomQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IConquestionService/RetrieveRandomQuestion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

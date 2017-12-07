@@ -27,19 +27,11 @@ namespace ConquestionGame.Presentation.WinForm
         {
             if (!string.IsNullOrEmpty(textBox1.Text) &&  comboBox2.SelectedItem != null)
             {
-                //label4.Text = comboBox1.SelectedText;
                 QuestionSet questionSet = client.RetrieveQuestionSetByTitle(comboBox2.Text);
                 client.CreateGame(new Game { Name = textBox1.Text }, questionSet.Title, Int32.Parse(maskedTextBox1.Text));
-                Game game = client.ChooseGame(textBox1.Text, false); ;
-              
-                //QuestionSet questionSet = client.RetrieveQuestionSetByTitle(comboBox2.Text);
-             
-                //client.AddQuestionSet(game, questionSet);
+                Game game = client.RetrieveGame(textBox1.Text, false); ;
+
                 client.AddPlayer(game, PlayerCredentials.Instance.Player);
-
-
-                MessageBox.Show("Game created!", "Info",
-                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.Hide();
                 (new Lobby(game, client)).Show();
@@ -80,8 +72,6 @@ namespace ConquestionGame.Presentation.WinForm
         private void CreateGame_Load(object sender, EventArgs e)
         {
             label4.Text = PlayerCredentials.Instance.Player.Name;
-            // Not supposed to create a game on loading the page Tamas.
-            //service.CreateGame(new Game { Name = textBox1.Text});
         }
 
         private void back_button_Click(object sender, EventArgs e)

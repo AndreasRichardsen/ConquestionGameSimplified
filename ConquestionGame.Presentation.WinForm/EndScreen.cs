@@ -57,41 +57,18 @@ namespace ConquestionGame.Presentation.WinForm
                 i += 2;
             }
 
-
-            //if(CurrentGame.Players.Count() == 4)
-            //{
-            //    label1.Text = CurrentGame.Players[0].Name;
-            //    label2.Text = String.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, CurrentGame.Players[0]));
-            //    label3.Text = CurrentGame.Players[1].Name;
-            //    label4.Text = String.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, CurrentGame.Players[1]));
-            //    label5.Text = CurrentGame.Players[2].Name;
-            //    label6.Text = String.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, CurrentGame.Players[2]));
-            //    label7.Text = CurrentGame.Players[3].Name;
-            //    label8.Text = String.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, CurrentGame.Players[3]));
-            //} 
-            //else if(CurrentGame.Players.Count() == 3)
-            //{
-            //    label1.Text = CurrentGame.Players[0].Name;
-            //    label2.Text = String.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, CurrentGame.Players[0]));
-            //    label3.Text = CurrentGame.Players[1].Name;
-            //    label4.Text = String.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, CurrentGame.Players[1]));
-            //    label5.Text = CurrentGame.Players[2].Name;
-            //    label6.Text = String.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, CurrentGame.Players[2]));
-            //}
-            //else if (CurrentGame.Players.Count() == 2)
-            //{
-            //    label1.Text = CurrentGame.Players[0].Name;
-            //    label2.Text = String.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, CurrentGame.Players[0]));
-            //    label3.Text = CurrentGame.Players[1].Name;
-            //    label4.Text = String.Format("{0}", Client.DetermineNoOfCorrectAnswers(CurrentGame, CurrentGame.Players[1]));
-
-            //}
-
         }
 
         private void EndScreen_Closing(object sender, FormClosingEventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new JoinGame(Client)).Show();
+            GameInstance.Instance.Game = null;
         }
     }
 }
