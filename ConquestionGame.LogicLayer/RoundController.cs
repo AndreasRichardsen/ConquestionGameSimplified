@@ -67,7 +67,7 @@ namespace ConquestionGame.LogicLayer
                             }
 
                             newRound.QuestionStartTime = DateTime.Now;
-                            var question = GetRandomQuestion(gameEntity);
+                            var question = RetrieveRandomQuestion(gameEntity);
                             var questionEntity = db.Questions.Include("Answers").Where(q => q.Id == question.Id).FirstOrDefault();
                             newRound.Question = questionEntity;
                             gameEntity.Rounds.Add(newRound);
@@ -77,9 +77,7 @@ namespace ConquestionGame.LogicLayer
                         }
                         else
                         {
-                            gameEntity.GameStatus = Game.GameStatusEnum.finished;
-                            db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
-                            db.SaveChanges();
+                            
                         }
                         transaction.Commit();
                     }
@@ -159,7 +157,7 @@ namespace ConquestionGame.LogicLayer
             }
         }
 
-        public Player GetRoundWinner(Round round)
+        public Player RetrieveRoundWinner(Round round)
         {
             using (var db = new ConquestionDBContext())
             {
@@ -168,7 +166,7 @@ namespace ConquestionGame.LogicLayer
             }
         }
 
-        public Question GetRandomQuestion(Game game)
+        public Question RetrieveRandomQuestion(Game game)
         {
             using (var db = new ConquestionDBContext())
             {

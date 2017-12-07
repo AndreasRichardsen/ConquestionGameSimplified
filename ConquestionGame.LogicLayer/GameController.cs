@@ -65,7 +65,6 @@ namespace ConquestionGame.LogicLayer
                     {
                         foreach (Question q in allQuestionsEntity)
                         {
-                            // askedQuestionEntity.Add(new AskedQuestion { GameId = game.Id, QuestionId = q.Id, HasBeenAsked = false });
                             db.AskedQuestions.Add(new AskedQuestion { GameId = game.Id, QuestionId = q.Id, HasBeenAsked = false });
                             db.SaveChanges();
 
@@ -138,7 +137,7 @@ namespace ConquestionGame.LogicLayer
 
         }
 
-        public Game ChooseGame(string name, bool retrieveAssociations)
+        public Game RetrieveGame(string name, bool retrieveAssociations)
         {
             using (var db = new ConquestionDBContext())
             {
@@ -167,7 +166,7 @@ namespace ConquestionGame.LogicLayer
 
         }
 
-        public List<Game> ActiveGames()
+        public List<Game> RetrieveActiveGames()
         {
             using (var db = new ConquestionDBContext())
             {
@@ -290,7 +289,7 @@ namespace ConquestionGame.LogicLayer
                     gameEntity.GameStatus = Game.GameStatusEnum.ongoing;
                     gameEntity.Rounds = new List<Round>();
                     Round firstRound = new Round { RoundNo = 1, QuestionStartTime = DateTime.Now };
-                    var randQuestion = roundCtr.GetRandomQuestion(gameEntity);
+                    var randQuestion = roundCtr.RetrieveRandomQuestion(gameEntity);
                     var questionEntity = db.Questions.Include("Answers").Where(r => r.Id == randQuestion.Id).FirstOrDefault();
                     firstRound.Question = questionEntity;
                     gameEntity.Rounds.Add(firstRound);
@@ -353,10 +352,18 @@ namespace ConquestionGame.LogicLayer
             using (var db = new ConquestionDBContext())
             {
                 bool finished = false;
-                Game gameEntity = db.Games.AsNoTracking().Where(g => g.Id == game.Id).FirstOrDefault();
-                if (gameEntity.GameStatus == Game.GameStatusEnum.finished)
+                Game gameEntity = db.Games.Include("Rounds").Include("Players").AsNoTracking().Where(g => g.Id == game.Id).FirstOrDefault();
+                int elapsedSeconds = (int)(DateTime.Now - gameEntity.Rounds.Last().QuestionStartTime).TotalSeconds;
+                if(gameEntity.Rounds.Count() == gameEntity.NoOfRounds)
                 {
-                    finished = true;
+                    if(roundCtr.CheckIfAllPlayersAnswered(gameEntity, gameEntity.Rounds.Last()) || elapsedSeconds == 30)
+                    {
+                        gameEntity.GameStatus = Game.GameStatusEnum.finished;
+                        db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        finished = true;
+                    }
+
                 }
                 return finished; 
             }

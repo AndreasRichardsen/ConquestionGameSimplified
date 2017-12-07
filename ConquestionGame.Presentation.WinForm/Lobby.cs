@@ -19,7 +19,7 @@ namespace ConquestionGame.Presentation.WinForm
         {
             InitializeComponent();
             client = conquestionServiceClient;
-            Game gameEntity = client.ChooseGame(game.Name, true);
+            Game gameEntity = client.RetrieveGame(game.Name, true);
             GameInstance.Instance.Game = gameEntity;
             GameInstance.Instance.client = client;
             label1.Text = gameEntity.Name;
@@ -39,7 +39,7 @@ namespace ConquestionGame.Presentation.WinForm
         {
             if (GameInstance.Instance.Game != null)
             {
-                Game gameEntity = client.ChooseGame(GameInstance.Instance.Game.Name, true);
+                Game gameEntity = client.RetrieveGame(GameInstance.Instance.Game.Name, true);
 
                 listBox1.DataSource = gameEntity.Players;
                 listBox1.DisplayMember = "Name";
@@ -98,7 +98,7 @@ namespace ConquestionGame.Presentation.WinForm
             //Checks to see if the game has been started by the lobby host
             if (GameInstance.Instance.Game != null)
             {
-                var gameEntity = client.ChooseGame(GameInstance.Instance.Game.Name, false);
+                var gameEntity = client.RetrieveGame(GameInstance.Instance.Game.Name, false);
                 if (gameEntity.GameStatus == Game.GameStatusEnum.ongoing)
                 {
                     StartGameWindow();
@@ -110,7 +110,7 @@ namespace ConquestionGame.Presentation.WinForm
         {
             if (GameInstance.Instance.Game != null)
             {
-                var gameEntity = client.ChooseGame(GameInstance.Instance.Game.Name, true);
+                var gameEntity = client.RetrieveGame(GameInstance.Instance.Game.Name, true);
                 if (PlayerCredentials.Instance.Player.Name.Equals(gameEntity.Players[0].Name))
                 {
                     Start_Game.Enabled = true;

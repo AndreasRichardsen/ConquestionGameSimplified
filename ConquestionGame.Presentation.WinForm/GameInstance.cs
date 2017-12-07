@@ -32,7 +32,7 @@ namespace ConquestionGame.Presentation.WinForm
 
         public void UpdateCurrentGame()
         {
-            Game gameEntity = client.ChooseGame(Game.Name, true);
+            Game gameEntity = client.RetrieveGame(Game.Name, true);
             Game = gameEntity;
         }
     }

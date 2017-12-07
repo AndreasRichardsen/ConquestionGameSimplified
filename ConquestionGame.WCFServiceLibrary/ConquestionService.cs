@@ -40,14 +40,14 @@ namespace ConquestionGame.WCFServiceLibrary
             gameCtr.AddPlayer(game, player);
         }
 
-        public List<Game> ActiveGames()
+        public List<Game> RetrieveActiveGames()
         {
-            return gameCtr.ActiveGames();
+            return gameCtr.RetrieveActiveGames();
         }
 
-        public Game ChooseGame(string name, bool retrieveAssociation)
+        public Game RetrieveGame(string name, bool retrieveAssociation)
         {
-            return gameCtr.ChooseGame(name, retrieveAssociation);
+            return gameCtr.RetrieveGame(name, retrieveAssociation);
         }
 
         public List<QuestionSet> RetrieveAllQuestionSets()
@@ -125,14 +125,14 @@ namespace ConquestionGame.WCFServiceLibrary
             roundCtr.CreateRound(game);
         }
 
-        public Player GetRoundWinner(Round round)
+        public Player RetrieveRoundWinner(Round round)
         {
-            return roundCtr.GetRoundWinner(round);
+            return roundCtr.RetrieveRoundWinner(round);
         }
 
-        public Question GetRandomQuestion(Game game)
+        public Question RetrieveRandomQuestion(Game game)
         {
-            return roundCtr.GetRandomQuestion(game);
+            return roundCtr.RetrieveRandomQuestion(game);
         }
 
         public Player DetermineGameWinner(Game game)

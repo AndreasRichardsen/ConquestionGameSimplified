@@ -19,9 +19,9 @@ namespace ConquestionGame.Presentation.WinForm
         {
             InitializeComponent();
             client = ConquestionServiceClient;
-            if (client.ActiveGames().Length != 0)
+            if (client.RetrieveActiveGames().Length != 0)
             {
-                listBox1.DataSource = client.ActiveGames();
+                listBox1.DataSource = client.RetrieveActiveGames();
                 listBox1.DisplayMember = "Name";
                 listBox1.ValueMember = "Name";
             }
@@ -41,9 +41,11 @@ namespace ConquestionGame.Presentation.WinForm
         private void JoinGame_Click(object sender, EventArgs e)
         {
             Game game = listBox1.SelectedItem as Game;
+
             Game game2 = client.ChooseGame(game.Name, false);
             //label1.Text = CurrentPlayer.Name;
             bool success = client.JoinGame(game2);
+
             if (success)
             {
                 this.Hide();
@@ -65,7 +67,6 @@ namespace ConquestionGame.Presentation.WinForm
 
         private void JoinGame_Load(object sender, EventArgs e)
         {
-            //label1.Text = PlayerCredentials.Instance.Player.Name;
             label1.Text = client.ClientCredentials.UserName.UserName;
 
             timer1.Interval = (1 * 1000); // 5 secs
@@ -82,11 +83,11 @@ namespace ConquestionGame.Presentation.WinForm
 
         private void refreshGameList()
         {
-            if (client.ActiveGames().Length != 0)
+            if (client.RetrieveActiveGames().Length != 0)
             {
                 JoinGameButton.Enabled = true;
                 int currentSelected = listBox1.SelectedIndex;
-                listBox1.DataSource = client.ActiveGames();
+                listBox1.DataSource = client.RetrieveActiveGames();
                 listBox1.DisplayMember = "Name";
                 listBox1.ValueMember = "Name";
                 try

@@ -64,7 +64,7 @@
             this.comboBox2.Location = new System.Drawing.Point(390, 219);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 28);
-            this.comboBox2.TabIndex = 4;
+            this.comboBox2.TabIndex = 2;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label3
@@ -81,7 +81,7 @@
             this.button1.Location = new System.Drawing.Point(351, 432);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 29);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Create Game";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -101,7 +101,7 @@
             this.back_button.Location = new System.Drawing.Point(351, 572);
             this.back_button.Name = "back_button";
             this.back_button.Size = new System.Drawing.Size(140, 29);
-            this.back_button.TabIndex = 8;
+            this.back_button.TabIndex = 5;
             this.back_button.Text = "Cancel";
             this.back_button.UseVisualStyleBackColor = true;
             this.back_button.Click += new System.EventHandler(this.back_button_Click);
@@ -113,7 +113,7 @@
             this.maskedTextBox1.Mask = "00";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(121, 26);
-            this.maskedTextBox1.TabIndex = 9;
+            this.maskedTextBox1.TabIndex = 3;
             this.maskedTextBox1.Text = "50";
             this.maskedTextBox1.ValidatingType = typeof(int);
             // 
