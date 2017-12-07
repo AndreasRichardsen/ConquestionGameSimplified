@@ -22,3 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.CustomLinkCss {
+    text-decoration:none;
+    display:block;
+    color: red;
+}
+
+a {
+    display: inline-block;
+}
+
+#myDiv p {
+    margin:5px;
+    padding: 10px;
+    display:inline-block;
+}
+

@@ -11,9 +11,6 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
     {
         ConquestionServiceClient client = new ConquestionServiceClient();
 
-        Game CurrentGame = new Game();
-
-
         // Gets a list of active games from the db to be displayed on the view
         public ActionResult GetActiveGames()
         {

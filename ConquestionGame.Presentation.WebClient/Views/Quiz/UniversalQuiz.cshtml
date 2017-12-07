@@ -1,0 +1,46 @@
+﻿@model ConquestionGame.Presentation.WebClient.ViewModels.QuizViewModel
+
+@{
+    ViewBag.Title = "UniversalQuiz";
+}
+
+@section TimerScript {
+    <script type="text/javascript" src="~/Scripts/TimerScript.js"></script>
+}
+
+<h2>Quiz Time</h2>
+
+<div>
+
+    <h3>Question number: @Model.CurrentRound.RoundNo</h3>
+    <hr />
+    <h2>@Model.CurrentQuestion.Text</h2>
+
+    @foreach (var item in Model.CurrentQuestion.Answers)
+    {
+        <p style="margin:5px;padding: 10px;display:block;">@Html.ActionLink(@item.Text, "AnswerSelected", new { id = item.Id })</p>
+    }
+</div>
+
+<hr />
+
+<div id="some_div"></div>
+
+<script>
+    var timeLeft = 10;
+    var elem = document.getElementById('some_div');
+
+    var timerId = setInterval(countdown, 1000);
+
+    function countdown() {
+        if (timeLeft == 0) {
+            clearTimeout(timerId);
+            var id = 0;
+            window.location.href = '/Quiz/AnswerSelected/' + id;
+        }
+        else {
+            elem.innerHTML = timeLeft + ' seconds remaining';
+            timeLeft--;
+        }
+    }
+</script>
