@@ -55,7 +55,7 @@ namespace ConquestionGame.LogicLayer.Tests
             Game chosenGame = new Game();
 
             //Act
-            chosenGame = ctr.ChooseGame("TestGame", false);
+            chosenGame = ctr.RetrieveGame("TestGame", false);
 
             //Assert
             Assert.AreEqual(1, chosenGame.Id);
@@ -68,7 +68,7 @@ namespace ConquestionGame.LogicLayer.Tests
             Game chosenGame = new Game();
 
             //Act
-            chosenGame = ctr.ChooseGame("FailTest", false);
+            chosenGame = ctr.RetrieveGame("FailTest", false);
 
             //Assert
             Assert.Null(chosenGame);
@@ -81,7 +81,7 @@ namespace ConquestionGame.LogicLayer.Tests
             List<Game> activeGame = new List<Game>();
 
             //Act
-            activeGame = ctr.ActiveGames();
+            activeGame = ctr.RetrieveActiveGames();
 
             //Assert
             Assert.AreEqual(1, activeGame.Count);

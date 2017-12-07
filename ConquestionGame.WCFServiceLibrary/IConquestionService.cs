@@ -28,10 +28,10 @@ namespace ConquestionGame.WCFServiceLibrary
         void AddPlayer(Game game, Player player);
 
         [OperationContract]
-        List<Game> ActiveGames();
+        List<Game> RetrieveActiveGames();
 
         [OperationContract]
-        Game ChooseGame(string name, bool retrieveAssociation);
+        Game RetrieveGame(string name, bool retrieveAssociation);
 
         [OperationContract]
         bool JoinGame(Game game, Player player);
@@ -47,8 +47,15 @@ namespace ConquestionGame.WCFServiceLibrary
 
         [OperationContract]
         void AddQuestionSet(Game game, QuestionSet questionSet);
+
         [OperationContract]
         bool CheckIfGameIsFinished(Game game);
+
+        [OperationContract]
+        Player DetermineGameWinner(Game game);
+
+        [OperationContract]
+        int DetermineNoOfCorrectAnswers(Game game, Player player);
 
         //QuestionSetController
         [OperationContract]
@@ -77,12 +84,10 @@ namespace ConquestionGame.WCFServiceLibrary
         void CreateRound(Game game);
 
         [OperationContract]
-        Player GetRoundWinner(Round round);
+        Player RetrieveRoundWinner(Round round);
+
         [OperationContract]
-        Question GetRandomQuestion(Game game);
-        [OperationContract]
-        Player DetermineGameWinner(Game game);
-        [OperationContract]
-        int DetermineNoOfCorrectAnswers(Game game, Player player);
+        Question RetrieveRandomQuestion(Game game);
+        
     }
 }

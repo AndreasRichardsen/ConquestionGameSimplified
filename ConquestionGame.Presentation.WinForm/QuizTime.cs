@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -48,7 +49,7 @@ namespace ConquestionGame.Presentation.WinForm
             AnswerButton3.Text = CurrentQuestion.Answers[2].Text;
             AnswerButton4.Text = CurrentQuestion.Answers[3].Text;
 
-            QuestionNoLabel.Text = CurrentRound.RoundNo.ToString();
+            QuestionNoLabel.Text = CurrentGame.NoOfRounds.ToString() + "/" + CurrentRound.RoundNo.ToString();
         }
 
         private void UpdateGameInformation()
@@ -137,11 +138,7 @@ namespace ConquestionGame.Presentation.WinForm
                 bool playersAnswered = Client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound);
                 if (remainingSeconds <= 0 || playersAnswered)
                 {
-                    //if (PlayerCredentials.Instance.Player.Id == CurrentGame.Players.FirstOrDefault().Id)
-                   // {
-                        Client.CreateRound(CurrentGame);
-                  //  }
-
+                    Client.CreateRound(CurrentGame); 
                     EnableDisableButtons(false);
                     CheckButton();
                     timer1.Stop();
@@ -161,7 +158,7 @@ namespace ConquestionGame.Presentation.WinForm
                 int elaspedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
                 int remainingSeconds = NextRoundCoutdownTimer - elaspedSeconds;
                 StatusLabel.Text = String.Format("Seconds left until next round: {0}", remainingSeconds);
-                Player roundWinner = Client.GetRoundWinner(CurrentRound);
+                Player roundWinner = Client.RetrieveRoundWinner(CurrentRound);
                 if (roundWinner != null)
                 {
                     StatusLabel.Text += String.Format("  Round Winner: {0}!", roundWinner.Name);
@@ -201,14 +198,13 @@ namespace ConquestionGame.Presentation.WinForm
 
         private void CheckEndCondition(object sender, EventArgs e)
         {
-            if (Client.CheckIfGameIsFinished(CurrentGame))
+            if (Client.CheckIfGameIsFinished(CurrentGame) && !NextRoundCountdownCanRun)
             {
+                
                 timer1.Stop();
                 QuestionCountdownCanRun = false;
-                NextRoundCountdownCanRun = false;
                 this.Hide();
                 (new EndScreen(Client)).Show();
-                //QuestionTextField.Text = Client.DetermineGameWinner(CurrentGame).Name;
             }
         }
     }
