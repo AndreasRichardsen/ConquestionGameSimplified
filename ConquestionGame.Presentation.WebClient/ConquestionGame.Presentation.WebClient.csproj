@@ -144,6 +144,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\AuthenticationServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ConquestionServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,24 +162,53 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AuthHelper.cs" />
+    <Compile Include="Helpers\ServiceHelper.cs" />
     <Compile Include="Models\GameInstance.cs" />
     <Compile Include="Models\PlayerCredentials.cs" />
     <Compile Include="Models\RoundInstance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CreateGameViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\QuizViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ConquestionServiceReference\configuration91.svcinfo" />
-    <None Include="Connected Services\ConquestionServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\AuthenticationServiceReference\AuthenticationService.wsdl" />
+    <Content Include="Connected Services\AuthenticationServiceReference\ConquestionGame.Presentation.WebClient.AuthenticationServiceReference.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\AuthenticationServiceReference\item.disco" />
+    <None Include="Connected Services\AuthenticationServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\AuthenticationServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\AuthenticationServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Connected Services\ConquestionServiceReference\ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ConquestionServiceReference\ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Player.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ConquestionServiceReference\ConquestionGame.Presentation.WebClient.ConquestionServiceReference.Question.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ConquestionServiceReference\ConquestionGame.Presentation.WebClient.ConquestionServiceReference.QuestionSet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\AuthenticationServiceReference\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthenticationServiceReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthenticationServiceReference\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ConquestionServiceReference\ConquestionService.wsdl" />
+    <None Include="Connected Services\ConquestionServiceReference\item.disco" />
+    <None Include="Connected Services\ConquestionServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\ConquestionServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\ConquestionServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -188,14 +222,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config" />
-    <None Include="Connected Services\ConquestionServiceReference\ConquestionGame.Domain.xsd">
+    <None Include="Connected Services\ConquestionServiceReference\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ConquestionServiceReference\service.wsdl" />
-    <None Include="Connected Services\ConquestionServiceReference\service.xsd">
+    <None Include="Connected Services\ConquestionServiceReference\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ConquestionServiceReference\service1.xsd">
+    <None Include="Connected Services\ConquestionServiceReference\item2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
@@ -223,13 +256,13 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\JoinGame\GetActiveGames.cshtml" />
-    <Content Include="Views\JoinGame\CreateNewGame.cshtml" />
     <Content Include="Views\JoinGame\ChooseQS.cshtml" />
     <Content Include="Views\Lobby\DisplayLobby.cshtml" />
     <Content Include="Views\Quiz\UniversalQuiz.cshtml" />
     <Content Include="Views\Quiz\AnswerSelected.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\JoinGame\CreateNewGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -257,6 +290,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AuthenticationServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\ConquestionServiceReference\" />
   </ItemGroup>
   <PropertyGroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="76abe57d-62bb-474f-814c-824468bd0fc1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="91b0ca37-a787-46b5-bcf2-2267bc575ce3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,13 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/ConquestionGame.WCFServiceLibrary/ConquestionService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="https://localhost:8000" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="d24a2797-98b2-41b7-8839-6ee1c6f54693" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ConquestionGame.WCFServiceLibrary/ConquestionService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="f39728a3-d18d-4d94-af2c-5a699ec1d661" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ConquestionGame.WCFServiceLibrary/ConquestionService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="0151b860-51d3-4ae6-8220-297dd64c0788" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ConquestionGame.WCFServiceLibrary/ConquestionService/mex" />
-    <MetadataFile FileName="ConquestionGame.Domain.xsd" MetadataType="Schema" ID="413ca809-1b71-41c8-b1c4-cfc34c2e8fcc" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ConquestionGame.WCFServiceLibrary/ConquestionService/mex" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="49a72a1e-3514-42c5-ac54-c3b6dfcdda0c" SourceId="1" SourceUrl="https://localhost:8000/?xsd=xsd1" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="a61f6b88-7dc9-4646-af5e-c2c3d086b3c9" SourceId="1" SourceUrl="https://localhost:8000/?disco" />
+    <MetadataFile FileName="ConquestionService.wsdl" MetadataType="Wsdl" ID="b4061171-2690-4ddb-9f73-5e92adf65e41" SourceId="1" SourceUrl="https://localhost:8000/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="5011dd5e-9675-4215-a3eb-51c599a1264f" SourceId="1" SourceUrl="https://localhost:8000/?xsd=xsd2" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="a404a8b0-8191-408c-810b-6ff5dc998690" SourceId="1" SourceUrl="https://localhost:8000/?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

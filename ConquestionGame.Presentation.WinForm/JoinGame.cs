@@ -43,7 +43,7 @@ namespace ConquestionGame.Presentation.WinForm
             Game game = listBox1.SelectedItem as Game;
             Game game2 = client.ChooseGame(game.Name, false);
             //label1.Text = CurrentPlayer.Name;
-            bool success = client.JoinGame(game2, PlayerCredentials.Instance.Player);
+            bool success = client.JoinGame(game2);
             if (success)
             {
                 this.Hide();

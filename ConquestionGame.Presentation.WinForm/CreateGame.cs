@@ -29,13 +29,13 @@ namespace ConquestionGame.Presentation.WinForm
             {
                 //label4.Text = comboBox1.SelectedText;
                 QuestionSet questionSet = client.RetrieveQuestionSetByTitle(comboBox2.Text);
-                client.CreateGame(new Game { Name = textBox1.Text }, questionSet.Title, Int32.Parse(maskedTextBox1.Text));
+                client.CreateGame2(new Game { Name = textBox1.Text }, questionSet.Title, Int32.Parse(maskedTextBox1.Text));
                 Game game = client.ChooseGame(textBox1.Text, false); ;
               
                 //QuestionSet questionSet = client.RetrieveQuestionSetByTitle(comboBox2.Text);
              
                 //client.AddQuestionSet(game, questionSet);
-                client.AddPlayer(game, PlayerCredentials.Instance.Player);
+                client.AddPlayer(game);
 
 
                 MessageBox.Show("Game created!", "Info",

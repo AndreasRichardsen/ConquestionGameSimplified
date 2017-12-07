@@ -18,19 +18,25 @@ namespace ConquestionGame.WCFServiceLibrary
         QuestionSetController quesCtr = new QuestionSetController();
         RoundController roundCtr = new RoundController();
 
+        //Technically not usable without login
         public Player CreatePlayer(Player player)
         {
             return playerCtr.CreatePlayer(player);
         }
 
-        public void CreateGame(Game game, String questionSet, int noOfRounds)
+        public void CreateGame(Game game)
+        {
+            gameCtr.CreateGame(game);
+        }
+
+        public void CreateGame2(Game game, String questionSet, int noOfRounds)
         {
             gameCtr.CreateGame(game, questionSet, noOfRounds);
         }
 
-        public void AddPlayer(Game game, Player player)
+        public void AddPlayer(Game game)
         {
-            player = playerCtr.RetrievePlayer(Thread.CurrentPrincipal.Identity.Name); 
+            var player = playerCtr.RetrievePlayer(Thread.CurrentPrincipal.Identity.Name); 
             gameCtr.AddPlayer(game, player);
         }
 
@@ -80,13 +86,15 @@ namespace ConquestionGame.WCFServiceLibrary
             return playerCtr.RetrievePlayer(name);
         }
 
-        public bool JoinGame(Game game, Player player)
+        public bool JoinGame(Game game)
         {
+            var player = playerCtr.RetrievePlayer(Thread.CurrentPrincipal.Identity.Name);
             return gameCtr.JoinGame(game, player);
         }
 
-        public bool LeaveGame(Game game, Player player)
+        public bool LeaveGame(Game game)
         {
+            var player = playerCtr.RetrievePlayer(Thread.CurrentPrincipal.Identity.Name);
             return gameCtr.LeaveGame(game, player);
         }
        
@@ -95,13 +103,15 @@ namespace ConquestionGame.WCFServiceLibrary
             return gameCtr.RetrieveAllPlayersByGameId(game);
         }
               
-        public bool StartGame(Game game, Player player)
+        public bool StartGame(Game game)
         {
+            var player = playerCtr.RetrievePlayer(Thread.CurrentPrincipal.Identity.Name);
             return gameCtr.StartGame(game, player);
         }
 
         public void SubmitAnswer(Round round, PlayerAnswer playerAnswer)
         {
+            playerAnswer.Player = playerCtr.RetrievePlayer(Thread.CurrentPrincipal.Identity.Name);
             roundCtr.SubmitAnswer(round, playerAnswer);
         }
 
@@ -130,8 +140,9 @@ namespace ConquestionGame.WCFServiceLibrary
              return gameCtr.DetermineGameWinner(game);
         }
 
-        public int DetermineNoOfCorrectAnswers(Game game, Player player)
+        public int DetermineNoOfCorrectAnswers(Game game)
         {
+            var player = playerCtr.RetrievePlayer(Thread.CurrentPrincipal.Identity.Name);
             return gameCtr.DetermineNoOfCorrectAnswers(game, player);
         }
 

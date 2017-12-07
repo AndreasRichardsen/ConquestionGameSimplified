@@ -695,16 +695,22 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
         System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player> RetrievePlayerAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame", ReplyAction="http://tempuri.org/IConquestionService/CreateGameResponse")]
-        void CreateGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds);
+        void CreateGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame", ReplyAction="http://tempuri.org/IConquestionService/CreateGameResponse")]
-        System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds);
+        System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame2", ReplyAction="http://tempuri.org/IConquestionService/CreateGame2Response")]
+        void CreateGame2(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/CreateGame2", ReplyAction="http://tempuri.org/IConquestionService/CreateGame2Response")]
+        System.Threading.Tasks.Task CreateGame2Async(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddPlayer", ReplyAction="http://tempuri.org/IConquestionService/AddPlayerResponse")]
-        void AddPlayer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        void AddPlayer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddPlayer", ReplyAction="http://tempuri.org/IConquestionService/AddPlayerResponse")]
-        System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/ActiveGames", ReplyAction="http://tempuri.org/IConquestionService/ActiveGamesResponse")]
         ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game[] ActiveGames();
@@ -719,16 +725,16 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
         System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game> ChooseGameAsync(string name, bool retrieveAssociation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/JoinGame", ReplyAction="http://tempuri.org/IConquestionService/JoinGameResponse")]
-        bool JoinGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        bool JoinGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/JoinGame", ReplyAction="http://tempuri.org/IConquestionService/JoinGameResponse")]
-        System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/LeaveGame", ReplyAction="http://tempuri.org/IConquestionService/LeaveGameResponse")]
-        bool LeaveGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        bool LeaveGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/LeaveGame", ReplyAction="http://tempuri.org/IConquestionService/LeaveGameResponse")]
-        System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameId", ReplyAction="http://tempuri.org/IConquestionService/RetrieveAllPlayersByGameIdResponse")]
         ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
@@ -737,10 +743,10 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
         System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player[]> RetrieveAllPlayersByGameIdAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/StartGame", ReplyAction="http://tempuri.org/IConquestionService/StartGameResponse")]
-        bool StartGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        bool StartGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/StartGame", ReplyAction="http://tempuri.org/IConquestionService/StartGameResponse")]
-        System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/AddQuestionSet", ReplyAction="http://tempuri.org/IConquestionService/AddQuestionSetResponse")]
         void AddQuestionSet(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet questionSet);
@@ -821,10 +827,10 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
         System.Threading.Tasks.Task<ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player> DetermineGameWinnerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswers", ReplyAction="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswersResponse")]
-        int DetermineNoOfCorrectAnswers(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        int DetermineNoOfCorrectAnswers(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswers", ReplyAction="http://tempuri.org/IConquestionService/DetermineNoOfCorrectAnswersResponse")]
-        System.Threading.Tasks.Task<int> DetermineNoOfCorrectAnswersAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player);
+        System.Threading.Tasks.Task<int> DetermineNoOfCorrectAnswersAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -870,20 +876,28 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
             return base.Channel.RetrievePlayerAsync(name);
         }
         
-        public void CreateGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds) {
-            base.Channel.CreateGame(game, questionSet, noOfRounds);
+        public void CreateGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            base.Channel.CreateGame(game);
         }
         
-        public System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds) {
-            return base.Channel.CreateGameAsync(game, questionSet, noOfRounds);
+        public System.Threading.Tasks.Task CreateGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.CreateGameAsync(game);
         }
         
-        public void AddPlayer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            base.Channel.AddPlayer(game, player);
+        public void CreateGame2(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds) {
+            base.Channel.CreateGame2(game, questionSet, noOfRounds);
         }
         
-        public System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            return base.Channel.AddPlayerAsync(game, player);
+        public System.Threading.Tasks.Task CreateGame2Async(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, string questionSet, int noOfRounds) {
+            return base.Channel.CreateGame2Async(game, questionSet, noOfRounds);
+        }
+        
+        public void AddPlayer(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            base.Channel.AddPlayer(game);
+        }
+        
+        public System.Threading.Tasks.Task AddPlayerAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.AddPlayerAsync(game);
         }
         
         public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game[] ActiveGames() {
@@ -902,20 +916,20 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
             return base.Channel.ChooseGameAsync(name, retrieveAssociation);
         }
         
-        public bool JoinGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            return base.Channel.JoinGame(game, player);
+        public bool JoinGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.JoinGame(game);
         }
         
-        public System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            return base.Channel.JoinGameAsync(game, player);
+        public System.Threading.Tasks.Task<bool> JoinGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.JoinGameAsync(game);
         }
         
-        public bool LeaveGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            return base.Channel.LeaveGame(game, player);
+        public bool LeaveGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.LeaveGame(game);
         }
         
-        public System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            return base.Channel.LeaveGameAsync(game, player);
+        public System.Threading.Tasks.Task<bool> LeaveGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.LeaveGameAsync(game);
         }
         
         public ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player[] RetrieveAllPlayersByGameId(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
@@ -926,12 +940,12 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
             return base.Channel.RetrieveAllPlayersByGameIdAsync(game);
         }
         
-        public bool StartGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            return base.Channel.StartGame(game, player);
+        public bool StartGame(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.StartGame(game);
         }
         
-        public System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            return base.Channel.StartGameAsync(game, player);
+        public System.Threading.Tasks.Task<bool> StartGameAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.StartGameAsync(game);
         }
         
         public void AddQuestionSet(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.QuestionSet questionSet) {
@@ -1038,12 +1052,12 @@ namespace ConquestionGame.Presentation.WinForm.ConquestionServiceReference {
             return base.Channel.DetermineGameWinnerAsync(game);
         }
         
-        public int DetermineNoOfCorrectAnswers(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            return base.Channel.DetermineNoOfCorrectAnswers(game, player);
+        public int DetermineNoOfCorrectAnswers(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.DetermineNoOfCorrectAnswers(game);
         }
         
-        public System.Threading.Tasks.Task<int> DetermineNoOfCorrectAnswersAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game, ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Player player) {
-            return base.Channel.DetermineNoOfCorrectAnswersAsync(game, player);
+        public System.Threading.Tasks.Task<int> DetermineNoOfCorrectAnswersAsync(ConquestionGame.Presentation.WinForm.ConquestionServiceReference.Game game) {
+            return base.Channel.DetermineNoOfCorrectAnswersAsync(game);
         }
     }
 }

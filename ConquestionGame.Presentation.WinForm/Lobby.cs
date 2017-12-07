@@ -71,7 +71,7 @@ namespace ConquestionGame.Presentation.WinForm
 
         private void Start_Game_Click(object sender, EventArgs e)
         {
-            client.StartGame(GameInstance.Instance.Game, PlayerCredentials.Instance.Player);
+            client.StartGame(GameInstance.Instance.Game);
             StartGameWindow();
         }
 
@@ -87,7 +87,7 @@ namespace ConquestionGame.Presentation.WinForm
 
         private void Exit_Lobby_Click(object sender, EventArgs e)
         {
-            client.LeaveGame(GameInstance.Instance.Game, PlayerCredentials.Instance.Player);
+            client.LeaveGame(GameInstance.Instance.Game);
             GameInstance.Instance.Game = null;
             this.Hide();
             (new JoinGame(client)).Show();
