@@ -171,6 +171,7 @@
     <Compile Include="ViewModels\CreateGameViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\QuizViewModel.cs" />
+    <Compile Include="ViewModels\RegisterPlayerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\AuthenticationServiceReference\AuthenticationService.wsdl" />
@@ -260,9 +261,10 @@
     <Content Include="Views\JoinGame\ChooseQS.cshtml" />
     <Content Include="Views\Lobby\DisplayLobby.cshtml" />
     <Content Include="Views\Quiz\UniversalQuiz.cshtml" />
-    <Content Include="Views\Quiz\AnswerSelected.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\JoinGame\CreateNewGame.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Quiz\ShowCorrectAnswers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

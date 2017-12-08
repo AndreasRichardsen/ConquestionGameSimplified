@@ -12,8 +12,7 @@ namespace ConquestionGame.Presentation.WebClient
     class GameInstance
     {
         private static GameInstance instance;
-        static LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
-        ConquestionServiceClient client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password);
+        LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
         public Game Game { get; set; }
 
         private GameInstance()
@@ -35,8 +34,11 @@ namespace ConquestionGame.Presentation.WebClient
 
         public void UpdateCurrentGame()
         {
-            Game gameEntity = client.ChooseGame(Game.Name, true);
-            Game = gameEntity;
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
+            {
+                Game gameEntity = client.RetrieveGame(Game.Name, true);
+                Game = gameEntity; 
+            }
         }
     }
 }

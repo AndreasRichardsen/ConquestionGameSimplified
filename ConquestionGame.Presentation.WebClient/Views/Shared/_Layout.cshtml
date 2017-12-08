@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using ConquestionGame.Presentation.WebClient.Helpers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,7 +21,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Log In", "Login", "Account")</li>
+                    <li><a href="#">@(AuthHelper.IsLoggedIn() ? "Welcome back " + AuthHelper.PlayerCredentials.Username : "")</a></li>
+                    <li>@(AuthHelper.IsLoggedIn() ? @Html.ActionLink("Logout", "Logout", "Account") : @Html.ActionLink("Log In", "Login", "Account")) </li>
                 </ul>
             </div>
         </div>

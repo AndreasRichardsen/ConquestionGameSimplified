@@ -32,7 +32,7 @@ namespace ConquestionGame.Presentation.WinForm
                 client.CreateGame2(new Game { Name = textBox1.Text }, questionSet.Title, Int32.Parse(maskedTextBox1.Text));
                 Game game = client.RetrieveGame(textBox1.Text, false); ;
 
-                client.AddPlayer(game, PlayerCredentials.Instance.Player);
+                client.AddPlayer(game);
 
                 this.Hide();
                 (new Lobby(game, client)).Show();

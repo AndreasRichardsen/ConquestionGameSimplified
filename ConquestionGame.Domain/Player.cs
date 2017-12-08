@@ -20,7 +20,7 @@ namespace ConquestionGame.Domain
         [Required]
         public string Name { get; set; }
         [DataType(DataType.EmailAddress)]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Invalid email error. Please enter a valid email")]
         [Required]
         public string Email { get; set; }
         [Required]

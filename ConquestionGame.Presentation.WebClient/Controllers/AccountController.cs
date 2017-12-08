@@ -12,9 +12,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 {
     public class AccountController : Controller
     {
-        public PlayerCredentials PC { get; set; }
-        ConquestionServiceClient client = new ConquestionServiceClient();
-       
+        
 
         [HttpGet]
         public ActionResult Login()
@@ -46,6 +44,41 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
             }
 
             
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View("Register");
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterPlayerViewModel pvm)
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+            using (var authServ = ServiceHelper.GetAuthServiceClient())
+            {
+                try
+                {
+                    var newPlayer = new ConquestionGame.Presentation.WebClient.AuthenticationServiceReference.Player { Name = pvm.Username };
+                    authServ.RegisterPlayer(newPlayer, pvm.Email, pvm.Password);
+                    ViewBag.StatusMessage = String.Format("Successfully registered {0}", pvm.Username);
+                }
+                catch (Exception e)
+                {
+                    ViewBag.StatusMessage = e.Message;
+                }
+            }
+
+            return View("Register");
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            AuthHelper.Logout();
+            return RedirectToAction("Login", "Account");
         }
     }
 }

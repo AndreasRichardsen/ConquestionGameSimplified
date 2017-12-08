@@ -11,8 +11,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 {
     public class LobbyController : Controller
     {
-        static LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
-        ConquestionServiceClient client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password);
+        LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
 
         Game CurrentGame = new Game();
 
@@ -33,16 +32,19 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 
         private void CheckIfLobbyHost()
         {
-            if (GameInstance.Instance.Game != null)
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
             {
-                var gameEntity = client.ChooseGame(GameInstance.Instance.Game.Name, true);
-                if (loginViewModel.Username.Equals(gameEntity.Players[0].Name))
+                if (GameInstance.Instance.Game != null)
                 {
-                    ViewBag.IsHost = true;
-                }
-                else
-                {
-                    ViewBag.IsHost = false;
+                    var gameEntity = client.RetrieveGame(GameInstance.Instance.Game.Name, true);
+                    if (loginViewModel.Username.Equals(gameEntity.Players[0].Name))
+                    {
+                        ViewBag.IsHost = true;
+                    }
+                    else
+                    {
+                        ViewBag.IsHost = false;
+                    }
                 }
             }
         }
@@ -50,18 +52,21 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
         [HttpGet]
         public ActionResult DisplayLobby()
         {
-            Setup();
-            Game aGame = GameInstance.Instance.Game;
-            var listOfPlayers = new List<Player>();
-            try
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
             {
-                listOfPlayers = aGame.Players.ToList();
+                Setup();
+                Game aGame = GameInstance.Instance.Game;
+                var listOfPlayers = new List<Player>();
+                try
+                {
+                    listOfPlayers = aGame.Players.ToList();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("error", e);
+                }
+                return View(listOfPlayers);
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("error", e);
-            }
-            return View(listOfPlayers);
         }
     }
 }

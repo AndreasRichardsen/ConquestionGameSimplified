@@ -15,5 +15,7 @@ namespace ConquestionGame.Presentation.WebClient.ViewModels
         public Round CurrentRound { get; set; }
 
         public PlayerAnswer PlayerAnswer { get; set; }
+
+        public bool HasAnswered { get; set; }
     }
 }

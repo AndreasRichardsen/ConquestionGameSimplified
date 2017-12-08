@@ -57,7 +57,7 @@ namespace ConquestionGame.WCFServiceLibrary
         Player DetermineGameWinner(Game game);
 
         [OperationContract]
-        int DetermineNoOfCorrectAnswers(Game game, Player player);
+        int DetermineNoOfCorrectAnswers(Game game);
 
         //QuestionSetController
         [OperationContract]
@@ -89,11 +89,7 @@ namespace ConquestionGame.WCFServiceLibrary
         Player RetrieveRoundWinner(Round round);
 
         [OperationContract]
-
-        int DetermineNoOfCorrectAnswers(Game game);
-
-      [OperationContract]
         Question RetrieveRandomQuestion(Game game);
-        
+
     }
 }

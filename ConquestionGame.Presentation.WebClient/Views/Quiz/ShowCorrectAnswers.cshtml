@@ -1,9 +1,10 @@
 ﻿@model ConquestionGame.Presentation.WebClient.ViewModels.QuizViewModel
 
 @{
-    ViewBag.Title = "AnswerSelected";
+    ViewBag.Title = "ShowCorrectAnswers";
 }
 
+<h2>ShowCorrectAnswers</h2>
 
 @section QuizScript {
     <script type="text/javascript" src="~/Scripts/QuizScript.js"></script>
@@ -35,9 +36,9 @@
 <hr />
 
 <div id="timerText"></div>
-@*<div>
-    <p>@ViewBag.Status</p>
-</div>*@
+<div>
+        <p>@ViewBag.Status</p>
+</div>
 
 <script>
 

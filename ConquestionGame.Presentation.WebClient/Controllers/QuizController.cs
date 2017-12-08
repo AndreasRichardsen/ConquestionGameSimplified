@@ -11,8 +11,8 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 {
     public class QuizController : Controller
     {
-        static LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
-        ConquestionServiceClient client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password);
+        LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
+        
 
         Game CurrentGame = null;
         Round CurrentRound = null;
@@ -21,12 +21,15 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 
         public ActionResult StartQuiz()
         {
-            client.StartGame(GameInstance.Instance.Game);
-      
-            GameInstance.Instance.UpdateCurrentGame();
-            RoundInstance.Instance.Round = GameInstance.Instance.Game.Rounds[0];
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
+            {
+                client.StartGame(GameInstance.Instance.Game);
 
-            return RedirectToAction("UniversalQuiz", "Quiz");
+                GameInstance.Instance.UpdateCurrentGame();
+                RoundInstance.Instance.Round = GameInstance.Instance.Game.Rounds[0];
+
+                return RedirectToAction("UniversalQuiz", "Quiz"); 
+            }
         }
 
         [HttpGet]
@@ -41,8 +44,25 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
                 CurrentRound = CurrentRound
             };
 
+            ViewBag.CheckIf = new Func<bool>(Check);
+
             return View(quizVM);
-        } 
+        }
+
+        public bool Check()
+        {
+            UpdateGameInformation();
+            bool HasAnswered = false;
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
+            {
+                
+                if (client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound))
+                {
+                    HasAnswered = true;
+                }
+            }
+            return HasAnswered;
+        }
 
         private void UpdateGameInformation()
         {
@@ -52,71 +72,69 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
             CurrentQuestion = CurrentRound.Question;
         }
 
-        public ActionResult AnswerSelected(int id)
+        public void AnswerSelected(int id)
         {
-            UpdateGameInformation();
-
-            if(id!=0)
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
             {
-                Answer playerAnswer = new Answer();
-                foreach (Answer answer in CurrentQuestion.Answers)
+                UpdateGameInformation();
+
+                if (id != 0)
                 {
-                    if (answer.Id == id)
+                    Answer playerAnswer = new Answer();
+                    foreach (Answer answer in CurrentQuestion.Answers)
                     {
-                        playerAnswer = answer;
+                        if (answer.Id == id)
+                        {
+                            playerAnswer = answer;
+                        }
                     }
+                    PlayerAnswer.AnswerGiven = playerAnswer;
+                    client.SubmitAnswer(CurrentRound, PlayerAnswer);
                 }
-                PlayerAnswer.AnswerGiven = playerAnswer;
-                client.SubmitAnswer(CurrentRound, PlayerAnswer);
+
+                
             }
-
-
-
-            //CheckIfPlayers();
-            client.CreateRound(CurrentGame);
-
-            Answer correctAnswer = new Answer();
-
-            foreach (Answer answer in CurrentQuestion.Answers)
-            {
-                if (client.ValidateAnswer(answer) == true)
-                {
-                    correctAnswer = answer;
-                    ViewBag.CorrectAnswerId = answer.Id;
-                }
-            }
-
-            Player roundWinner = client.GetRoundWinner(CurrentRound);
-            if (roundWinner != null)
-            {
-                ViewBag.Status = String.Format("  Round Winner: {0}!", roundWinner.Name);
-            }
-            else
-            {
-                ViewBag.Status = String.Format("  No winner this time!");
-            }
-
-            QuizViewModel quizVM = new QuizViewModel
-            {
-                CurrentGame = CurrentGame,
-                CurrentQuestion = CurrentQuestion,
-                CurrentRound = CurrentRound
-            };
-
-            return View(quizVM);
         }
 
-        private void CheckIfPlayers()
+        public ActionResult ShowCorrectAnswers()
         {
-            UpdateGameInformation();
-            bool playersAnswered = client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound);
-            if (playersAnswered)
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
             {
-                if (PlayerCredentials.Instance.Player.Id == CurrentGame.Players.FirstOrDefault().Id)
+                UpdateGameInformation();
+
+                client.CreateRound(CurrentGame);
+
+                Answer correctAnswer = new Answer();
+
+                foreach (Answer answer in CurrentQuestion.Answers)
                 {
-                    client.CreateRound(CurrentGame);
+                    if (client.ValidateAnswer(answer) == true)
+                    {
+                        correctAnswer = answer;
+                        ViewBag.CorrectAnswerId = answer.Id;
+                    }
                 }
+
+                Player roundWinner = client.RetrieveRoundWinner(CurrentRound);
+                if (roundWinner != null)
+                {
+                    ViewBag.Status = String.Format("  Round Winner: {0}!", roundWinner.Name);
+                }
+                else
+                {
+                    ViewBag.Status = String.Format("  No winner this time!");
+                }
+
+                QuizViewModel quizVM = new QuizViewModel
+                {
+                    CurrentGame = CurrentGame,
+                    CurrentQuestion = CurrentQuestion,
+                    CurrentRound = CurrentRound
+                };
+
+                return View(quizVM);
             }
+
         }
     }
 }

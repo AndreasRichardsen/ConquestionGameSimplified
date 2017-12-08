@@ -31,11 +31,13 @@ namespace ConquestionGame.Presentation.WebClient.Helpers
 
         public static void Login(LoginViewModel loginViewModel)
         {
+            playerCredentials = loginViewModel;
             HttpContext.Current.Session[LoginSessionName] = loginViewModel;
         }
 
         public static void Logout()
         {
+            playerCredentials = null;
             HttpContext.Current.Session[LoginSessionName] = null;
         }
     }

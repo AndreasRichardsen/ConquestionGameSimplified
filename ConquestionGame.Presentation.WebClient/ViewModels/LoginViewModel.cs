@@ -13,6 +13,7 @@ namespace ConquestionGame.Presentation.WebClient.ViewModels
         [StringLength(20, ErrorMessage = "Name must be between 1 and 20 characters", MinimumLength = 1)]
         public string Username { get; set; }
         [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }
