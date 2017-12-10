@@ -28,23 +28,16 @@
 
 
 <script>
-    var hasAnswered = '@ViewBag.CheckIf()';
 
     var timeLeft = 30;
     var elem = document.getElementById('some_div');
 
     var timerId = setInterval(countdown, 1000);
 
-    if (hasAnswered == true)
-    {
-        elem.innerHTML = 'everyone has answered';
-    }
-
     function countdown() {
-        if (timeLeft == 0 || hasAnswered==true)
+        if (timeLeft == 0)
         {
             clearTimeout(timerId);
-            var id = 0;
             window.location.href = '/Quiz/ShowCorrectAnswers/';
         }
         else

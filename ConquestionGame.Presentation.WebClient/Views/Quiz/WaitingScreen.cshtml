@@ -1,0 +1,22 @@
+﻿@model ConquestionGame.Presentation.WebClient.ViewModels.WaitingScreenViewModel
+
+@{
+    ViewBag.Title = "WaitingScreen";
+}
+
+<h2>Waiting Area</h2>
+
+@if(Model.HasAnswered == true)
+{
+    <p>All players have answered.</p>
+    <script>
+        window.location.href = '/Quiz/ShowCorrectAnswers/';
+    </script>
+}
+else
+{
+    <p>Waiting for other players to answer...</p>
+    <script>
+        window.location.reload();
+    </script>
+}

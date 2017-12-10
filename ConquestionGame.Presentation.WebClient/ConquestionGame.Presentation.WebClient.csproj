@@ -172,6 +172,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\QuizViewModel.cs" />
     <Compile Include="ViewModels\RegisterPlayerViewModel.cs" />
+    <Compile Include="ViewModels\WaitingScreenViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\AuthenticationServiceReference\AuthenticationService.wsdl" />
@@ -265,6 +266,8 @@
     <Content Include="Views\JoinGame\CreateNewGame.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Quiz\ShowCorrectAnswers.cshtml" />
+    <Content Include="Views\Quiz\WaitingScreen.cshtml" />
+    <Content Include="Views\Quiz\EndScreen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
