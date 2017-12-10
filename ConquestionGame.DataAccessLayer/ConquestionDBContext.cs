@@ -20,7 +20,7 @@ namespace ConquestionGame.DataAccessLayer
         public DbSet<AskedQuestion> AskedQuestions { get; set; }
      
         public ConquestionDBContext()
-            : base("name=ConquestionConnection2")
+            : base("name=ConquestionConnection")
         {
 
         }

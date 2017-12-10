@@ -13,7 +13,6 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
     {
         LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
         
-
         Game CurrentGame = null;
         Round CurrentRound = null;
         Question CurrentQuestion = null;
@@ -37,31 +36,21 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
         {
             UpdateGameInformation();
 
-            QuizViewModel quizVM = new QuizViewModel
+            if(CheckEndCondition() == false)
             {
-                CurrentGame = CurrentGame,
-                CurrentQuestion = CurrentQuestion,
-                CurrentRound = CurrentRound
-            };
-
-            ViewBag.CheckIf = new Func<bool>(Check);
-
-            return View(quizVM);
-        }
-
-        public bool Check()
-        {
-            UpdateGameInformation();
-            bool HasAnswered = false;
-            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
-            {
-                
-                if (client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound))
+                QuizViewModel quizVM = new QuizViewModel
                 {
-                    HasAnswered = true;
-                }
+                    CurrentGame = CurrentGame,
+                    CurrentQuestion = CurrentQuestion,
+                    CurrentRound = CurrentRound
+                };
+
+                return View(quizVM);
             }
-            return HasAnswered;
+            else
+            {
+                return RedirectToAction("EndScreen", "Quiz");
+            }
         }
 
         private void UpdateGameInformation()
@@ -72,7 +61,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
             CurrentQuestion = CurrentRound.Question;
         }
 
-        public void AnswerSelected(int id)
+        public ActionResult AnswerSelected(int id)
         {
             using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
             {
@@ -91,8 +80,40 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
                     PlayerAnswer.AnswerGiven = playerAnswer;
                     client.SubmitAnswer(CurrentRound, PlayerAnswer);
                 }
+            }
+            return RedirectToAction("WaitingScreen", "Quiz");
+        }
+ 
+        public bool Check()
+        {
+            UpdateGameInformation();
+            bool HasAnswered = false;
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
+            {
 
-                
+                if (client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound))
+                {
+                    HasAnswered = true;
+                }
+            }
+            return HasAnswered;
+        }
+
+        public ActionResult WaitingScreen()
+        {
+            bool checkif = Check();
+            if(checkif == false)
+            {
+                WaitingScreenViewModel viewModel = new WaitingScreenViewModel
+                {
+                    HasAnswered = Check()
+                };
+
+                return View(viewModel);
+            }
+            else
+            {
+                return RedirectToAction("ShowCorrectAnswers", "Quiz");
             }
         }
 
@@ -134,7 +155,41 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 
                 return View(quizVM);
             }
+        }
 
+        private bool CheckEndCondition()
+        {
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
+            {
+                UpdateGameInformation();
+
+                if (client.CheckIfGameIsFinished(CurrentGame))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public ActionResult EndScreen()
+        {
+            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
+            {
+                UpdateGameInformation();
+
+                if(client.DetermineGameWinner(CurrentGame)!=null)
+                {
+                    ViewBag.Winner = "The winner is: " + client.DetermineGameWinner(CurrentGame).Name;
+                }
+                else
+                {
+                    ViewBag.Winner = "You guys fucking suck!";
+                }
+            }
+            return View();
         }
     }
 }
