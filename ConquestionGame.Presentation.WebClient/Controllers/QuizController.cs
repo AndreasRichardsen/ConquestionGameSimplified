@@ -81,40 +81,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
                     client.SubmitAnswer(CurrentRound, PlayerAnswer);
                 }
             }
-            return RedirectToAction("WaitingScreen", "Quiz");
-        }
- 
-        public bool Check()
-        {
-            UpdateGameInformation();
-            bool HasAnswered = false;
-            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
-            {
-
-                if (client.CheckIfAllPlayersAnswered(CurrentGame, CurrentRound))
-                {
-                    HasAnswered = true;
-                }
-            }
-            return HasAnswered;
-        }
-
-        public ActionResult WaitingScreen()
-        {
-            bool checkif = Check();
-            if(checkif == false)
-            {
-                WaitingScreenViewModel viewModel = new WaitingScreenViewModel
-                {
-                    HasAnswered = Check()
-                };
-
-                return View(viewModel);
-            }
-            else
-            {
-                return RedirectToAction("ShowCorrectAnswers", "Quiz");
-            }
+            return RedirectToAction("ShowCorrectAnswers", "Quiz");
         }
 
         public ActionResult ShowCorrectAnswers()

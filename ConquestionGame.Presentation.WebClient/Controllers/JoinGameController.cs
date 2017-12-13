@@ -73,27 +73,6 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult ChooseQS()
-        {
-            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
-            {
-                List<QuestionSet> questionSet = new List<QuestionSet>();
-                var qs = client.RetrieveAllQuestionSets().ToList();
-                foreach (var aQuestionSet in qs)
-                {
-                    QuestionSet aQS = new QuestionSet
-                    {
-                        Title = aQuestionSet.Title,
-                        Description = aQuestionSet.Description
-                    };
-                    questionSet.Add(aQS);
-                }
-                return View(questionSet); 
-            }
-        }
-
-
         public ActionResult AddQuestionSetToGame(string title)
         {
             using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
