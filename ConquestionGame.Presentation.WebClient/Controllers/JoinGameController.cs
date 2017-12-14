@@ -13,7 +13,6 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
     {
         LoginViewModel loginViewModel = AuthHelper.PlayerCredentials;
 
-        // Gets a list of active games from the db to be displayed on the view
         public ActionResult GetActiveGames()
         {
             using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
@@ -28,10 +27,8 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
                     };
                     listOfGames.Add(aGame);
                 }
-
                 return View(listOfGames);
             }
-
         }
 
         [HttpGet]
@@ -61,25 +58,6 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
                     client.CreateGame(ourGame);
                 }
 
-                Game gameEntity = client.RetrieveGame(viewModel.Game.Name, true);
-                GameInstance.Instance.Game = gameEntity;
-
-                //gameEntity.QuestionSet = viewModel.QuestionSets.
-
-
-                client.AddPlayer(gameEntity);
-
-                return RedirectToAction("GetActiveGames", "JoinGame"); 
-            }
-        }
-
-        public ActionResult AddQuestionSetToGame(string title)
-        {
-            using (var client = ServiceHelper.GetServiceClientWithCredentials(loginViewModel.Username, loginViewModel.Password))
-            {
-                QuestionSet qs = new QuestionSet();
-                qs = client.RetrieveQuestionSetByTitle(title);
-                client.AddQuestionSet(GameInstance.Instance.Game, qs);
                 return RedirectToAction("GetActiveGames", "JoinGame"); 
             }
         }
@@ -90,10 +68,8 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
             {
                 Game game = client.RetrieveGame(name, false);
                 client.AddPlayer(game);
-
                 Game gameEntity = client.RetrieveGame(game.Name, true);
                 GameInstance.Instance.Game = gameEntity;
-
                 return RedirectToAction("DisplayLobby", "Lobby"); 
             }
         }

@@ -8,7 +8,6 @@ namespace ConquestionGame.Presentation.WebClient.ViewModels
 {
     public class RegisterPlayerViewModel
     {
-
         [StringLength(20, ErrorMessage = "Name must be between 1 and 20 characters", MinimumLength = 1)]
         [Required]
         [Display(Name = "User Name")]
@@ -26,6 +25,5 @@ namespace ConquestionGame.Presentation.WebClient.ViewModels
         [Compare("Password", ErrorMessage = "Confirm password doesn't match, Type again !")]
         [Display(Name ="Confirm Password")]
         public string ConfirmPassword { get; set; }
-
     }
 }

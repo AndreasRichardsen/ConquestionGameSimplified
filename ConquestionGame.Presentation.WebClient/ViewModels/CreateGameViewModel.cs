@@ -12,8 +12,7 @@ namespace ConquestionGame.Presentation.WebClient.ViewModels
         public Game Game { get; set; }
 
         public List<QuestionSet> QuestionSets { get; set; }
-        public int SelectedQuestionSetID { get; set; }
 
-        //public int SelectedItem;
+        public int SelectedQuestionSetID { get; set; }
     }
 }

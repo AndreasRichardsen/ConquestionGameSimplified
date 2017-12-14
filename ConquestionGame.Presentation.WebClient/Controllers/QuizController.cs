@@ -153,7 +153,7 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
                 }
                 else
                 {
-                    ViewBag.Winner = "You guys fucking suck!";
+                    ViewBag.Winner = "You guys suck!";
                 }
             }
             return View();

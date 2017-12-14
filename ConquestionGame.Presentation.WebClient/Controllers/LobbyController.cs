@@ -15,12 +15,6 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 
         Game CurrentGame = new Game();
 
-        // GET: Lobby
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         private void Setup()
         {
             CurrentGame = GameInstance.Instance.Game;
