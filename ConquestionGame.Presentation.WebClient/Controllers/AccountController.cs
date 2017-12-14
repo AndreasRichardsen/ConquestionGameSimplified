@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ConquestionGame.Presentation.WebClient.ConquestionServiceReference;
 using System.Net;
 using ConquestionGame.Presentation.WebClient.ViewModels;
 using ConquestionGame.Presentation.WebClient.Helpers;
@@ -12,15 +11,12 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
 {
     public class AccountController : Controller
     {
-        
-
         [HttpGet]
         public ActionResult Login()
         {
             return View("Login");
         }
 
-        // An instance of player is saved to PC
         [HttpPost]
         public ActionResult Login(LoginViewModel loginViewModel)
         {
@@ -42,8 +38,6 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
                 ViewBag.StatusMessage = "Could not log in. Invalid Credentials.";
                 return View("Login");
             }
-
-            
         }
 
         [HttpGet]
@@ -69,7 +63,6 @@ namespace ConquestionGame.Presentation.WebClient.Controllers
                     ViewBag.StatusMessage = e.Message;
                 }
             }
-
             return View("Register");
         }
 

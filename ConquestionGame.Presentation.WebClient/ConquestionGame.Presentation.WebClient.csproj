@@ -154,7 +154,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\JoinGameController.cs" />
     <Compile Include="Controllers\LobbyController.cs" />
@@ -256,7 +255,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\JoinGame\GetActiveGames.cshtml" />
     <Content Include="Views\Lobby\DisplayLobby.cshtml" />
     <Content Include="Views\Quiz\UniversalQuiz.cshtml" />
