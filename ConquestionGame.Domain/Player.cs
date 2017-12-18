@@ -25,11 +25,7 @@ namespace ConquestionGame.Domain
         public string Email { get; set; }
         [Required]
         public string HashedPassword { get; set; }
-
         public List<Game> Games { get; set; }
-
-
-        
 
     }
 }

@@ -155,8 +155,8 @@ namespace ConquestionGame.Presentation.WinForm
         {
             if (NextRoundCountdownCanRun)
             {
-                int elaspedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
-                int remainingSeconds = NextRoundCoutdownTimer - elaspedSeconds;
+                int elapsedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
+                int remainingSeconds = NextRoundCoutdownTimer - elapsedSeconds;
                 StatusLabel.Text = String.Format("Seconds left until next round: {0}", remainingSeconds);
                 Player roundWinner = Client.RetrieveRoundWinner(CurrentRound);
                 if (roundWinner != null)

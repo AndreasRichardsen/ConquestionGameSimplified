@@ -212,7 +212,7 @@ namespace ConquestionGame.LogicLayer
                                 gameEntity.Players.Add(playerEntity);
                                 db.Entry(gameEntity).State = System.Data.Entity.EntityState.Modified;
                                 db.SaveChanges();
-                                System.Threading.Thread.Sleep(5000);
+                                //System.Threading.Thread.Sleep(5000);
                                 transaction.Commit();
                                 success = true;
                             }
